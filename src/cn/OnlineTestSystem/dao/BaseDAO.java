@@ -20,10 +20,14 @@ import java.util.List;
  * @Version 1.0
  **/
 public class BaseDAO<T> {
+    //因为用到反射需要T的class类
     private Class<T> clazz;
     private QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
 
     @SuppressWarnings("unchecked")
+    /**
+     * BaseDAO的构造器，在构造器内解析出泛型T的Class类
+     */
     public BaseDAO() {
         Type superClass = this.getClass().getGenericSuperclass();
         if( superClass instanceof ParameterizedType ) {
@@ -37,22 +41,50 @@ public class BaseDAO<T> {
         }
     }
 
+
+    /**
+     * 获取数据库查询后的某一个字段的值，单行单列。例如获取Name字段的值，或者Count(*)记录的条数
+     * @param sql 用于执行的sql语句
+     * @param args 填充SQL语句的占位符
+     * @return 单行单列的值
+     */
     public <E> E getForValue(String sql, Object ... args) throws SQLException {
         return queryRunner.query(sql,new ScalarHandler<E>(),args);
     }
 
+
+    /**
+     * 获取由一组T的对象构成的List
+     * @param sql 用于执行的sql语句
+     * @param args 填充SQL语句的占位符
+     * @return T的对象构成的List
+     */
     public List<T> getForList(String sql, Object ... args) throws SQLException{
         System.out.println("getForList");
         return queryRunner.query(sql, new BeanListHandler<T>(clazz,
                 new BasicRowProcessor(new GenerousBeanProcessor())), args);
-
     }
 
+
+
+    /**
+     * 获取T的实体类对象，该对象与数据库的记录相一致
+     * 因为用到反射需要T的class类
+     * @param sql 用于执行的sql语句
+     * @param args 填充SQL语句的占位符
+     * @return T的实体类对象
+     */
     public T get(String sql, Object ... args) throws SQLException {
         return queryRunner.query(sql,new BeanHandler<T>(clazz,
                 new BasicRowProcessor(new GenerousBeanProcessor())),args);
     }
 
+
+    /**
+     * 该方法封装了，INSERT,DELETE,UPDATE相关的数据库操作
+     * @param sql 用于执行的sql语句
+     * @param args 填充SQL语句的占位符
+     */
     public int update(String sql , Object ... args) throws SQLException {
         int row = queryRunner.update(sql, args);
         if (row == 0) {
