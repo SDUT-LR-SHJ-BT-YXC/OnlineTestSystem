@@ -13,9 +13,10 @@ import java.util.List;
  * @Date 2019-11-29 16:22
  * @Version 1.0
  **/
-public class UserDAOImpl extends BaseDAO implements UserDAO {
+public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
     @Override
     public Boolean addUser(User user) {
+
         return null;
     }
 

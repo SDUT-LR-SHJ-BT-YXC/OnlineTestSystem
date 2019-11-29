@@ -19,5 +19,5 @@ public interface MultiplechoiceDAO {
     public Boolean addMultiplechoices(List<Multiplechoice> list);
     public Boolean delMultiplechoiceById(Integer id);
     public Boolean delMultiplechoicesByQbankId(Integer id);
-    public Boolean modifyMultiplechoice(Blanktest test);
+    public Boolean modifyMultiplechoice(Multiplechoice test);
 }

@@ -13,7 +13,7 @@ import java.util.List;
  * @Date 2019-11-29 16:23
  * @Version 1.0
  **/
-public class WronganswerrecordDAOImpl extends BaseDAO implements WronganswerrecordDAO {
+public class WronganswerrecordDAOImpl extends BaseDAO<Wronganswerrecord> implements WronganswerrecordDAO {
     @Override
     public Boolean addWronganswerrecord(Wronganswerrecord wronganswerrecord) {
         return null;
