@@ -16,6 +16,13 @@ import java.util.List;
  **/
 public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:添加一个新的用户
+     * @Param:
+     * @Return:
+     * @Date: 21:59 2019-11-29
+     */
     public Boolean addUser(User user) {
         String sql = "INSERT INTO user(nick_name,email, password, role) VALUES (?,?,?,?)";
         try {
@@ -28,6 +35,13 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:通过ID删除某用户
+     * @Param:
+     * @Return:
+     * @Date: 22:00 2019-11-29
+     */
     public Boolean delUserById(Integer id) {
         String sql = "DELETE FROM user WHERE user_id=?";
         try {
@@ -40,6 +54,13 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:修改某用户信息，以此用户的ID为依据
+     * @Param:
+     * @Return:
+     * @Date: 22:00 2019-11-29
+     */
     public Boolean modifyUser(User user) {
         String sql = "UPDATE user SET nick_name=?, email=?, password=?, role=? WHERE user_id=?";
         try {
@@ -52,6 +73,13 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:通过用户ID查找某用户
+     * @Param:
+     * @Return:
+     * @Date: 22:00 2019-11-29
+     */
     public User findUserById(Integer id) {
         String sql = "SELECT * FROM user WHERE user_id=?";
         try {
@@ -63,6 +91,13 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:通过用户昵称查找所有用户
+     * @Param:
+     * @Return:
+     * @Date: 22:01 2019-11-29
+     */
     public List<User> findUsersByNickname(String name) {
         String sql = "SELECT * FROM user WHERE nick_name=?";
         try {

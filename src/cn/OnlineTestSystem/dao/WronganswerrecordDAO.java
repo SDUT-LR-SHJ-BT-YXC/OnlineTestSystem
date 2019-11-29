@@ -19,7 +19,7 @@ public interface WronganswerrecordDAO {
     public Boolean delWronganswerrecordsByQuestionId(Integer id);
     public Boolean delWronganswerrecordsByUserId(Integer id);
     public Boolean modifyWronganswerrecord(Wronganswerrecord wronganswerrecord);
-    public Wronganswerrecord fnidWronganswerrecordById(Integer id);
+    public Wronganswerrecord findWronganswerrecordById(Integer id);
     public List<Wronganswerrecord> findWronganswerrecordsByUserId(Integer id);
     public List<Wronganswerrecord> findWronganswerrecordsByQuestionId(Integer id);
 }

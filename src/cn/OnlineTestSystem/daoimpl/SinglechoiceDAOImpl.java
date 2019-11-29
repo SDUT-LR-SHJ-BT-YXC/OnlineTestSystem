@@ -17,6 +17,13 @@ import java.util.List;
  **/
 public class SinglechoiceDAOImpl extends BaseDAO<Singlechoice> implements SinglechoiceDAO {
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:添加一道单选题
+     * @Param:
+     * @Return:
+     * @Date: 21:56 2019-11-29
+     */
     public Boolean addSinglechoice(Singlechoice singlechoice) {
         String sql = "INSERT INTO singlechoice(question_text, answer1, answer2, answer3, answer4, std_answer, qbank_id) VALUES (?,?,?,?,?,?,?)";
         try {
@@ -30,6 +37,13 @@ public class SinglechoiceDAOImpl extends BaseDAO<Singlechoice> implements Single
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:批量添加多选题
+     * @Param:
+     * @Return:
+     * @Date: 21:57 2019-11-29
+     */
     public Boolean addSinglechoices(List<Singlechoice> list) {
         Iterator<Singlechoice> it = list.iterator();
         while(it.hasNext()){
@@ -41,6 +55,13 @@ public class SinglechoiceDAOImpl extends BaseDAO<Singlechoice> implements Single
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:通过单选题ID查找某道单选题
+     * @Param:
+     * @Return:
+     * @Date: 21:57 2019-11-29
+     */
     public Boolean delSinglechoiceById(Integer id) {
         String sql = "DELETE FROM singlechoice WHERE squestion_id=?";
         try {
@@ -53,6 +74,13 @@ public class SinglechoiceDAOImpl extends BaseDAO<Singlechoice> implements Single
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:根据科目ID查找所有此科目的单选题
+     * @Param:
+     * @Return:
+     * @Date: 21:58 2019-11-29
+     */
     public Boolean delSinglechoicesByQbankId(Integer id) {
         String sql = "DELETE FROM singlechoice WHERE qbank_id=?";
         try {
@@ -65,6 +93,13 @@ public class SinglechoiceDAOImpl extends BaseDAO<Singlechoice> implements Single
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:修改某道单选题，以此单选题的ID为依据
+     * @Param:
+     * @Return:
+     * @Date: 21:58 2019-11-29
+     */
     public Boolean modifySinglechoice(Singlechoice singlechoice) {
         String sql = "UPDATE singlechoice SET question_text=?, answer1=?, answer2=?, answer3=?, answer4=?, std_answer=?,qbank_id=? WHERE squestion_id=?";
         try {
@@ -79,6 +114,13 @@ public class SinglechoiceDAOImpl extends BaseDAO<Singlechoice> implements Single
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:通过某道单选题ID查找一道单选题
+     * @Param:
+     * @Return:
+     * @Date: 21:58 2019-11-29
+     */
     public Singlechoice findSinglechoiceById(Integer id) {
         String sql = "SELECT * FROM singlechoice WHERE squestion_id=?";
         try {
@@ -90,6 +132,13 @@ public class SinglechoiceDAOImpl extends BaseDAO<Singlechoice> implements Single
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:通过科目ID查找此科目的所有单选题
+     * @Param:
+     * @Return:
+     * @Date: 21:59 2019-11-29
+     */
     public List<Singlechoice> findSinglechoiceByQbankId(Integer id) {
         String sql = "SELECT * FROM singlechoice WHERE qbank_id=?";
         try {

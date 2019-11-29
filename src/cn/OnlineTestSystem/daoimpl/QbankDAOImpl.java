@@ -16,6 +16,13 @@ import java.sql.SQLException;
 public class QbankDAOImpl extends BaseDAO<Qbank> implements QbankDAO {
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:增加一个科目
+     * @Param:
+     * @Return:
+     * @Date: 21:49 2019-11-29
+     */
     public Boolean addQbank(Qbank qbank) {
         String sql = "INSERT INTO qbank(name, single_choice_num, multiple_choice_num, blanks_num) VALUES(?,?,?,?)";
         try {
@@ -28,6 +35,13 @@ public class QbankDAOImpl extends BaseDAO<Qbank> implements QbankDAO {
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:根据科目ID删除某科目
+     * @Param:
+     * @Return:
+     * @Date: 21:49 2019-11-29
+     */
     public Boolean delQbankById(Integer id) {
         String sql = "DELETE FROM qbank WHERE qbank_id=?";
         try {
@@ -40,6 +54,13 @@ public class QbankDAOImpl extends BaseDAO<Qbank> implements QbankDAO {
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:修改某科目的题库信息，以本科目的ID为依据
+     * @Param:
+     * @Return:
+     * @Date: 21:49 2019-11-29
+     */
     public Boolean modifyQbank(Qbank qbank) {
         String sql = "UPDATE qbank SET name=? WHERE qbank_id=?";
         try {
@@ -52,6 +73,13 @@ public class QbankDAOImpl extends BaseDAO<Qbank> implements QbankDAO {
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:通过科目名字获取此科目的题库信息
+     * @Param:
+     * @Return:
+     * @Date: 21:50 2019-11-29
+     */
     public Qbank findQbankByName(String name) {
         String sql = "SELECT * FROM  qbank WHERE name=?";
         try {
@@ -63,6 +91,13 @@ public class QbankDAOImpl extends BaseDAO<Qbank> implements QbankDAO {
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:通过科目ID查找某科目题库信息
+     * @Param:
+     * @Return:
+     * @Date: 21:51 2019-11-29
+     */
     public Qbank findQbankById(Integer id) {
         String sql = "SELECT * FROM  qbank WHERE qbank_id=?";
         try {

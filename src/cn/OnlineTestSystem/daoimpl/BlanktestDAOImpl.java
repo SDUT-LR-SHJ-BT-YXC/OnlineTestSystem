@@ -17,6 +17,13 @@ import java.util.List;
  **/
 public class BlanktestDAOImpl extends BaseDAO<Blanktest> implements BlanktestDAO {
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:根据填空题ID查找填空题
+     * @Param:
+     * @Return:
+     * @Date: 21:39 2019-11-29
+     */
     public Blanktest findBlanktestById(Integer id) {
         String sql = "SELECT * FROM blanktest WHERE bquestion_id=?";
         try {
@@ -28,6 +35,13 @@ public class BlanktestDAOImpl extends BaseDAO<Blanktest> implements BlanktestDAO
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:根据科目ID查找填空题
+     * @Param:
+     * @Return:
+     * @Date: 21:39 2019-11-29
+     */
     public List<Blanktest> findBlanksByQbankId(Integer id) {
         String sql = "SELECT * FROM blanktest WHERE qbank_id=?";
         try {
@@ -39,6 +53,13 @@ public class BlanktestDAOImpl extends BaseDAO<Blanktest> implements BlanktestDAO
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:新增单个填空题
+     * @Param:
+     * @Return:
+     * @Date: 21:40 2019-11-29
+     */
     public Boolean addBlanktest(Blanktest test) {
         String sql = "INSERT INTO blanktest(question_text, std_answer, qbank_id) VALUES (?,?,?)";
         try {
@@ -51,6 +72,13 @@ public class BlanktestDAOImpl extends BaseDAO<Blanktest> implements BlanktestDAO
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:批量添加添加填空题
+     * @Param:
+     * @Return:
+     * @Date: 21:40 2019-11-29
+     */
     public Boolean addBlanktests(List<Blanktest> list) {
         Iterator<Blanktest> it = list.iterator();
         while(it.hasNext()){
@@ -62,6 +90,13 @@ public class BlanktestDAOImpl extends BaseDAO<Blanktest> implements BlanktestDAO
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:根据填空题ID删除填空题
+     * @Param:
+     * @Return:
+     * @Date: 21:41 2019-11-29
+     */
     public Boolean delBlanktestById(Integer id) {
         String sql = "DELETE FROM blanktest WHERE bquestion_id=?";
         try {
@@ -74,6 +109,13 @@ public class BlanktestDAOImpl extends BaseDAO<Blanktest> implements BlanktestDAO
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:根据科目ID删除某一科目的所有填空题
+     * @Param:
+     * @Return:
+     * @Date: 21:41 2019-11-29
+     */
     public Boolean delBlanktestsByQbankId(Integer id) {
         String sql = "DELETE FROM blanktest WHERE qbank_id=?";
         try {
@@ -86,6 +128,13 @@ public class BlanktestDAOImpl extends BaseDAO<Blanktest> implements BlanktestDAO
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:修改某道填空题，以本填空题ID为依据
+     * @Param:
+     * @Return:
+     * @Date: 21:43 2019-11-29
+     */
     public Boolean modifyBlanktest(Blanktest test) {
         String sql = "UPDATE blanktest SET question_text=?,std_answer=?,qbank_id=? WHERE bquestion_id=?";
         try {

@@ -21,6 +21,13 @@ public class AdminDAOImpl extends BaseDAO<Admin> implements AdminDAO{
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:根据管理员Id查找管理员
+     * @Param:
+     * @Return:
+     * @Date: 21:37 2019-11-29
+     */
     public Admin findAdminById(Integer id) {
         String sql = "SELECT * FROM admins WHERE admin_id=?";
         try {
@@ -33,6 +40,13 @@ public class AdminDAOImpl extends BaseDAO<Admin> implements AdminDAO{
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:根据名字查找管理员
+     * @Param:
+     * @Return:
+     * @Date: 21:37 2019-11-29
+     */
     public List<Admin> findAdminsByName(String name) {
         String sql ="SELECT * FROM admins WHERE admin_name=?";
         try {
@@ -44,6 +58,13 @@ public class AdminDAOImpl extends BaseDAO<Admin> implements AdminDAO{
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:添加管理员
+     * @Param:
+     * @Return:
+     * @Date: 21:38 2019-11-29
+     */
     public Boolean addAdmin(Admin admin) {
         String sql = "INSERT INTO admins(password, admin_name) VALUES (?,?)";
         try {
@@ -56,6 +77,13 @@ public class AdminDAOImpl extends BaseDAO<Admin> implements AdminDAO{
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:根据管理员ID删除管理员
+     * @Param:
+     * @Return:
+     * @Date: 21:38 2019-11-29
+     */
     public Boolean delAdmin(Integer id) {
         String sql = "DELETE FROM admins WHERE admin_id=?";
         try {
@@ -68,6 +96,13 @@ public class AdminDAOImpl extends BaseDAO<Admin> implements AdminDAO{
     }
 
     @Override
+    /**
+     * @Author: Shangjin
+     * @Description:修改管理员信息，以管理员ID为依据
+     * @Param:
+     * @Return:
+     * @Date: 21:38 2019-11-29
+     */
     public Boolean modifyAdminInfo(Admin admin) {
         String sql = "UPDATE admins SET password=?,admin_name=? WHERE admin_id=?";
         try {
