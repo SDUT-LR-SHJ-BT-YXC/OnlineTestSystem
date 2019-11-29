@@ -15,7 +15,7 @@ public class Multiplechoice {
     private String answer3;
     private String answer4;
     private String stdAnswer;
-    private Integer qbankId;
+    private Integer qbankId;//30000—59999
 
     public Multiplechoice(Integer mquestionId, String questionText, String answer1, String answer2, String answer3, String answer4, String stdAnswer, Integer qbankId) {
         this.mquestionId = mquestionId;

@@ -13,7 +13,7 @@ public class Blanktest {
     private Integer bquestionId;
     private String questionText;
     private String stdAnswer;
-    private Integer qbankId;
+    private Integer qbankId;// >= 60000
 
     public Blanktest(Integer bquestionId, String questionText, String stdAnswer, Integer qbankId) {
         this.bquestionId = bquestionId;

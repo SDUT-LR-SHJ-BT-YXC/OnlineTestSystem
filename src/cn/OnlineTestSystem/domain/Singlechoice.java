@@ -15,7 +15,7 @@ public class Singlechoice {
     private String answer3;
     private String answer4;
     private String stdAnswer;
-    private Integer qbankId;
+    private Integer qbankId;//1-29999
 
     public Singlechoice() {
     }
