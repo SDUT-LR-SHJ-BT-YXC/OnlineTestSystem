@@ -60,7 +60,6 @@ public class BaseDAO<T> {
      * @return T的对象构成的List
      */
     public List<T> getForList(String sql, Object ... args) throws SQLException{
-        System.out.println("getForList");
         return queryRunner.query(sql, new BeanListHandler<T>(clazz,
                 new BasicRowProcessor(new GenerousBeanProcessor())), args);
     }

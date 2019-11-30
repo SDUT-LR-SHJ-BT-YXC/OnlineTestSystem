@@ -64,7 +64,7 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
     public Boolean modifyUser(User user) {
         String sql = "UPDATE user SET nick_name=?, email=?, password=?, role=? WHERE user_id=?";
         try {
-            this.update(sql, user);
+            this.update(sql, user.getNickName(), user.getEmail(), user.getPassword(), user.getRole(), user.getUserId());
             return  true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -107,4 +107,16 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
         }
         return null;
     }
+
+    @Override
+    public List<User> findUsersByEmail(String email) {
+        String sql = "SELECT * FROM user WHERE email=?";
+        try {
+            return  this.getForList(sql, email);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

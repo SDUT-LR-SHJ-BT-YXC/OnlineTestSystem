@@ -43,7 +43,7 @@ public class ScoreanalyseDAOImp extends BaseDAO<Scoreanalyse> implements Scorean
      * @Date: 21:52 2019-11-29
      */
     public Boolean delScoreanalyseById(Integer id) {
-        String sql = "DELETE scoreanalyse WHERE score_record_id=?";
+        String sql = "DELETE FROM scoreanalyse WHERE score_record_id=?";
         try {
             this.update(sql, id);
             return  true;
@@ -62,7 +62,7 @@ public class ScoreanalyseDAOImp extends BaseDAO<Scoreanalyse> implements Scorean
      * @Date: 21:53 2019-11-29
      */
     public Boolean delScoreanalyzeByUserId(Integer id) {
-        String sql = "DELETE scoreanalyse WHERE user_id=?";
+        String sql = "DELETE FROM scoreanalyse WHERE user_id=?";
         try {
             this.update(sql, id);
             return  true;
@@ -81,7 +81,7 @@ public class ScoreanalyseDAOImp extends BaseDAO<Scoreanalyse> implements Scorean
      * @Date: 21:53 2019-11-29
      */
     public Boolean delScoreanalyseByQbankId(Integer id) {
-        String sql = "DELETE scoreanalyse WHERE qbank_id=?";
+        String sql = "DELETE FROM scoreanalyse WHERE qbank_id=?";
         try {
             this.update(sql, id);
             return  true;

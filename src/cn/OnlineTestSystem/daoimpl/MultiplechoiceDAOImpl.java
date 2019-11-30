@@ -62,7 +62,7 @@ public class MultiplechoiceDAOImpl extends BaseDAO<Multiplechoice> implements Mu
      * @Date: 21:44 2019-11-29
      */
     public Boolean addMultiplechoice(Multiplechoice multiplechoice) {
-        String sql = "INSERT INTO multiplechoice(question_text, answer1, answer2, answer3, answer4, std_answer" +
+        String sql = "INSERT INTO multiplechoice(question_text, answer1, answer2, answer3, answer4, std_answer," +
                 "qbank_id) VALUES(?,?,?,?,?,?,?)";
         try {
             this.update(sql, multiplechoice.getQuestionText(), multiplechoice.getAnswer1(), multiplechoice.getAnswer2()

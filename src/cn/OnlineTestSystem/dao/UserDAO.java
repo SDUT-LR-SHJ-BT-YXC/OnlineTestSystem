@@ -17,4 +17,5 @@ public interface UserDAO {
     public Boolean modifyUser(User user);
     public User findUserById(Integer id);
     public List<User> findUsersByNickname(String name);
+    public List<User> findUsersByEmail(String email);
 }
