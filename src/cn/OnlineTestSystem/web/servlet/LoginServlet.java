@@ -17,7 +17,7 @@ import java.io.PrintWriter;
  * @Date 2019/12/2  19:36
  * @Version 1.0
  **/
-@WebServlet(name = "LoginServlet")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

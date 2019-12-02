@@ -21,7 +21,7 @@ import java.util.List;
  * @Version 1.0
  **/
 
-@WebServlet(name = "RegisterServlet")
+@WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -34,7 +34,7 @@ public class RegisterServlet extends HttpServlet {
         if(!pwd.equals(pwd2)) {
             PrintWriter out = response.getWriter();
             out.write("<script>alert('两次输入密码不一致！')</script>");
-            out.write("<script>location.href='/OnlineTestSystem/register.jsp'</script>");
+            out.write("<script>location.href='register.jsp'</script>");
         }
         //创建user实体类
         User user = new User();
@@ -53,9 +53,10 @@ public class RegisterServlet extends HttpServlet {
         //查找用户注册所分配的ID
         List<User> users =  new ArrayList<User>();
         users = userimpl.findUsersByEmail(email);
+        System.out.println(users.get(0).getUserId());
         PrintWriter out = response.getWriter();
-        out.write("<script>alert('恭喜您，注册成功！您的ID为：'+users[0].getUserId())</script>");
-        out.write("<script>location.href='/OnlineTestSystem/login.jsp'</script>");
+        out.write("<script>alert('恭喜您，注册成功！您的ID为：')</script>");
+        out.write("<script>location.href='login.jsp'</script>");
 
     }
 
