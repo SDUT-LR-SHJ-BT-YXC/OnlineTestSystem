@@ -42,7 +42,11 @@ public class RegisterServlet extends HttpServlet {
         user.setNickName(nick_name);
         user.setPassword(pwd);
         user.setRole(0);
-        //将user添加到数据库中
+        //将user添加到数据库中，此处需要判断邮箱是否重复
+        if(false){
+            //邮箱重复的操作：
+
+        }
         UserDAOImpl userimpl =  new UserDAOImpl();
         userimpl.addUser(user);
 
