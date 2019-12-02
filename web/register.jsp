@@ -12,7 +12,7 @@
 
 </head>
 <body style="align-content: center">
-<form action="/OnlineTestSystem/RegisterServlet" method="post">
+<form action="/OnlineTestSystem/web/servlet/RegisterServlet" method="post">
     <input name="nick_name" placeholder="请输入用户名"  type="text"  >
     <hr>
     <input name="password"  placeholder="请设置您的密码"  type="password">
