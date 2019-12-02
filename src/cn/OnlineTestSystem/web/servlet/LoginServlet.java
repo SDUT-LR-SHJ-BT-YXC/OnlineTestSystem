@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
         String nickname = (String) request.getParameter("nick_name");
         String pwd  = (String)request.getParameter("password");
 
+        if()
 
     }
 
