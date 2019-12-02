@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @ClassName RegisterServlet
@@ -44,8 +46,11 @@ public class RegisterServlet extends HttpServlet {
         UserDAOImpl userimpl =  new UserDAOImpl();
         userimpl.addUser(user);
 
+        //查找用户注册所分配的ID
+        List<User> users =  new ArrayList<User>();
+        users = userimpl.findUsersByEmail(email);
         PrintWriter out = response.getWriter();
-        out.write("<script>alert('恭喜您，注册成功！')</script>");
+        out.write("<script>alert('恭喜您，注册成功！您的ID为：'+users[0].getUserId())</script>");
         out.write("<script>location.href='/OnlineTestSystem/login.jsp'</script>");
 
     }
