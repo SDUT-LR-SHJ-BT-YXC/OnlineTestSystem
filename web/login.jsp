@@ -11,7 +11,7 @@
     <title>在线考试系统</title>
 </head>
 <body>
-<form action="/OnlineTestSystem/RegisterServlet" method="post">
+<form action="/OnlineTestSystem/LoginServlet" method="post">
     <input name="nick_name" placeholder="请输入用户名"  type="text"  >
     <hr>
     <input name="password"  placeholder="请输入密码"  type="password">
