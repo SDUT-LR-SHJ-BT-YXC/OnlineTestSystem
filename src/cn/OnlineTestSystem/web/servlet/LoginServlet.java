@@ -1,11 +1,14 @@
 package cn.OnlineTestSystem.web.servlet;
 
+import cn.OnlineTestSystem.daoimpl.UserDAOImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * @ClassName LoginServlet
@@ -20,10 +23,18 @@ public class LoginServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("utf-8");
-        String nickname = (String) request.getParameter("nick_name");
+        String userid = (String) request.getParameter("user_id");
         String pwd  = (String)request.getParameter("password");
 
-        if()
+        int uid = Integer.parseInt(userid);
+        UserDAOImpl userdimp = new UserDAOImpl();
+        if(userdimp.findUserById(uid) == null || (!pwd.equals(userdimp.findUserById(uid).getPassword()))){
+            PrintWriter out = response.getWriter();
+            out.write("<script>alert('用户名不存在或密码错误！')</script>");
+        } else{
+            PrintWriter out = response.getWriter();
+            out.write("<script>alert('登录成功')</script>");
+        }
 
     }
 
