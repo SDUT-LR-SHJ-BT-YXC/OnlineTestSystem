@@ -12,7 +12,7 @@
 </head>
 <body>
 <form action="/OnlineTestSystem/LoginServlet" method="post">
-    <input name="nick_name" placeholder="请输入用户名"  type="text"  >
+    <input name="nick_name" placeholder="请输入您的用户ID"  type="text"  >
     <hr>
     <input name="password"  placeholder="请输入密码"  type="password">
     <hr>
