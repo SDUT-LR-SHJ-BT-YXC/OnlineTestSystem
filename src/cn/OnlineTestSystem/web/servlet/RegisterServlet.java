@@ -1,4 +1,4 @@
-package cn.OnlineTestSystem.dao;
+package cn.OnlineTestSystem.web.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ServletTest01")
-public class ServletTest01 extends HttpServlet {
+@WebServlet(name = "RegisterServlet")
+public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-////////dfjdsofdsjfdo
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
