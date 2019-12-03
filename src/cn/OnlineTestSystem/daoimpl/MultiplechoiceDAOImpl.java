@@ -149,4 +149,22 @@ public class MultiplechoiceDAOImpl extends BaseDAO<Multiplechoice> implements Mu
         }
         return false;
     }
+
+    /**
+     * @Author: Shangjin
+     * @Description:从数据库中筛选某个区间的习题
+     * @Param:
+     * @Return:
+     * @Date: 22:51 2019-12-03
+     */
+    @Override
+    public List<Multiplechoice> findLimitedChoices(Integer qbankId,Integer s, Integer length) {
+        String sql = "SELECT * FROM multiplechoice WHERE qbank_id=? LIMIT ?, ?";
+        try {
+            return this.getForList(sql, qbankId,s, length);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
 }

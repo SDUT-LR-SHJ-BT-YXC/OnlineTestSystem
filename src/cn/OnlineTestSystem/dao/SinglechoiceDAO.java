@@ -18,4 +18,5 @@ public interface SinglechoiceDAO {
     public Boolean modifySinglechoice(Singlechoice singlechoice);
     public Singlechoice findSinglechoiceById(Integer id);
     public List<Singlechoice> findSinglechoiceByQbankId(Integer id);
+    public List<Singlechoice> findLimitedSinglechoices(Integer qbankId, Integer s, Integer length);
 }

@@ -14,7 +14,7 @@ import java.util.List;
  * @Version 1.0
  **/
 public class AdminManagementService {
-    private AdminDAO adminDAO;
+    private AdminDAO adminDAO = new AdminDAOImpl();
 
     public AdminManagementService() {
         this.adminDAO = new AdminDAOImpl();

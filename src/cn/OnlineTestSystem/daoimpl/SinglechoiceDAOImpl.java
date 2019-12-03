@@ -148,4 +148,22 @@ public class SinglechoiceDAOImpl extends BaseDAO<Singlechoice> implements Single
         }
         return null;
     }
+
+    /**
+     * @Author: Shangjin
+     * @Description:从数据库中筛选某个区间的习题
+     * @Param:
+     * @Return:
+     * @Date: 22:51 2019-12-03
+     */
+    @Override
+    public List<Singlechoice> findLimitedSinglechoices(Integer qbankId, Integer s, Integer length) {
+        String sql = "SELECT * FROM singlechoice WHERE qbank_id=? LIMIT ?, ?";
+        try {
+            return this.getForList(sql,qbankId, s, length);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
 }
