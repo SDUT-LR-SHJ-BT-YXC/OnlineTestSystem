@@ -2,6 +2,7 @@ package cn.OnlineTestSystem.web.servlet;
 
 import cn.OnlineTestSystem.daoimpl.UserDAOImpl;
 import cn.OnlineTestSystem.domain.User;
+import cn.OnlineTestSystem.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,9 +33,7 @@ public class RegisterServlet extends HttpServlet {
         String pwd2 = (String)request.getParameter("password2");
         String email = (String)request.getParameter("email");
         if(!pwd.equals(pwd2)) {
-            PrintWriter out = response.getWriter();
-            out.write("<script>alert('两次输入密码不一致！')</script>");
-            out.write("<script>location.href='register.jsp'</script>");
+            //ajax显示两次密码不一致
         }
         //创建user实体类
         User user = new User();
@@ -42,21 +41,25 @@ public class RegisterServlet extends HttpServlet {
         user.setNickName(nick_name);
         user.setPassword(pwd);
         user.setRole(0);
-        //将user添加到数据库中，此处需要判断邮箱是否重复
-        if(false){
-            //邮箱重复的操作：
 
+        UserService userService = new UserService();
+        //判断邮箱是否重复
+        if(userService.isExistEmail(email)){
+            System.out.println(userService.isExistEmail(email));
+            //ajax显示邮箱重复
+        } else {
+            //注册成功，显示它的用户Id,
+            if(userService.Register(user)){
+                if(userService.findUserId(email) == -1){
+                    //失败
+                } else {
+                    int user_id = userService.findUserId(email);
+                    //ajax显示用户注册所获得的userID
+                    response.sendRedirect("");
+                }
+            }
         }
-        UserDAOImpl userimpl =  new UserDAOImpl();
-        userimpl.addUser(user);
 
-        //查找用户注册所分配的ID
-        List<User> users =  new ArrayList<User>();
-        users = userimpl.findUsersByEmail(email);
-        System.out.println(users.get(0).getUserId());
-        PrintWriter out = response.getWriter();
-        out.write("<script>alert('恭喜您，注册成功！您的ID为：')</script>");
-        out.write("<script>location.href='login.jsp'</script>");
 
     }
 
