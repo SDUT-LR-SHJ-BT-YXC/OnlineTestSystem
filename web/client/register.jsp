@@ -22,6 +22,7 @@
     <script src="${pageContext.request.contextPath}/js/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/shj_js/Ajax_Functions.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/shj_js/Functions.js"></script>
 </head>
 <body class="login-bg">
 
@@ -29,8 +30,9 @@
         <div class="message">考试系统注册</div>
         <div id="darkbannerwrap"></div>
 
-        <form class="layui-form layui-form-pane" action="${pageContext.request.contextPath}/RegisterServlet" method="post">
+        <form id="form" class="layui-form layui-form-pane" action="${pageContext.request.contextPath}/RegisterServlet" method="post" onsubmit="return checkForm()">
             <input name="nick_name" placeholder="请输入用户名"  type="text" lay-verify="required" class="layui-input" >
+            <span id="nick_name_tip"></span>
             <hr class="hr15">
             <input name="password" lay-verify="required" placeholder="请设置您的密码"  type="password" class="layui-input">
             <span id="password1_tip"></span>

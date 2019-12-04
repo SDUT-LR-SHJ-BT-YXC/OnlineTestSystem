@@ -13,7 +13,6 @@ import java.io.IOException;
 public class Ajax_IsExitEmailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
-        System.out.println(email);
         UserService us = new UserService();
         if(us.isExistEmail(email)){
             response.getWriter().write("true");

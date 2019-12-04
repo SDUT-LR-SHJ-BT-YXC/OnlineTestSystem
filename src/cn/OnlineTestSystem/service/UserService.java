@@ -37,7 +37,7 @@ public class UserService{
      */
     public boolean isExistEmail(String email){
         //2019-12-04 12：15尚进重写
-        if(userdimpl.findUsersByEmail(email) != null){
+        if(userdimpl.findUsersByEmail(email).size() > 0){
             return true;
         }
         else{
