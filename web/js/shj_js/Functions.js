@@ -57,3 +57,20 @@ function  checkLoginForm() {
     return  true;
 
 }
+
+/*** PersonCenter.jsp  ***/
+function confirmExamination(context){
+    //询问框
+    layui.use("layer", function () {
+        layer = layui.layer;
+        layer.confirm('开始测试后将无法暂停测试，是否继续开始测试？', {
+            btn: ['开始','取消'] //按钮
+        }, function(){
+            window.open(context)
+            layer.msg('的确很重要', {icon: 1});
+        }, function(){
+
+        });
+    })
+
+}

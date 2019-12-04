@@ -21,7 +21,6 @@ public class Ajax_RecentScoreRecord extends HttpServlet {
         ScoreanalyseDAO scoreanalyseDAO = new ScoreanalyseDAOImp();
         scoreanalyseDAO.findScoreanalyseByUserId(Integer.parseInt(userid));
         String str = JSON.toJSONString(scoreanalyseDAO.findScoreanalyseByUserId(Integer.parseInt(userid)));
-        System.out.println(str);
         response.getWriter().write(str);
     }
 

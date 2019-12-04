@@ -13,12 +13,13 @@
     <link rel="stylesheet" href="../layui/css/layui.css">
     <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
     <script src="../js/echarts.min.js"></script>
+    <script src="../js/shj_js/Functions.js"></script>
 </head>
 <body>
 <div class="layui-header" >
     <ul class="layui-nav">
         <li class="layui-nav-item" >
-            <a href="">在线测试</a>
+            <a href="${pageContext.request.contextPath}/ShowQbankServlet">在线测试</a>
         </li>
         <li class="layui-nav-item" style="margin: 0px 5%">
             <a href="">错题记录</a>
@@ -44,18 +45,6 @@
         </li>
     </ul>
 </div>
-<%--<div class="layui-bg-cyan" style="height: 500px; width: 90% ; padding-top: 15px; margin: 0px auto;">--%>
-<%--    <div class="layui-carousel" id="test1" style="margin: 0px auto;">--%>
-<%--        <div carousel-item>--%>
-<%--            <div>条目1</div>--%>
-<%--            <div>条目2</div>--%>
-<%--            <div>条目3</div>--%>
-<%--            <div>条目4</div>--%>
-<%--            <div>条目5</div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <!-- 条目中可以是任意内容，如：<img src=""> -->--%>
-<%--</div>--%>
 
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <div id="main" style="width: 900px;height:500px; margin: 50px auto; overflow:hidden"></div>
@@ -68,15 +57,16 @@
             record.date = date.getMonth() + "-" + date.getDate();
             return record;
         });
-        console.log(ajax_data);
         var dates = [];
         var scores = [];
+        var aver = [];
+        var sum = 0;
         for(let i = 0; i < 10; i++){
             dates[i] = ajax_data[i].date;
             scores[i] = ajax_data[i].score;
+            sum += scores[i];
+            aver[i] = sum / (i + 1);
         }
-        console.log(dates);
-        console.log(scores);
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
         // 指定图表的配置项和数据
@@ -84,9 +74,25 @@
             title: {
                 text: '近期十次做题记录统计'
             },
-            tooltip: {},
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#283b56'
+                    }
+                }
+            },
             legend: {
-                data:['分数']
+                data:['平均分','分数']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: {readOnly: false},
+                    restore: {},
+                    saveAsImage: {}
+                }
             },
             xAxis: {
                 data: dates
@@ -96,7 +102,13 @@
                 name: '分数',
                 type: 'bar',
                 data: scores
-            }]
+            },
+                {
+                    name:'平均分',
+                    type:'line',
+                    data: aver
+                }
+            ],
         };
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);

@@ -3,6 +3,8 @@ package cn.OnlineTestSystem.dao;
 import cn.OnlineTestSystem.domain.Qbank;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
+import java.util.List;
+
 /**
  * @ClassName QbankDAO
  * @Desciption TODO
@@ -16,4 +18,5 @@ public interface QbankDAO {
     public Boolean modifyQbank(Qbank qbank);
     public Qbank findQbankByName(String name);
     public Qbank findQbankById(Integer id);
+    public List<Qbank> getAllQbank();
 }
