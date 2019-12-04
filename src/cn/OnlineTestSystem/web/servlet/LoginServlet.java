@@ -24,13 +24,12 @@ public class LoginServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("utf-8");
-        String userid = (String) request.getParameter("user_id");
+        String email = (String) request.getParameter("user_id");
         String pwd  = (String)request.getParameter("password");
-        int uid = Integer.parseInt(userid);
 
         //判断登录是否成功
         UserService userService = new UserService();
-        if(userService.isLogin(uid,pwd)){
+        if(userService.isLogin(email,pwd)){
             //登录成功，进入主页
 
             response.sendRedirect("");
