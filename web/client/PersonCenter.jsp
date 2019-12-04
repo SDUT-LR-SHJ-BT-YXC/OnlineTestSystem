@@ -13,12 +13,13 @@
     <link rel="stylesheet" href="../layui/css/layui.css">
     <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
     <script src="../js/echarts.min.js"></script>
+    <script src="../js/shj_js/Functions.js"></script>
 </head>
 <body>
 <div class="layui-header" >
     <ul class="layui-nav">
         <li class="layui-nav-item" >
-            <a href="">在线测试</a>
+            <a href="${pageContext.request.contextPath}/ShowQbankServlet">在线测试</a>
         </li>
         <li class="layui-nav-item" style="margin: 0px 5%">
             <a href="">错题记录</a>
@@ -44,18 +45,6 @@
         </li>
     </ul>
 </div>
-<%--<div class="layui-bg-cyan" style="height: 500px; width: 90% ; padding-top: 15px; margin: 0px auto;">--%>
-<%--    <div class="layui-carousel" id="test1" style="margin: 0px auto;">--%>
-<%--        <div carousel-item>--%>
-<%--            <div>条目1</div>--%>
-<%--            <div>条目2</div>--%>
-<%--            <div>条目3</div>--%>
-<%--            <div>条目4</div>--%>
-<%--            <div>条目5</div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <!-- 条目中可以是任意内容，如：<img src=""> -->--%>
-<%--</div>--%>
 
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <div id="main" style="width: 900px;height:500px; margin: 50px auto; overflow:hidden"></div>

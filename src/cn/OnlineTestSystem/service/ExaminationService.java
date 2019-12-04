@@ -73,4 +73,14 @@ public class ExaminationService {
         }
         return  paper;
     }
+    /**
+     * @Author: Shangjin
+     * @Description:获取所有科目信息
+     * @Param:
+     * @Return:
+     * @Date: 19:45 2019-12-04
+     */
+    public List<Qbank> getAllQbank(){
+        return qbankDAO.getAllQbank();
+    }
 }

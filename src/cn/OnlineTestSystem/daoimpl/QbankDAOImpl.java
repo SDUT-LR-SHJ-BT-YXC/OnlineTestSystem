@@ -5,6 +5,7 @@ import cn.OnlineTestSystem.dao.QbankDAO;
 import cn.OnlineTestSystem.domain.Qbank;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @ClassName QbankDAOImpl
@@ -106,5 +107,16 @@ public class QbankDAOImpl extends BaseDAO<Qbank> implements QbankDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public List<Qbank> getAllQbank() {
+        String sql = "SELECT * FROM  qbank";
+        try {
+            return  this.getForList(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  null;
     }
 }
