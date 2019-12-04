@@ -21,20 +21,23 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/shj_js/Functions.js"></script>
 </head>
 <body class="login-bg">
 <div class="login layui-anim layui-anim-up">
     <div class="message">在线考试系统登录</div>
         <div id="darkbannerwrap"></div>
 
-        <form class="layui-form" action="${pageContext.request.contextPath}/LoginServlet" method="post">
-            <input id="user_id" name="user_id" placeholder="请输入您的用户ID"  type="text" lay-verify="required" class="layui-input" >
+        <form class="layui-form" action="${pageContext.request.contextPath}/LoginServlet" method="post" onsubmit="return checkLoginForm()">
+            <input id="email"  name="email" placeholder="请输入您的注册邮箱"  type="email" lay-verify="required" class="layui-input" >
+            <span id="email_tip"></span>
             <hr class="hr15">
             <input id="password" name="password" lay-verify="required" placeholder="请输入密码"  type="password" class="layui-input">
+            <span id="password_tip"></span>
             <hr class="hr15">
             <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >
-            <a href = "${pageContext.request.contextPath}/client/Register.jsp"><input type = "button" value = "注册"  class = "layui-btn layui-btn-fluid"></a>
+            <a href = "${pageContext.request.contextPath}/client/register.jsp"><input type = "button" value = "注册"  class = "layui-btn layui-btn-fluid"></a>
             <hr class="hr20" >
         </form>
     </div>
