@@ -157,10 +157,10 @@ public class SinglechoiceDAOImpl extends BaseDAO<Singlechoice> implements Single
      * @Date: 22:51 2019-12-03
      */
     @Override
-    public List<Singlechoice> findLimitedSinglechoices(Integer qbankId, Integer s, Integer length) {
-        String sql = "SELECT * FROM singlechoice WHERE qbank_id=? LIMIT ?, ?";
+    public List<Singlechoice> findRandomSinglechoices(Integer qbankId, Integer n) {
+        String sql = "SELECT * FROM singlechoice WHERE qbank_id=? ORDER BY  RAND() LIMIT ?";
         try {
-            return this.getForList(sql,qbankId, s, length);
+            return this.getForList(sql,qbankId, n);
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -158,10 +158,10 @@ public class MultiplechoiceDAOImpl extends BaseDAO<Multiplechoice> implements Mu
      * @Date: 22:51 2019-12-03
      */
     @Override
-    public List<Multiplechoice> findLimitedChoices(Integer qbankId,Integer s, Integer length) {
-        String sql = "SELECT * FROM multiplechoice WHERE qbank_id=? LIMIT ?, ?";
+    public List<Multiplechoice> findRandomChoices(Integer qbankId,Integer n) {
+        String sql = "SELECT * FROM multiplechoice WHERE qbank_id=? ORDER BY  RAND() LIMIT ?";
         try {
-            return this.getForList(sql, qbankId,s, length);
+            return this.getForList(sql, qbankId, n);
         } catch (SQLException e) {
             e.printStackTrace();
         }

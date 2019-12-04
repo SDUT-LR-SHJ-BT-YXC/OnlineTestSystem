@@ -20,5 +20,5 @@ public interface MultiplechoiceDAO {
     public Boolean delMultiplechoiceById(Integer id);
     public Boolean delMultiplechoicesByQbankId(Integer id);
     public Boolean modifyMultiplechoice(Multiplechoice test);
-    public List<Multiplechoice> findLimitedChoices(Integer qbankId, Integer s, Integer length);
+    public List<Multiplechoice> findRandomChoices(Integer qbankId, Integer n);
 }
