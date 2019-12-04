@@ -40,3 +40,20 @@ function checkForm() {
         return  false;
     }
 }
+
+/*** login.jsp  ***/
+function  checkLoginForm() {
+    var  email = $("#email").val().trim();
+    var passwd = $("#password").val().trim();
+    $('#email_tip').text("");
+    $("#password_tip").text("");
+    if(email === ''){
+        $('#email_tip').text("邮箱不能为空");
+        return false;
+    }else if(passwd === ''){
+        $("#password_tip").text("密码不能为空");
+        return  false;
+    }
+    return  true;
+
+}

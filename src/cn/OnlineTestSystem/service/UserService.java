@@ -25,7 +25,6 @@ public class UserService{
      * @Date: 2019/12/3 22:30
      */
     public boolean Register(User user) {
-
         return userdimpl.addUser(user);
     }
     /**

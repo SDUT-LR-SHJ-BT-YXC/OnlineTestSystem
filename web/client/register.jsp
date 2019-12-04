@@ -32,16 +32,16 @@
 
         <form id="form" class="layui-form layui-form-pane" action="${pageContext.request.contextPath}/RegisterServlet" method="post" onsubmit="return checkForm()">
             <input name="nick_name" placeholder="请输入用户名"  type="text" lay-verify="required" class="layui-input" >
-            <span id="nick_name_tip"></span>
+            <span id="nick_name_tip" style="font-size: small; color: #FF5722"></span>
             <hr class="hr15">
             <input name="password" lay-verify="required" placeholder="请设置您的密码"  type="password" class="layui-input">
-            <span id="password1_tip"></span>
+            <span id="password1_tip" style="font-size: small; color: #FF5722"></span>
             <hr class="hr15">
             <input name="password2" lay-verify="required" placeholder="请确认密码"  type="password" class="layui-input">
-            <span id="password2_tip"></span>
+            <span id="password2_tip" style="font-size: small; color: #FF5722"></span>
             <hr class="hr15">
             <input name="email" lay-verify="required" placeholder="请输入您的邮箱"  type="email" onblur="judgeEmail('${pageContext.request.contextPath}')" class="layui-input">
-            <span id="email_tip"></span>
+            <span id="email_tip" style="font-size: small; color: #FF5722"></span>
             <hr class="hr15">
             <input value="确定" id="submit" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >
