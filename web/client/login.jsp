@@ -30,10 +30,10 @@
 
         <form class="layui-form" action="${pageContext.request.contextPath}/LoginServlet" method="post" onsubmit="return checkLoginForm()">
             <input id="email"  name="email" placeholder="请输入您的注册邮箱"  type="email" lay-verify="required" class="layui-input" >
-            <span id="email_tip"></span>
+            <span id="email_tip" style="font-size: small; color: #FF5722"></span>
             <hr class="hr15">
             <input id="password" name="password" lay-verify="required" placeholder="请输入密码"  type="password" class="layui-input">
-            <span id="password_tip"></span>
+            <span id="password_tip" style="font-size: small; color: #FF5722"></span>
             <hr class="hr15">
             <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >
