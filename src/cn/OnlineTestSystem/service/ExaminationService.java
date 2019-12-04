@@ -53,6 +53,24 @@ public class ExaminationService {
         Integer Bnum = qbank.getBlanksNum();
         Integer Snum = qbank.getSingleChoiceNum();
         Integer Mnum = qbank.getMultipleChoiceNum();
-
+        if(Bnum <= blankTestNum){
+            paper.setBlanktests(blank.findBlanksByQbankId(qbankId));
+        }
+        else{
+            paper.setBlanktests(blank.findRandomBlanks(qbankId, blankTestNum));
+        }
+        if(Snum <= singleTestNum){
+            paper.setSinglechoices(single.findSinglechoiceByQbankId(qbankId));
+        }
+        else{
+            paper.setSinglechoices(single.findRandomSinglechoices(qbankId, singleTestNum));
+        }
+        if(Mnum <= multipleChoiceTestNum){
+            paper.setMultiplechoices(multiple.findMultiplechoicesByQbankId(qbankId));
+        }
+        else{
+            paper.setMultiplechoices(multiple.findRandomChoices(qbankId, multipleChoiceTestNum));
+        }
+        return  paper;
     }
 }
