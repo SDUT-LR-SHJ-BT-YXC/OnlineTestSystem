@@ -36,21 +36,13 @@ public class UserService{
      * @Date: 2019/12/3 22:29
      */
     public boolean isExistEmail(String email){
-        String sql = "select email from user where email=?";
-        String s = null;
-        try {
-            //num = new BaseDAO<Integer>().get(sql,email);
-            s = new BaseDAO<String>().get(sql,email);
-            if(s == null) {
-                return false;
-            } else{
-                return true;
-            }
-       } catch (SQLException e) {
-            e.printStackTrace();
+        //2019-12-04 12：15尚进重写
+        if(userdimpl.findUsersByEmail(email).size() > 0){
+            return true;
         }
-        return false;
-
+        else{
+            return  false;
+        }
     }
 
     /**

@@ -6,6 +6,8 @@ import cn.OnlineTestSystem.daoimpl.MultiplechoiceDAOImpl;
 import cn.OnlineTestSystem.daoimpl.SinglechoiceDAOImpl;
 import cn.OnlineTestSystem.domain.ExaminationPaper;
 
+import java.util.List;
+
 /**
  * @ClassName ExaminationService
  * @Desciption TODO
@@ -17,6 +19,20 @@ public class ExaminationService {
     private MultiplechoiceDAOImpl multiple;
     private SinglechoiceDAOImpl single;
     private BlanktestDAOImpl blank;
+    private Integer blankTestNum;
+    private Integer singleTestNum;
+    private Integer multipleChoiceTestNum;
+    private Integer qbankId;
+    public ExaminationService(Integer blankTestNum, Integer singleTestNum, Integer multipleChoiceTestNum, Integer qbankId) {
+        this.blank = new BlanktestDAOImpl();
+        this.single = new SinglechoiceDAOImpl();
+        this.multiple = new MultiplechoiceDAOImpl();
+        this.blankTestNum = blankTestNum;
+        this.singleTestNum = singleTestNum;
+        this.multipleChoiceTestNum = multipleChoiceTestNum;
+        this.qbankId = qbankId;
+    }
+
     /**
      * @Author: Shangjin
      * @Description:根据传入的科目id，生成一张试卷
@@ -24,7 +40,9 @@ public class ExaminationService {
      * @Return:
      * @Date: 22:34 2019-12-03
      */
-    public ExaminationPaper createExaminationPaper(Integer id){
-        return  null;
+    public ExaminationPaper createExaminationPaper(){
+        ExaminationPaper paper = new ExaminationPaper();
+
+        return null;
     }
 }
