@@ -74,13 +74,34 @@
                 <li>UML建模</li>
             </ul>
             <div class="layui-tab-content" style="height: 100px;">
-                <div class="layui-tab-item layui-show">
-                    <div class="layui-progress layui-progress-big" lay-showpercent="true">
-                        数据库
-                        <div class="layui-progress-bar" lay-percent="20%"></div>
+                <div class="layui-tab-item layui-show" style="width: 60%; margin-left:25px;padding-top:15px;">
+                    <p class="pfont" style="font-size: 18px;">数据库</p>
+                    <div class="layui-progress layui-bg-red layui-progress-big" lay-showpercent="true" >
+                        <div class="layui-progress-bar" lay-percent="5 / 10"></div>
                     </div>
                 </div>
-                <div class="layui-tab-item">2</div>
+                <div class="layui-tab-item">
+                    <div class="layui-collapse" lay-accordion="">
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">做题时间</h2>
+                            <div class="layui-colla-content layui-show">
+                                <p>
+                                    题目 （正确率）
+                                    <br>
+                                    选项一
+                                    <br>
+                                    选项二
+                                    <br>
+                                    选项三
+                                    <br>
+                                    选项四
+                                    <br>
+                                    错误答案
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="layui-tab-item">3</div>
                 <div class="layui-tab-item">4</div>
                 <div class="layui-tab-item">5</div>
