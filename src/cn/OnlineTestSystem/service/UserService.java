@@ -51,9 +51,9 @@ public class UserService{
      * @Author: liurong
      * @Date: 2019/12/3 22:30
      */
-    public boolean isLogin(int user_id,String password){
+    public boolean isLogin(String email,String password){
 
-        if(userdimpl.findUserById(user_id)==null || (!password.equals(userdimpl.findUserById(user_id).getPassword()))){
+        if(userdimpl.findUsersByEmail(email).size() == 0 || (!password.equals(userdimpl.findUsersByEmail(email).get(0).getPassword()))){
             return false;
         } else {
             return true;
