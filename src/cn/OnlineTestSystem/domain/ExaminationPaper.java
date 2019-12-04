@@ -14,15 +14,25 @@ public class ExaminationPaper {
     private List<Singlechoice> singlechoices;
     private List<Multiplechoice> multiplechoices;
     private String subject;
+    private Integer score;
 
-    public ExaminationPaper() {
-    }
-
-    public ExaminationPaper(List<Blanktest> blanktests, List<Singlechoice> singlechoices, List<Multiplechoice> multiplechoices, String subject) {
+    public ExaminationPaper(List<Blanktest> blanktests, List<Singlechoice> singlechoices, List<Multiplechoice> multiplechoices, String subject, Integer score) {
         this.blanktests = blanktests;
         this.singlechoices = singlechoices;
         this.multiplechoices = multiplechoices;
         this.subject = subject;
+        this.score = score;
+    }
+
+    public ExaminationPaper() {
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
     }
 
     public List<Blanktest> getBlanktests() {
