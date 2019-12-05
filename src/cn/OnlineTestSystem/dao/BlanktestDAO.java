@@ -19,4 +19,5 @@ public interface BlanktestDAO {
     public Boolean delBlanktestById(Integer id);
     public Boolean delBlanktestsByQbankId(Integer id);
     public Boolean modifyBlanktest(Blanktest test);
+    public List<Blanktest> findRandomBlanks(Integer qbankId, Integer n);
 }

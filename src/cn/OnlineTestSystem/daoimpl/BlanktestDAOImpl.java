@@ -145,4 +145,22 @@ public class BlanktestDAOImpl extends BaseDAO<Blanktest> implements BlanktestDAO
         }
         return false;
     }
+
+    /**
+     * @Author: Shangjin
+     * @Description:从数据库中随机筛选n题目
+     * @Param:
+     * @Return:
+     * @Date: 22:48 2019-12-03
+     */
+    @Override
+    public List<Blanktest> findRandomBlanks(Integer qbankId, Integer n) {
+        String sql = "SELECT * FROM blanktest WHERE qbank_id=? ORDER BY  RAND() LIMIT ?";
+        try {
+            return this.getForList(sql, qbankId, n);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
 }

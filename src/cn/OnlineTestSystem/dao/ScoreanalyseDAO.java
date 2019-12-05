@@ -19,5 +19,6 @@ public interface ScoreanalyseDAO {
     public Boolean modifyScoreanalyse(Scoreanalyse scoreanalyse);
     public Scoreanalyse findScoreanalyseById(Integer id);
     public List<Scoreanalyse> findScoreanalyseByUserId(Integer id);
+    public List<Scoreanalyse> findScoreanalyseByUserId(Integer id, Integer limit);
     public List<Scoreanalyse> findScoreanalyseByQbankId(Integer id);
 }

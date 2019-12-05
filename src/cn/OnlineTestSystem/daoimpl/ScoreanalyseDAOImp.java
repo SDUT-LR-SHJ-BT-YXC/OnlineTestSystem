@@ -148,6 +148,17 @@ public class ScoreanalyseDAOImp extends BaseDAO<Scoreanalyse> implements Scorean
     }
 
     @Override
+    public List<Scoreanalyse> findScoreanalyseByUserId(Integer id, Integer limit) {
+        String sql = "SELECT * FROM scoreanalyse WHERE user_id=? ORDER BY time desc limit 0 ,?";
+        try {
+            return  this.getForList(sql, id, limit);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     /**
      * @Author: Shangjin
      * @Description:根据科目ID查找此科目的所有成绩记录
