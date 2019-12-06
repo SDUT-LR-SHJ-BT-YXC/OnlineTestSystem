@@ -68,10 +68,7 @@
         <div class="layui-tab layui-tab-card" style="text-align: center">
             <ul class="layui-tab-title">
                 <li class="layui-this">错题总览</li>
-                <li>数据库</li>
-                <li>计算机网络</li>
-                <li>编译原理</li>
-                <li>UML建模</li>
+                <li>错题详情</li>
             </ul>
             <div class="layui-tab-content" style="height: 100px;">
                 <div class="layui-tab-item layui-show" style="width: 60%; margin-left:25px;padding-top:15px;">
@@ -81,30 +78,25 @@
                     </div>
                 </div>
                 <div class="layui-tab-item">
-                    <div class="layui-collapse" lay-accordion="">
-                        <div class="layui-colla-item">
-                            <h2 class="layui-colla-title">做题时间</h2>
-                            <div class="layui-colla-content layui-show">
-                                <p>
-                                    题目 （正确率）
-                                    <br>
-                                    选项一
-                                    <br>
-                                    选项二
-                                    <br>
-                                    选项三
-                                    <br>
-                                    选项四
-                                    <br>
-                                    错误答案
-                                </p>
-                            </div>
-                        </div>
+                    <div class="layui-container " style="margin-top:60px;height:100%;">
+                        <table class="layui-table" lay-even lay-skin="row" lay-size="lg">
+                            <tr>
+                                <th style="background-color:#FAFAD2;text-align:center;"><font size=4px;>题库ID</font></th>
+                                <th style="background-color:#FAFAD2;text-align:center;"><font size=4px;>题库名称</font></th>
+                                <th style="background-color:#FAFAD2;"></th>
+                            </tr>
+
+                            <c:forEach var = "type" items="${types }" >
+                                <tr>
+                                    <th>${type.typeID }</th>
+                                    <th>${type.typename }</th>
+                                    <th><a class="layui-btn layui-btn-warm" href="/LR_YJX/TestServlet?id=${type.typeID }">查看详情</a></th>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </div>
                 </div>
-                <div class="layui-tab-item">3</div>
-                <div class="layui-tab-item">4</div>
-                <div class="layui-tab-item">5</div>
+
             </div>
         </div>
     </div>

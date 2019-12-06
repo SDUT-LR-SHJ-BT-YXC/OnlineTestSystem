@@ -20,6 +20,9 @@ public class WrongAnswerRecordServlet extends HttpServlet {
 
         //jsp中需要题库的数量，以及题库名称，计算每个题库错误数占题库总题量的比例
         //需要加入session（每个题库所对应的的错题总数，分别加入session中）
+        int user_id = 1;
+
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
