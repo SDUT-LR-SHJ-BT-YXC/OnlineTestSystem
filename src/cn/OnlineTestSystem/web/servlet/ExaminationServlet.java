@@ -20,8 +20,7 @@ public class ExaminationServlet extends HttpServlet {
         Cookie cookie = new Cookie("JSESSIONID", session.getId());
         cookie.setMaxAge(60 * 40);
         response.addCookie(cookie);
-        request.getRequestDispatcher(request.getContextPath() + "/client/Examination.jsp");
-
+        request.getRequestDispatcher("/client/Examination.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

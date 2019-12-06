@@ -93,6 +93,8 @@
         });
     })
 </script>
+
+<!-- 数据表格操作列引用模板  -->
 <script type="text/html" id="titleTpl">
     <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmExamination('${pageContext.request.contextPath}/ExaminationServlet?id={{d.qbankId}}')" >
         开始测试

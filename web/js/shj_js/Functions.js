@@ -72,5 +72,17 @@ function confirmExamination(context){
 
         });
     })
+}
 
+
+/*** Examination.jsp  ***/
+function submitExamination(form, url) {
+    layui.use("layer", function () {
+        var layer = layui.layer;
+        layer.msg("时间到，停止答题，试卷即将提交。");
+        setTimeout(function () {
+            form.submit();
+        },2000)
+
+    });
 }

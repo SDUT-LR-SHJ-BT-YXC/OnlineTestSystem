@@ -2,6 +2,7 @@ package cn.OnlineTestSystem.web.servlet;
 
 import cn.OnlineTestSystem.dao.ScoreanalyseDAO;
 import cn.OnlineTestSystem.daoimpl.ScoreanalyseDAOImp;
+import cn.OnlineTestSystem.domain.User;
 import com.alibaba.fastjson.JSON;
 
 import javax.servlet.ServletException;
@@ -14,13 +15,14 @@ import java.io.IOException;
 @WebServlet("/Ajax_RecentScoreRecord")
 public class Ajax_RecentScoreRecord extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //String userid = request.getParameter("userid");
         //模拟用户
-        String userid = "1";
-        System.out.println("/Ajax_RecentScoreRecord");
+        Integer userid = 1;
+//        User user = (User) request.getSession().getAttribute("user");
+//        Integer userid = user.getUserId();
+
         ScoreanalyseDAO scoreanalyseDAO = new ScoreanalyseDAOImp();
-        scoreanalyseDAO.findScoreanalyseByUserId(Integer.parseInt(userid));
-        String str = JSON.toJSONString(scoreanalyseDAO.findScoreanalyseByUserId(Integer.parseInt(userid)));
+        scoreanalyseDAO.findScoreanalyseByUserId(userid);
+        String str = JSON.toJSONString(scoreanalyseDAO.findScoreanalyseByUserId(userid));
         response.getWriter().write(str);
     }
 
