@@ -52,6 +52,7 @@ public class UserService{
      * @Date: 2019/12/3 22:30
      */
     public boolean isLogin(String email,String password){
+        System.out.println(userdimpl.findUsersByEmail(email).size());
 
         if(userdimpl.findUsersByEmail(email).size() == 0 || (!password.equals(userdimpl.findUsersByEmail(email).get(0).getPassword()))){
             return false;
@@ -74,6 +75,25 @@ public class UserService{
             return -1;
         } else {
             return users.get(0).getUserId();
+        }
+    }
+
+    /*
+     * 登录成功，返回用户类
+     * @Param: [email]
+     * @Return: cn.OnlineTestSystem.domain.User
+     * @Author: liurong
+     * @Date: 2019/12/6 23:45
+     */
+    public User getUser(String email){
+        List<User> users = new ArrayList<>();
+        users = userdimpl.findUsersByEmail(email);
+        if(users.size() == 0){
+            return null;
+        } else {
+            int id =  users.get(0).getUserId();
+            User user = userdimpl.findUserById(id);
+            return user;
         }
     }
 }
