@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
                 } else {
                     int user_id = userService.findUserId(email);
                     //ajax显示用户注册所获得的userID
-                    response.sendRedirect("");
+                    request.getRequestDispatcher("/client/login.jsp").forward(request, response);
                 }
             }
         }
