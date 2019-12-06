@@ -19,7 +19,7 @@
 <div class="layui-header" >
     <ul class="layui-nav">
         <li class="layui-nav-item" >
-            <a href="${pageContext.request.contextPath}/ShowQbankServlet">在线测试</a>
+            <a href="${pageContext.request.contextPath}/client/showqbank.jsp">在线测试</a>
         </li>
         <li class="layui-nav-item" style="margin: 0px 5%">
             <a href="">错题记录</a>
@@ -137,7 +137,6 @@
             }
         }
     });
-
 </script>
 
 <!-- footer ---->
