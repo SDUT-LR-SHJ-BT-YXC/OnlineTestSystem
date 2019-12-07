@@ -24,6 +24,13 @@ public class Wronganswerrecord {
         this.userId = userId;
     }
 
+    public Wronganswerrecord(Integer questionId, String wrongAnswer, Timestamp time, Integer userId) {
+        this.questionId = questionId;
+        this.wrongAnswer = wrongAnswer;
+        this.time = time;
+        this.userId = userId;
+    }
+
     public Wronganswerrecord() {
     }
 

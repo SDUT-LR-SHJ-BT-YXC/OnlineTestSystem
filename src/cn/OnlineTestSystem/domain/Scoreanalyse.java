@@ -24,6 +24,13 @@ public class Scoreanalyse {
         this.qbankId = qbankId;
     }
 
+    public Scoreanalyse(Integer score, Timestamp time, Integer userId, Integer qbankId) {
+        this.score = score;
+        this.time = time;
+        this.userId = userId;
+        this.qbankId = qbankId;
+    }
+
     public Scoreanalyse() {
     }
 

@@ -13,15 +13,16 @@ public class ExaminationPaper {
     private List<Blanktest> blanktests;
     private List<Singlechoice> singlechoices;
     private List<Multiplechoice> multiplechoices;
-    private String subject;
+    private Integer subject;
     private Integer score;
+    private Integer userid;
 
-    public ExaminationPaper(List<Blanktest> blanktests, List<Singlechoice> singlechoices, List<Multiplechoice> multiplechoices, String subject, Integer score) {
-        this.blanktests = blanktests;
-        this.singlechoices = singlechoices;
-        this.multiplechoices = multiplechoices;
-        this.subject = subject;
-        this.score = score;
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public ExaminationPaper() {
@@ -59,11 +60,11 @@ public class ExaminationPaper {
         this.multiplechoices = multiplechoices;
     }
 
-    public String getSubject() {
+    public Integer getSubject() {
         return subject;
     }
 
-    public void setSubject(String subject) {
+    public void setSubject(Integer subject) {
         this.subject = subject;
     }
 }

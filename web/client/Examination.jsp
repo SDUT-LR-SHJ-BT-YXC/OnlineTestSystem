@@ -48,7 +48,7 @@
         </div>
 
         <!--  试卷内容  -->
-        <form action="/" id="form" class="layui-form">
+        <form action="${pageContext.request.contextPath}/CheckAnswerServlet" id="form" class="layui-form" method="post">
             <c:set var="bnum" value="${sessionScope.paper.blanktests.size()}"></c:set>
             <c:set var="snum" value="${sessionScope.paper.singlechoices.size()}"></c:set>
             <c:set var="mnum" value="${sessionScope.paper.multiplechoices.size()}"></c:set>
@@ -83,10 +83,10 @@
                     <blockquote class="layui-elem-quote layui-quote-nm">
                         <div class="layui-form-item" style="height: 15px">
                             <div class="layui-input-block" style="margin-left: 0px">
-                                <input type="checkbox" name="b${status.index}" value="A" title="A.${test.answer1}" lay-skin="primary" >
-                                <input type="checkbox" name="b${status.index}" value="B" title="B.${test.answer2}" lay-skin="primary">
-                                <input type="checkbox" name="b${status.index}" value="C" title="C.${test.answer3}" lay-skin="primary">
-                                <input type="checkbox" name="b${status.index}" value="D" title="D.${test.answer4}" lay-skin="primary">
+                                <input type="checkbox" name="m${status.index}" value="A" title="A.${test.answer1}" lay-skin="primary">
+                                <input type="checkbox" name="m${status.index}" value="B" title="B.${test.answer2}" lay-skin="primary">
+                                <input type="checkbox" name="m${status.index}" value="C" title="C.${test.answer3}" lay-skin="primary">
+                                <input type="checkbox" name="m${status.index}" value="D" title="D.${test.answer4}" lay-skin="primary">
                             </div>
                         </div>
                     </blockquote>
@@ -109,8 +109,7 @@
 
         //监听提交
         form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field));
-            return false;
+            return true;
         });
     });
 </script>

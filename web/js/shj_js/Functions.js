@@ -46,6 +46,7 @@ function checkForm() {
 
 /*** login.jsp  ***/
 function  checkLoginForm(path) {
+    var index = onload();
     var  email = $("#email").val().trim();
     var passwd = $("#password").val().trim();
     $('#email_tip').text("");
@@ -58,7 +59,7 @@ function  checkLoginForm(path) {
         return  false;
     }else{
         var flag = false;
-        var index = onload();
+
         $.ajax({
             url: path + '/Ajax_GetPasswordByEmailServlet',
             dataType: 'text',
@@ -84,9 +85,10 @@ function  checkLoginForm(path) {
                 }
             }
         });
-        closeOnload(index);
+
         return flag;
     }
+    closeOnload(index);
 }
 
 /*** PersonCenter.jsp  ***/

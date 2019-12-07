@@ -86,14 +86,14 @@
             legend: {
                 data:['平均分','分数']
             },
-            toolbox: {
-                show: true,
-                feature: {
-                    dataView: {readOnly: false},
-                    restore: {},
-                    saveAsImage: {}
-                }
-            },
+            // toolbox: {
+            //     show: true,
+            //     feature: {
+            //         dataView: {readOnly: false},
+            //         restore: {},
+            //         saveAsImage: {}
+            //     }
+            // },
             xAxis: {
                 data: dates
             },
