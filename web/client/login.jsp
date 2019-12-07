@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/layui.js" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath}/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/shj_js/Functions.js"></script>
 </head>
@@ -27,8 +27,7 @@
 <div class="login layui-anim layui-anim-up">
     <div class="message">在线考试系统登录</div>
         <div id="darkbannerwrap"></div>
-
-        <form class="layui-form" action="${pageContext.request.contextPath}/LoginServlet" method="post" onsubmit="return checkLoginForm()">
+        <form id='form' class="layui-form" action="${pageContext.request.contextPath}/LoginServlet" method="post" onsubmit="return checkLoginForm('${pageContext.request.contextPath}')">
             <input id="email"  name="email" placeholder="请输入您的注册邮箱"  type="email" lay-verify="required" class="layui-input" >
             <span id="email_tip" style="font-size: small; color: #FF5722"></span>
             <hr class="hr15">

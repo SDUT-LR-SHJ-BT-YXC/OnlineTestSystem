@@ -35,14 +35,17 @@ function checkForm() {
         $("#password1_tip").text("请输入6-16位密码，由数字、字母、下划线组成");
         return false;
     }
-    else if(passwd !== passwd2){
+    else if(passwd.val() !== passwd2.val()){
+        console.log(passwd);
+        console.log(passwd2);
         $("#password2_tip").text("前后密码不一致");
         return  false;
     }
+    return true;
 }
 
 /*** login.jsp  ***/
-function  checkLoginForm() {
+function  checkLoginForm(path) {
     var  email = $("#email").val().trim();
     var passwd = $("#password").val().trim();
     $('#email_tip').text("");
@@ -53,9 +56,37 @@ function  checkLoginForm() {
     }else if(passwd === ''){
         $("#password_tip").text("密码不能为空");
         return  false;
+    }else{
+        var flag = false;
+        var index = onload();
+        $.ajax({
+            url: path + '/Ajax_GetPasswordByEmailServlet',
+            dataType: 'text',
+            type: 'GET',
+            timeout: 2000,
+            async: false,
+            data:{'email': email},
+            success:function (data, status) {
+                console.log("请求成功，密码：" + data);
+                if(data === passwd){
+                    flag = true;
+                }else{
+                    flag = false;
+                    $("#password_tip").text("密码错误。");
+                }
+            },
+            error:function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log("请求失败");
+                if(textStatus === 'timeout'){
+                    setTimeout(function () {
+                        console.log("重新请求");
+                    }, 2000)
+                }
+            }
+        });
+        closeOnload(index);
+        return flag;
     }
-    return  true;
-
 }
 
 /*** PersonCenter.jsp  ***/
@@ -67,7 +98,6 @@ function confirmExamination(context){
             btn: ['开始','取消'] //按钮
         }, function(){
             window.open(context)
-            layer.msg('的确很重要', {icon: 1});
         }, function(){
 
         });
@@ -85,4 +115,21 @@ function submitExamination(form, url) {
         },2000)
 
     });
+}
+
+
+function onload() {
+    var index = null;
+    layui.use('layer', function () {
+        var layer = layui.layer;
+        index = layer.load(0, {shade: false, time: 0}
+        );
+    })
+    return index;
+}
+
+function closeOnload(index) {
+    layui.use('layer', function () {
+        layer.close(index);
+    })
 }
