@@ -28,16 +28,16 @@
     </div>
     <div>
         <div style="height: 30px;margin-bottom: 15px" >
-            <div style="width: 150px;margin: 10px auto; font-size: 23px"><b>XX</b>在线测试</div>
+            <div style="width: 150px;margin: 10px auto; font-size: 23px"><b>${sessionScope.paper.qbankname}</b>在线测试</div>
         </div>
         <div class="clearfix" style=" height:50px;  padding-right: 350px">
-            <span style="float: right; color: #FF5722">
+            <span style=" float: right; color: #FF5722; font-family:华文楷体; font-size: 25px">
                 分数：${sessionScope.analyse.score}
             </span>
         </div>
 
         <!--  试卷内容  -->
-        <form action="/CheckAnswerServlet" id="form" class="layui-form">
+        <form action="#" id="form" class="layui-form">
             <c:set var="bnum" value="${sessionScope.paper.blanktests.size()}"></c:set>
             <c:set var="snum" value="${sessionScope.paper.singlechoices.size()}"></c:set>
             <c:set var="mnum" value="${sessionScope.paper.multiplechoices.size()}"></c:set>
@@ -60,7 +60,7 @@
                 <c:forEach items="${sessionScope.paper.singlechoices}" var="test" varStatus="status">
                     <c:set var="i" value="${status.index}"></c:set>
                     <blockquote class="layui-elem-quote">${bnum + status.count}.${test.questionText}
-                        <span style="position: relative; left: 20px; color: #FF5722">${sessionScope.rawsanswer[i] == test.stdAnswer ? "(√)": "(×)"}</span>
+                        <span style="position: relative; color: #FF5722">${sessionScope.rawsanswer[i] == test.stdAnswer ? "(√)": "(×)"}</span>
                     </blockquote>
                     <blockquote class="layui-elem-quote layui-quote-nm" style="padding: 7px 15px">
                         <div class="layui-form-item" style="height: 15px; margin-bottom: 20px">
@@ -73,7 +73,7 @@
                         </div>
                         <div>
                             <span >你的答案：</span>
-                            <span>${sessionScope.rawbanswer[i]}</span><p></p>
+                            <span>${sessionScope.rawsanswer[i]}</span><p></p>
                             <span style="color: #FF5722">正确答案：</span>
                             <span style="color: #FF5722">${test.stdAnswer}</span>
                         </div>
@@ -104,12 +104,6 @@
                     </blockquote>
                 </c:forEach>
             </div>
-            <div style="margin: 50px auto">
-                <div class="layui-input-block" style="width: 15%; margin: 0 auto" >
-                    <button type="submit" class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                </div>
-            </div>
         </form>
 
     </div>
@@ -122,7 +116,7 @@
         //监听提交
         form.on('submit(formDemo)', function(data){
             layer.msg(JSON.stringify(data.field));
-            return false;
+            return true;
         });
     });
 </script>

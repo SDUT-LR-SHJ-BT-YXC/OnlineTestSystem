@@ -41,7 +41,7 @@
     </div>
     <div>
         <div style="height: 30px;margin-bottom: 15px" >
-            <div style="width: 150px;margin: 10px auto; font-size: 23px"><b>XX</b>在线测试</div>
+            <div style="width: 150px;margin: 10px auto; font-size: 23px"><b>${sessionScope.paper.qbankname}</b>在线测试</div>
         </div>
         <div class="clearfix" style=" height:50px;  padding-right: 350px">
             <span id="time" style="float: right"></span>
@@ -58,7 +58,7 @@
                     <blockquote class="layui-elem-quote">${status.count}.${test.questionText}</blockquote>
                     <blockquote class="layui-elem-quote layui-quote-nm" style="height: 30px;">
                         <span>答：</span>
-                        <input type="text" name="b${status.index}" required  lay-verify="required" placeholder="请输入答案" autocomplete="off" class="layui-input" style="width:95%;display: inline; ">
+                        <input type="text" name="b${status.index}"  placeholder="请输入答案" autocomplete="off" class="layui-input" style="width:95%;display: inline; ">
                     </blockquote>
                 </c:forEach>
 
@@ -94,24 +94,23 @@
             </div>
             <div style="margin: 50px auto">
                 <div class="layui-input-block" style="width: 15%; margin: 0 auto" >
-                    <button type="submit" class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+
+                    <button type="button" class="layui-btn" onclick="confirmSubmit('#form')">提交试卷</button>
+<%--                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>--%>
                 </div>
             </div>
         </form>
-
     </div>
 </div>
+</body>
 <script>
     //Demo
     layui.use('form', function(){
         var form = layui.form;
-
         //监听提交
         form.on('submit(formDemo)', function(data){
             return true;
         });
     });
 </script>
-</body>
 </html>

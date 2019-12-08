@@ -16,6 +16,18 @@ public class ExaminationPaper {
     private Integer subject;
     private Integer score;
     private Integer userid;
+    private String qbankname;
+
+    public ExaminationPaper() {
+    }
+
+    public String getQbankname() {
+        return qbankname;
+    }
+
+    public void setQbankname(String qbankname) {
+        this.qbankname = qbankname;
+    }
 
     public Integer getUserid() {
         return userid;
@@ -25,8 +37,7 @@ public class ExaminationPaper {
         this.userid = userid;
     }
 
-    public ExaminationPaper() {
-    }
+
 
     public Integer getScore() {
         return score;

@@ -18,8 +18,11 @@
 <body>
 <div class="layui-header" >
     <ul class="layui-nav">
+        <li class="layui-nav-item " style="margin: 0px 5%">
+            <a href="${pageContext.request.contextPath}/client/personpage.jsp">成绩分析</a>
+        </li>
         <li class="layui-nav-item layui-this" >
-            <a href="${pageContext.request.contextPath}/ShowQbankServlet">在线测试</a>
+            <a href="${pageContext.request.contextPath}/client/showqbank.jsp">在线测试</a>
         </li>
         <li class="layui-nav-item" style="margin: 0px 5%">
             <a href="">错题记录</a>
@@ -30,11 +33,6 @@
         <li class="layui-nav-item" style="margin: 0px 5%">
             <a href="">题库下载<span class="layui-badge-dot"></span></a>
         </li>
-
-        <li class="layui-nav-item" style="margin: 0px 5%">
-            <a href="">错题分析</a>
-        </li>
-
         <li class="layui-nav-item" lay-unselect="" style="float: right">
             <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
             <dl class="layui-nav-child">

@@ -19,7 +19,7 @@ function checkPassword(passwd) {
 
 /**   register.jsp   **/
 function checkForm() {
-
+    var index = onload();
     var nick_name = $("input[name=nick_name]");
     var passwd = $("input[name=password]");
     var passwd2 = $("input[name=password2]");
@@ -29,18 +29,22 @@ function checkForm() {
     $("#password2_tip").text("");
     if(nick_name.val() === ''){
         $("#nick_name_tip").text("请输入用户名.");
+        closeOnload(index);
         return false;
     }
     else if(!checkPassword(passwd.val())){
         $("#password1_tip").text("请输入6-16位密码，由数字、字母、下划线组成");
+        closeOnload(index);
         return false;
     }
     else if(passwd.val() !== passwd2.val()){
         console.log(passwd);
         console.log(passwd2);
         $("#password2_tip").text("前后密码不一致");
+        closeOnload(index);
         return  false;
     }
+    closeOnload(index);
     return true;
 }
 
@@ -53,9 +57,11 @@ function  checkLoginForm(path) {
     $("#password_tip").text("");
     if(email === ''){
         $('#email_tip').text("邮箱不能为空");
+        closeOnload(index);
         return false;
     }else if(passwd === ''){
         $("#password_tip").text("密码不能为空");
+        closeOnload(index);
         return  false;
     }else{
         var flag = false;
@@ -85,7 +91,7 @@ function  checkLoginForm(path) {
                 }
             }
         });
-
+        closeOnload(index);
         return flag;
     }
     closeOnload(index);
@@ -134,4 +140,20 @@ function closeOnload(index) {
     layui.use('layer', function () {
         layer.close(index);
     })
+}
+
+/** Examination.jsp ***/
+
+function confirmSubmit(id) {
+    var form = $(id);
+    layui.use("layer", function () {
+        layer = layui.layer;
+        layer.confirm('请检查试题都已完成，确定要交卷吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            form.submit();
+        }, function(){
+
+        });
+    });
 }

@@ -80,7 +80,7 @@ public class Singlechoice {
     }
 
     public String getStdAnswer() {
-        return stdAnswer;
+        return stdAnswer.toUpperCase();
     }
 
     public void setStdAnswer(String stdAnswer) {

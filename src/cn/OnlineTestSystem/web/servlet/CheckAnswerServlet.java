@@ -36,8 +36,12 @@ public class CheckAnswerServlet extends HttpServlet {
             String str[] = request.getParameterValues("m" + i);
             //System.out.println(str);
             StringBuffer sb = new StringBuffer();
-            for(int j = 0; j < str.length; j++){
-                sb.append(str[j]);
+            if(str != null){
+                for(int j = 0; j < str.length; j++){
+                    sb.append(str[j]);
+                }
+            }else{
+                sb.append("");
             }
             rawmanswer.add(sb.toString());
         }

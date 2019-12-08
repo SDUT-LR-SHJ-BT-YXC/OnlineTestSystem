@@ -68,6 +68,7 @@ public class ExaminationService {
         }
         paper.setSubject(qbankId);
         paper.setUserid(userid);
+        paper.setQbankname(qbank.getName());
         return  paper;
     }
     /**
@@ -99,7 +100,7 @@ public class ExaminationService {
         java.sql.Timestamp time = new java.sql.Timestamp(System.currentTimeMillis());
         for(int i = 0; i < btest.size(); i++){
             Blanktest test = btest.get(i);
-            if(test.getStdAnswer() == rb.get(i)){
+            if(test.getStdAnswer().equals(rb.get(i))){
                 score += 2;
             }else{
                 Wronganswerrecord record = new Wronganswerrecord(test.getBquestionId(), rb.get(i),time, paper.getUserid());
@@ -110,7 +111,7 @@ public class ExaminationService {
         //批改选择题
         for(int i = 0; i < stest.size(); i++){
             Singlechoice test = stest.get(i);
-            if(test.getStdAnswer() == rs.get(i)){
+            if(test.getStdAnswer().equals(rs.get(i))){
                 score += 3;
             }else{
                 Wronganswerrecord record = new Wronganswerrecord(test.getSquestionId(), rb.get(i), time, paper.getUserid());
@@ -121,7 +122,7 @@ public class ExaminationService {
         //批改多选题
         for(int i = 0; i < mtest.size(); i++){
             Multiplechoice test = mtest.get(i);
-            if(test.getStdAnswer() == rm.get(i)){
+            if(test.getStdAnswer().equals(rm.get(i))){
                 score += 5;
             }else{
                 Wronganswerrecord record = new Wronganswerrecord(test.getMquestionId(), rb.get(i), time, paper.getUserid());
