@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>在线测试</title>
     <meta charset="UTF-8">
     <script type="text/javascript" src="../layui/layui.js"></script>
     <link rel="stylesheet" href="../layui/css/layui.css">

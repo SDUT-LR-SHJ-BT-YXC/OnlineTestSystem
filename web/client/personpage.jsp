@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>在线答题系统个人首页</title>
     <script type="text/javascript" src="../layui/layui.js"></script>
     <link rel="stylesheet" href="../layui/css/layui.css">
     <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
