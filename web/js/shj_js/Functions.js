@@ -122,10 +122,8 @@ function submitExamination(form, url) {
         setTimeout(function () {
             form.submit();
         },2000)
-
     });
 }
-
 
 function onload() {
     var index = null;
@@ -152,6 +150,7 @@ function confirmSubmit(id) {
         layer.confirm('请检查试题都已完成，确定要交卷吗？', {
             btn: ['确定','取消'] //按钮
         }, function(){
+            window.localStorage.setItem("flag", true);
             form.submit();
         }, function(){
 
@@ -187,4 +186,51 @@ function checkChangePasswordForm() {
     }
     closeOnload(index);
     return true;
+}
+
+/*** Examination.jsp ***/
+function banF5(){
+    //禁用F5刷新
+    document.onkeydown = function ()
+    {
+        if (event.keyCode === 116) {
+            event.keyCode = 0;
+            event.cancelBubble = true;
+            return false;
+        }
+    }
+
+//禁止右键弹出菜单
+    document.oncontextmenu = function () {
+        return false;
+    }
+}
+
+/*** Examination.jsp ***/
+function endExamimationMsg(path) {
+    layui.use("layer", function () {
+        var layer = layui.layer;
+        layer.open({
+            title:'考试已关闭',
+            content:"本考试已经关闭！",
+            yes: function(index, layero){
+                window.location.href= path + '/client/personpage.jsp';
+             },
+            cancel:function (index, layero) {
+                window.location.href= path + '/client/personpage.jsp';
+            }
+        })
+    });
+}
+
+/*** examinationresult.jsp  ***/
+function msg(type,t, text) {
+    layui.use("layer", function () {
+        var layer = layui.layer;
+        layer.open({
+            title:t,
+            content:text,
+            }
+        )
+    })
 }

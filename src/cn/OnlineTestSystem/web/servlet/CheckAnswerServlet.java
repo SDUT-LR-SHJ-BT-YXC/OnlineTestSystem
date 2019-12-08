@@ -47,6 +47,7 @@ public class CheckAnswerServlet extends HttpServlet {
         }
         ExaminationService service = new ExaminationService();
         Scoreanalyse scoreanalyse = service.getScore(paper, rawbanswer, rawsanswer, rawmanswer);
+        session.removeAttribute("endtime");
         session.setAttribute("rawbanswer", rawbanswer);
         session.setAttribute("rawsanswer", rawsanswer);
         session.setAttribute("rawmanswer", rawmanswer);

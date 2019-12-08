@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>Title</title>
+    <meta charset="UTF-8">
     <script type="text/javascript" src="../layui/layui.js"></script>
     <link rel="stylesheet" href="../layui/css/layui.css">
     <link rel="stylesheet" href="../css/examination.css">
@@ -18,28 +19,38 @@
     <script src="../js/shj_js/Functions.js"></script>
     <script>
         $(function () {
-            var times = 30 * 60;
-            var interval = setInterval(function () {
-                if(times <= 0){
-                    submitExamination($("#form"), '${pageContext.request.contextPath}');
-                    clearInterval(interval);
-                }
-                $("#time").text("时间还剩：" + parseInt(times / 60) + "分" + times % 60 + "秒");
-                times -= 1;
-            }, 1000);
+            if(${empty sessionScope.endtime}){
+                endExamimationMsg('${pageContext.request.contextPath}');
+            }else{
+                var date= new Date().getTime();
+                var times = (${sessionScope.endtime} - date) / 1000;
+                var interval = setInterval(function () {
+                    if(times <= 0){
+                        submitExamination($("#form"), '${pageContext.request.contextPath}');
+                        clearInterval(interval);
+                    }
+                    $("#time").text("时间还剩：" + parseInt(times / 60) + "分" + parseInt(times) % 60 + "秒");
+                    times -= 1;
+                }, 1000);
+            }
         });
     </script>
 </head>
-<body style="min-width: 1024px; min-height: 710px">
-<div style="width: 100%; height: auto; min-width:1100px">
-    <div class="layui-header" >
-        <ul class="layui-nav">
-            <li class="layui-nav-item"  >
-                <a href="${pageContext.request.contextPath}/ShowQbankServlet">在线测试</a>
-            </li>
-        </ul>
-    </div>
+<body style="min-width: 1400px; min-height: 710px">
+
+<!-- 导航栏  -->
+<div class="layui-header" >
+    <ul class="layui-nav">
+        <li class="layui-nav-item"  >
+            <a href="#">在线测试</a>
+        </li>
+    </ul>
+</div>
+
+<!-- 显示试卷 --->
+<div style="width: 80%; height: auto;margin: 0 auto">
     <div>
+        <!--  倒计时 -->
         <div style="height: 30px;margin-bottom: 15px" >
             <div style="width: 150px;margin: 10px auto; font-size: 23px"><b>${sessionScope.paper.qbankname}</b>在线测试</div>
         </div>
@@ -94,8 +105,7 @@
             </div>
             <div style="margin: 50px auto">
                 <div class="layui-input-block" style="width: 15%; margin: 0 auto" >
-
-                    <button type="button" class="layui-btn" onclick="confirmSubmit('#form')">提交试卷</button>
+                    <button id="submitbtn" type="button" class="layui-btn" onclick="confirmSubmit('#form')">提交试卷</button>
 <%--                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>--%>
                 </div>
             </div>

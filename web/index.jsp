@@ -10,7 +10,7 @@
   <head>
     <title>$Title$</title>
   </head>
-  <body>
+  <body class="examination-bg">
   $END$
   </body>
 </html>

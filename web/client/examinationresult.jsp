@@ -17,12 +17,29 @@
     <script src="../js/echarts.min.js"></script>
     <script src="../js/shj_js/Functions.js"></script>
 </head>
+<script>
+    console.log(${empty sessionScope.endtime});
+    $(document).ready(function(e) {
+        //禁止回退
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                //window.location.href="ad.html";   // 回退时跳转到新页面
+                window.history.forward(1);
+                msg(0, '我看到你了',"不要动小心思呦(^_−)☆");
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
 <body style="min-width: 1024px; min-height: 790px">
 <div style="width: 100%; height: auto; min-width:1100px">
     <div class="layui-header" >
         <ul class="layui-nav">
             <li class="layui-nav-item"  >
-                <a href="${pageContext.request.contextPath}/ShowQbankServlet">在线测试</a>
+                <a href="#">在线测试</a>
             </li>
         </ul>
     </div>

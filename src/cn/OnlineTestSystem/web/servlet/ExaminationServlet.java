@@ -21,6 +21,8 @@ public class ExaminationServlet extends HttpServlet {
         session.setAttribute("paper", paper);
         Cookie cookie = new Cookie("JSESSIONID", session.getId());
         cookie.setMaxAge(60 * 40);
+        long endtime = System.currentTimeMillis() + 30 * 60 * 1000;
+        session.setAttribute("endtime", endtime);
         response.addCookie(cookie);
         response.sendRedirect(request.getContextPath() + "/client/Examination.jsp");
     }

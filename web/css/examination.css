@@ -6,3 +6,13 @@
     overflow: auto;
     zoom: 1;
 }
+.examination-bg{
+    background: #eeeeee url(../img/examinationbg.png) 0 0 no-repeat;
+    background:url(../img/examinationbg.png) no-repeat center;
+    background-size: cover;
+    overflow: hidden;
+    z-index: -1;
+}
+.test-bg{
+    background-color: #ffffff;
+}
