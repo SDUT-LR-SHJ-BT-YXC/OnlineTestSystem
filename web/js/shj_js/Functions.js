@@ -102,10 +102,11 @@ function confirmExamination(context){
     //询问框
     layui.use("layer", function () {
         layer = layui.layer;
-        layer.confirm('开始测试后将无法暂停测试，是否继续开始测试？', {
+        var index = layer.confirm('开始测试后将无法暂停测试，是否继续开始测试？', {
             btn: ['开始','取消'] //按钮
-        }, function(){
-            window.open(context)
+        }, function(index, layero){
+            layer.close(index);
+            window.open(context);
         }, function(){
 
         });
@@ -156,4 +157,34 @@ function confirmSubmit(id) {
 
         });
     });
+}
+
+/*** changepassword.jsp ***/
+function checkChangePasswordForm() {
+    var index = onload();
+    var code = $("#code");
+    var inputedcode = $("input[name=code]");
+    var passwd = $("input[name=password]");
+    var passwd2 = $("input[name=password2]");
+    var submit = $("#submit");
+    $("#code_tip").text("");
+    $("#password1_tip").text("");
+    $("#password2_tip").text("");
+    if(code.text() !== inputedcode.val()){
+        $("#code_tip").text("验证码错误！");
+        closeOnload(index);
+        return false;
+    }
+    else if(!checkPassword(passwd.val())){
+        $("#password1_tip").text("请输入6-16位密码，由数字、字母、下划线组成");
+        closeOnload(index);
+        return false;
+    }
+    else if(passwd.val() !== passwd2.val()){
+        $("#password2_tip").text("前后密码不一致");
+        closeOnload(index);
+        return  false;
+    }
+    closeOnload(index);
+    return true;
 }

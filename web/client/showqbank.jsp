@@ -15,7 +15,7 @@
     <script src="../js/echarts.min.js"></script>
     <script src="../js/shj_js/Functions.js"></script>
 </head>
-<body>
+<body style="min-width: 1024px; min-height: 790px">
 <div class="layui-header" >
     <ul class="layui-nav">
         <li class="layui-nav-item " style="margin: 0px 5%">
@@ -36,9 +36,8 @@
         <li class="layui-nav-item" lay-unselect="" style="float: right">
             <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
             <dl class="layui-nav-child">
-                <dd><a href="javascript:;">修改信息</a></dd>
-                <dd><a href="javascript:;">安全管理</a></dd>
-                <dd><a href="javascript:;">退了</a></dd>
+                <dd><a href="${pageContext.request.contextPath}/ChangePasswordServlet">修改密码</a></dd>
+                <dd><a href="${pageContext.request.contextPath}/LogoutServlet">退了</a></dd>
             </dl>
         </li>
     </ul>

@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
             User user = userService.getUser(email);
             HttpSession session = request.getSession();
             session.setAttribute("user",user);
-            System.out.println(user.getUserId());
+            //System.out.println(user.getUserId());
             //request.getRequestDispatcher("/client/personpage.jsp").forward(request, response);
             response.sendRedirect(request.getContextPath() + "/client/personpage.jsp");
         } else {

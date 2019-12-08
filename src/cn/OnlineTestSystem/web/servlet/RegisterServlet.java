@@ -54,8 +54,10 @@ public class RegisterServlet extends HttpServlet {
                     //失败
                 } else {
                     int user_id = userService.findUserId(email);
+                    request.setCharacterEncoding("utf-8");
+                    request.setAttribute("msg", "注册账号成功！3秒后跳转登录页面....");
                     //ajax显示用户注册所获得的userID
-                    request.getRequestDispatcher("/client/login.jsp").forward(request, response);
+                    request.getRequestDispatcher("/client/msg.jsp").forward(request, response);
                 }
             }
         }

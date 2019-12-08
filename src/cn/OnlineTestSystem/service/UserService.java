@@ -96,4 +96,14 @@ public class UserService{
             return user;
         }
     }
+    /**
+     * @Author: Shangjin
+     * @Description:更新账户信息
+     * @Param:
+     * @Return:
+     * @Date: 19:31 2019-12-08
+     */
+    public boolean modifyUser(User user){
+        return userdimpl.modifyUser(user);
+    }
 }
