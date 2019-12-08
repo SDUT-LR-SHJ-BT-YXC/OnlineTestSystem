@@ -1,7 +1,5 @@
 package cn.OnlineTestSystem.web.filter;
 
-import com.sun.deploy.net.HttpRequest;
-import com.sun.deploy.net.HttpResponse;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
