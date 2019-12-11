@@ -25,7 +25,7 @@
             <a href="${pageContext.request.contextPath}/client/showqbank.jsp">在线测试</a>
         </li>
         <li class="layui-nav-item" style="margin: 0px 5%">
-            <a href="">错题记录</a>
+            <a href="${pageContext.request.contextPath}/WrongAnswerRecordServlet">错题记录</a>
         </li>
         <li class="layui-nav-item" style="margin: 0px 5%">
             <a href="">关于我们</a>
