@@ -83,14 +83,16 @@
                             <tr>
                                 <th style="background-color:#FAFAD2;text-align:center;"><font size=4px;>题库ID</font></th>
                                 <th style="background-color:#FAFAD2;text-align:center;"><font size=4px;>题库名称</font></th>
+                                <th style="background-color:#FAFAD2;text-align:center;"><font size=4px;>题库总数</font></th>
                                 <th style="background-color:#FAFAD2;"></th>
                             </tr>
 
-                            <c:forEach var = "type" items="${types }" >
+                            <c:forEach var = "qbanks" items="${WAqbanks }" >
                                 <tr>
-                                    <th>${type.typeID }</th>
-                                    <th>${type.typename }</th>
-                                    <th><a class="layui-btn layui-btn-warm" href="/LR_YJX/TestServlet?id=${type.typeID }">查看详情</a></th>
+                                    <th>${qbanks.qbankId }</th>
+                                    <th>${qbanks.name }</th>
+                                    <th>${qbanks.singleChoiceNum+qbanks.multipleChoiceNum+qbanks.blanksNum }</th>
+                                    <th><a class="layui-btn layui-btn-warm" href="/#/TestServlet?id=${type.typeID }">查看详情</a></th>
                                 </tr>
                             </c:forEach>
                         </table>

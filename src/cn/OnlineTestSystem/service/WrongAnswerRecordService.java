@@ -50,7 +50,7 @@ public class WrongAnswerRecordService {
                 s++;  //单选题错题数加一
                 sumwa.set(0,s);
             } else if(Was.get(i).getQuestionId() >= 30000 && Was.get(i).getQuestionId() < 60000){
-                m++;  //多纤体错题数加一
+                m++;  //多选错题数加一
                 sumwa.set(1,m);
             } else {
                 b++;
@@ -85,5 +85,15 @@ public class WrongAnswerRecordService {
         return sumqs;
     }
 
+    /*
+     * 返回所有的题库
+     * @Param: []
+     * @Return: java.util.List<cn.OnlineTestSystem.domain.Qbank>
+     * @Author: liurong
+     * @Date: 2019/12/11 11:58
+     */
+    public List<Qbank> getAllQbank(){
+        return qbankdimpl.getAllQbank();
+    }
 
 }
