@@ -48,15 +48,19 @@ public class WrongAnswerRecordService {
         for(int i = 0; i < Was.size(); i++){
             if(Was.get(i).getQuestionId() >= 1 && Was.get(i).getQuestionId() < 30000){
                 s++;  //单选题错题数加一
-                sumwa.set(0,s);
+
             } else if(Was.get(i).getQuestionId() >= 30000 && Was.get(i).getQuestionId() < 60000){
                 m++;  //多选错题数加一
-                sumwa.set(1,m);
+
             } else {
                 b++;
-                sumwa.set(2, b);
+
             }
+
         }
+        sumwa.add(s);
+        sumwa.add(m);
+        sumwa.add(b);
         return sumwa;
     }
 
@@ -79,9 +83,9 @@ public class WrongAnswerRecordService {
             m += qbanks.get(i).getMultipleChoiceNum();
             b += qbanks.get(i).getBlanksNum();
         }
-        sumqs.set(0,s);
-        sumqs.set(1,m);
-        sumqs.set(2,b);
+        sumqs.add(s);
+        sumqs.add(m);
+        sumqs.add(b);
         return sumqs;
     }
 
