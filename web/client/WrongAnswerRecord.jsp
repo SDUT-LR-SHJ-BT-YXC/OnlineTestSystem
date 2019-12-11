@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: liurong
@@ -8,60 +9,39 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>在线考试系统</title>
-    <meta charset="UTF-8">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
-
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/shj_js/Ajax_Functions.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/shj_js/Functions.js"></script>
-    <style>
-        .layui-nav .layui-nav-item a {
-            padding:0 30px;
-            color: #000;
-        }
-        .layui-nav * {
-            font-size:15px;
-        }
-        .layui-tab-title li{
-            font-size:16px;
-            min-width:188px;
-        }
-    </style>
+    <title>在线答题系统个人首页</title>
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/echarts.min.js"></script>
+    <script src="../js/shj_js/Functions.js"></script>
 </head>
 <body>
-<div class="header">
-    <ul class="layui-nav layui-bg-cyan" lay-filter="" style="text-align: center">
-        <li class="layui-nav-item"><a href="">在线测试</a></li>
-        <li class="layui-nav-item layui-this"><a href="">错题记录</a></li>
-        <li class="layui-nav-item"><a href="">关于我们</a></li>
-        <li class="layui-nav-item"><a href="">题库下载</a></li>
-        <li class="layui-nav-item"><a href="">成绩分析</a></li>
-        <!--
-        <li class="layui-nav-item">
-            <a href="javascript:;"></a>
+<div class="layui-header" >
+    <ul class="layui-nav">
+        <li class="layui-nav-item" style="margin: 0px 5%">
+            <a href="${pageContext.request.contextPath}/client/personpage.jsp">成绩分析</a>
+        </li>
+        <li class="layui-nav-item" >
+            <a href="${pageContext.request.contextPath}/client/showqbank.jsp">在线测试</a>
+        </li>
+        <li class="layui-nav-item layui-this" style="margin: 0px 5%">
+            <a href="#">错题记录</a>
+        </li>
+        <li class="layui-nav-item" style="margin: 0px 5%">
+            <a href="">关于我们</a>
+        </li>
+        <li class="layui-nav-item" style="margin: 0px 5%">
+            <a href="">题库下载<span class="layui-badge-dot"></span></a>
+        </li>
+        <li class="layui-nav-item" lay-unselect="" style="float: right">
+            <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
             <dl class="layui-nav-child">
-                <dd><a href=""></a></dd>
-                <dd><a href=""></a></dd>
+                <dd><a href="${pageContext.request.contextPath}/ChangePasswordServlet">修改密码</a></dd>
+                <dd><a href="${pageContext.request.contextPath}/LogoutServlet">退了</a></dd>
             </dl>
         </li>
-        -->
     </ul>
-    <script>
-        layui.use('element', function(){
-            var element = layui.element;
-
-            //…
-        });
-    </script>
 </div>
 
     <div class="containt">
@@ -71,28 +51,38 @@
                 <li>错题详情</li>
             </ul>
             <div class="layui-tab-content" style="height: 100px;">
-                <div class="layui-tab-item layui-show" style="width: 60%; margin-left:25px;padding-top:15px;">
-                    <p class="pfont" style="font-size: 18px;">数据库</p>
-                    <div class="layui-progress layui-bg-red layui-progress-big" lay-showpercent="true" >
-                        <div class="layui-progress-bar" lay-percent="5 / 10"></div>
+                <div class="layui-tab-item layui-show" style="align-content: center; width: 70%;margin-left: 13%;margin-top: 1.5%;">
+                    <p class="pfont" style="font-size: 18px;">单选题</p>
+                    <div class="layui-progress layui-progress-big" lay-showpercent="true" style="margin-top: 11px;">
+                        <div class="layui-progress-bar" lay-percent="${WAsum.get(0)} / ${Qsum.get(0)}"></div>
+                    </div>
+                    <p class="pfont" style="font-size: 18px; margin-top: 51px;">多选题</p>
+                    <div class="layui-progress layui-progress-big" lay-showpercent="true" style="margin-top: 11px;">
+                        <div class="layui-progress-bar layui-bg-orange" lay-percent="${WAsum.get(1)} / ${Qsum.get(1)}"></div>
+                    </div>
+                    <p class="pfont" style="font-size: 18px;margin-top: 51px">填空题</p>
+                    <div class="layui-progress layui-progress-big" lay-showpercent="true" style="margin-top: 11px;">
+                        <div class="layui-progress-bar layui-bg-blue" lay-percent="${WAsum.get(2)} / ${Qsum.get(2)}"></div>
                     </div>
                 </div>
                 <div class="layui-tab-item">
                     <div class="layui-container " style="margin-top:60px;height:100%;">
+
                         <table class="layui-table" lay-even lay-skin="row" lay-size="lg">
                             <tr>
-                                <th style="background-color:#FAFAD2;text-align:center;"><font size=4px;>题库ID</font></th>
-                                <th style="background-color:#FAFAD2;text-align:center;"><font size=4px;>题库名称</font></th>
-                                <th style="background-color:#FAFAD2;text-align:center;"><font size=4px;>题库总数</font></th>
-                                <th style="background-color:#FAFAD2;"></th>
+                                <th style="background-color:#f6cec1;text-align:center;"><font size=4px;>题库ID</font></th>
+                                <th style="background-color:#f6cec1;text-align:center;"><font size=4px;>题库名称</font></th>
+                                <th style="background-color:#f6cec1;text-align:center;"><font size=4px;>题库总数</font></th>
+                                <th style="background-color:#f6cec1;"></th>
                             </tr>
 
-                            <c:forEach var = "qbanks" items="${WAqbanks }" >
+                            <c:forEach var = "WAqbank" items="${WAqbanks}" >
                                 <tr>
-                                    <th>${qbanks.qbankId }</th>
-                                    <th>${qbanks.name }</th>
-                                    <th>${qbanks.singleChoiceNum+qbanks.multipleChoiceNum+qbanks.blanksNum }</th>
-                                    <th><a class="layui-btn layui-btn-warm" href="/#/TestServlet?id=${type.typeID }">查看详情</a></th>
+
+                                    <th>${WAqbank.getQbankId()}</th>
+                                    <th>${WAqbank.getName()}</th>
+                                    <th>${WAqbank.getSingleChoiceNum()+WAqbank.getMultipleChoiceNum()+WAqbank.getBlanksNum() }</th>
+                                    <th><a class="layui-btn layui-btn-warm" href="${pageContext.request.contextPath}/ShowWAServlet?qbank_id=${WAqbank.getQbankId() }" target="_blank">查看详情</a></th>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -100,6 +90,14 @@
                 </div>
 
             </div>
+            <script>
+
+                layui.use('element', function(){
+                    var element = layui.element;
+
+                    //…
+                });
+            </script>
         </div>
     </div>
 </body>

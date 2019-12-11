@@ -32,10 +32,11 @@ public class WrongAnswerRecordServlet extends HttpServlet {
         List<Integer> WrongAnswerSum = wrongAnswerRecordService.getSumWA(user_id);
         List<Integer> QbankSum = wrongAnswerRecordService.getSumQ();
         List<Qbank> qbanks = wrongAnswerRecordService.getAllQbank();
-        session.setAttribute("sumQbank",sumQbank);
         session.setAttribute("WAsum",WrongAnswerSum);
         session.setAttribute("Qsum",QbankSum);
         session.setAttribute("WAqbanks",qbanks);
+
+
         response.sendRedirect(request.getContextPath()+"/client/WrongAnswerRecord.jsp");
 
     }
