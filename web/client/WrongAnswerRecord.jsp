@@ -93,9 +93,8 @@
             <script>
 
                 layui.use('element', function(){
-                    var element = layui.element;
+.
 
-                    //…
                 });
             </script>
         </div>
