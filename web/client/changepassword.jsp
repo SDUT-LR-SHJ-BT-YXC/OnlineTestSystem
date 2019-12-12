@@ -24,12 +24,19 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/shj_js/Ajax_Functions.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/shj_js/Functions.js"></script>
 </head>
+<script>
+    $(function () {
+        layui.use("layer", function () {
+            var layer = layui.layer;
+            layer.msg("我们向您的邮箱发送了一个验证码用于密码修改，请注意查收");
+        })
+    })
+</script>
 <body class="login-bg">
 <span id="code" style="display: none">${sessionScope.code}</span>
 <div class="login layui-anim layui-anim-up" style="margin-top:25px;">
     <div class="message">修改密码</div>
     <div id="darkbannerwrap"></div>
-
     <form id="form" class="layui-form layui-form-pane" action="${pageContext.request.contextPath}/ChangePasswordServlet2" method="post" onsubmit="return checkChangePasswordForm()">
         <input name="code" placeholder="请输入验证码"  type="text" lay-verify="required" class="layui-input" >
         <span id="code_tip" style="font-size: small; color: #FF5722"></span>
