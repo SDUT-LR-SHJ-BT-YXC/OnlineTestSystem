@@ -35,8 +35,6 @@ public class WrongAnswerRecordServlet extends HttpServlet {
         session.setAttribute("WAsum",WrongAnswerSum);
         session.setAttribute("Qsum",QbankSum);
         session.setAttribute("WAqbanks",qbanks);
-
-
         response.sendRedirect(request.getContextPath()+"/client/WrongAnswerRecord.jsp");
 
     }

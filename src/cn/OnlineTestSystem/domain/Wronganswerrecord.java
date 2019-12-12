@@ -1,6 +1,7 @@
 package cn.OnlineTestSystem.domain;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 /**
  * @ClassName Wronganswerrecord
@@ -10,52 +11,80 @@ import java.sql.Timestamp;
  * @Version 1.0
  **/
 public class Wronganswerrecord {
-    private Integer recordId;
-    private Integer questionId;
-    private String wrongAnswer;
+    private Integer record_id;
+    private Integer question_id;
+    private String wrong_answer;
     private Timestamp time;
-    private Integer userId;
+    private Integer user_id;
 
-    public Wronganswerrecord(Integer recordId, Integer questionId, String wrongAnswer, Timestamp time, Integer userId) {
-        this.recordId = recordId;
-        this.questionId = questionId;
-        this.wrongAnswer = wrongAnswer;
+    public Wronganswerrecord(Integer record_id, Integer question_id, String wrong_answer, Timestamp time, Integer user_id) {
+        this.record_id = record_id;
+        this.question_id = question_id;
+        this.wrong_answer = wrong_answer;
         this.time = time;
-        this.userId = userId;
+        this.user_id = user_id;
     }
 
-    public Wronganswerrecord(Integer questionId, String wrongAnswer, Timestamp time, Integer userId) {
-        this.questionId = questionId;
-        this.wrongAnswer = wrongAnswer;
+    public Wronganswerrecord(Integer question_id, String wrong_answer, Timestamp time, Integer user_id) {
+        this.question_id = question_id;
+        this.wrong_answer = wrong_answer;
         this.time = time;
-        this.userId = userId;
+        this.user_id = user_id;
     }
 
     public Wronganswerrecord() {
     }
 
-    public Integer getRecordId() {
-        return recordId;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Wronganswerrecord that = (Wronganswerrecord) o;
+        return Objects.equals(record_id, that.record_id) &&
+                Objects.equals(question_id, that.question_id) &&
+                Objects.equals(wrong_answer, that.wrong_answer) &&
+                Objects.equals(time, that.time) &&
+                Objects.equals(user_id, that.user_id);
     }
 
-    public void setRecordId(Integer recordId) {
-        this.recordId = recordId;
+    @Override
+    public int hashCode() {
+        return Objects.hash(record_id, question_id, wrong_answer, time, user_id);
     }
 
-    public Integer getQuestionId() {
-        return questionId;
+    @Override
+    public String toString() {
+        return "Wronganswerrecord{" +
+                "record_id=" + record_id +
+                ", question_id=" + question_id +
+                ", wrong_answer='" + wrong_answer + '\'' +
+                ", time=" + time +
+                ", user_id=" + user_id +
+                '}';
     }
 
-    public void setQuestionId(Integer questionId) {
-        this.questionId = questionId;
+    public Integer getRecord_id() {
+        return record_id;
     }
 
-    public String getWrongAnswer() {
-        return wrongAnswer;
+    public void setRecord_id(Integer record_id) {
+        this.record_id = record_id;
     }
 
-    public void setWrongAnswer(String wrongAnswer) {
-        this.wrongAnswer = wrongAnswer;
+    public Integer getQuestion_id() {
+        return question_id;
+    }
+
+    public void setQuestion_id(Integer question_id) {
+        this.question_id = question_id;
+    }
+
+    public String getWrong_answer() {
+        return wrong_answer;
+    }
+
+    public void setWrong_answer(String wrong_answer) {
+        this.wrong_answer = wrong_answer;
     }
 
     public Timestamp getTime() {
@@ -66,11 +95,11 @@ public class Wronganswerrecord {
         this.time = time;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 }

@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>在线答题系统个人首页</title>
+    <title>在线答题系统错题记录</title>
     <script type="text/javascript" src="../layui/layui.js"></script>
     <link rel="stylesheet" href="../layui/css/layui.css">
     <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
@@ -32,7 +32,7 @@
             <a href="">关于我们</a>
         </li>
         <li class="layui-nav-item" style="margin: 0px 5%">
-            <a href="">题库下载<span class="layui-badge-dot"></span></a>
+            <a href="${pageContext.request.contextPath}/client/download.jsp">题库下载<span class="layui-badge-dot"></span></a>
         </li>
         <li class="layui-nav-item" lay-unselect="" style="float: right">
             <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
@@ -82,7 +82,7 @@
                                     <th>${WAqbank.getQbankId()}</th>
                                     <th>${WAqbank.getName()}</th>
                                     <th>${WAqbank.getSingleChoiceNum()+WAqbank.getMultipleChoiceNum()+WAqbank.getBlanksNum() }</th>
-                                    <th><a class="layui-btn layui-btn-warm" href="${pageContext.request.contextPath}/ShowWAServlet?qbank_id=${WAqbank.getQbankId() }" target="_blank">查看详情</a></th>
+                                    <th><a class="layui-btn" href="${pageContext.request.contextPath}/ShowWAServlet?qbank_id=${WAqbank.getQbankId() }" target="_blank">查看详情</a></th>
                                 </tr>
                             </c:forEach>
                         </table>

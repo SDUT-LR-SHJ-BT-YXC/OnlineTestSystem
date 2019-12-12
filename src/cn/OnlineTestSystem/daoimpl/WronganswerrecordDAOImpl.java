@@ -27,8 +27,8 @@ public class WronganswerrecordDAOImpl extends BaseDAO<Wronganswerrecord> impleme
     public Boolean addWronganswerrecord(Wronganswerrecord wronganswerrecord) {
         String sql = "INSERT INTO wronganswerrecord(question_id, wrong_answer, time, user_id) VALUES (?, ?, ?,?)";
         try {
-            this.update(sql, wronganswerrecord.getQuestionId(), wronganswerrecord.getWrongAnswer(), wronganswerrecord.getTime(),
-                    wronganswerrecord.getUserId());
+            this.update(sql, wronganswerrecord.getQuestion_id(), wronganswerrecord.getWrong_answer(), wronganswerrecord.getTime(),
+                    wronganswerrecord.getUser_id());
             return  true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -122,8 +122,8 @@ public class WronganswerrecordDAOImpl extends BaseDAO<Wronganswerrecord> impleme
     public Boolean modifyWronganswerrecord(Wronganswerrecord wronganswerrecord) {
         String sql = "UPDATE wronganswerrecord SET question_id=?,wrong_answer=?, time=?,user_id=? WHERE record_id=?";
         try {
-            this.update(sql, wronganswerrecord.getQuestionId(), wronganswerrecord.getWrongAnswer(), wronganswerrecord.getTime(),
-                    wronganswerrecord.getUserId(), wronganswerrecord.getRecordId());
+            this.update(sql, wronganswerrecord.getQuestion_id(), wronganswerrecord.getWrong_answer(), wronganswerrecord.getTime(),
+                    wronganswerrecord.getUser_id(), wronganswerrecord.getRecord_id());
             return  true;
         } catch (SQLException e) {
             e.printStackTrace();
