@@ -43,9 +43,7 @@ public class ShowWAServlet extends HttpServlet {
         was = wrongAnswerRecordService.getWASrecordsByQid(qbank_id,user_id);
         wam = wrongAnswerRecordService.getWAMrecordByQid(qbank_id,user_id);
         wab = wrongAnswerRecordService.getWABrecordByQid(qbank_id,user_id);
-        //System.out.println("aaaa"+was.size());
 
-        //System.out.println("liurongjiushigedidi");
         //根据题库ID查看此题库所有错题
         session.setAttribute("ShowWAS",was);
         session.setAttribute("ShowWAM",wam);

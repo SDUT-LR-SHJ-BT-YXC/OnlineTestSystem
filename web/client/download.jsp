@@ -50,36 +50,13 @@
             <th style="background-color:#FAFAD2;text-align:center;"><font size=4px;>下载</font></th>
 
         </tr>
-        <tr>
-            <th>数据库应用与开发</th>
-            <th><a class="layui-btn" href="${pageContext.request.contextPath}/DownloadServlet?filename=shujuku.txt">点击下载</a></th>
-        </tr>
-        <tr>
-            <th>计算机网络</th>
-            <th><a class="layui-btn" href="${pageContext.request.contextPath}/DownloadServlet?filename=wangluo.txt">点击下载</a></th>
-        </tr>
-        <tr>
-            <th>计算机组成原理</th>
-            <th><a class="layui-btn" href="${pageContext.request.contextPath}/DownloadServlet?filename=jizu.txt">点击下载</a></th>
-        </tr>
-        <tr>
-            <th>编译原理</th>
-            <th><a class="layui-btn" href="${pageContext.request.contextPath}/DownloadServlet?filename=bianyi.txt">点击下载</a></th>
-        </tr>
+        <c:forEach var = "qbank" items="${DownQbank}" >
+            <tr>
+                <th>${qbank.getName()}</th>
+                <th><a class="layui-btn" href="${pageContext.request.contextPath}/DownloadServlet2?qbank_id=${qbank.getQbankId() }" target="_blank">点击下载</a></th>
+            </tr>
+        </c:forEach>
 
-        <tr>
-            <th>高中语文</th>
-            <th><a class="layui-btn" href="${pageContext.request.contextPath}/DownloadServlet?filename=yuwen.txt">点击下载</a></th>
-        </tr>
-        <tr>
-            <th>科目一</th>
-            <th><a class="layui-btn" href="${pageContext.request.contextPath}/DownloadServlet?filename=keyi.txt">点击下载</a></th>
-        </tr>
-
-        <tr>
-            <th>科目四</th>
-            <th><a class="layui-btn" href="${pageContext.request.contextPath}/DownloadServlet?filename=keer.txt">点击下载</a></th>
-        </tr>
 
     </table>
     <br>

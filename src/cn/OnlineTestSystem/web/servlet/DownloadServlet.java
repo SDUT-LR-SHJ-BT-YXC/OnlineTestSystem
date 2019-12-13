@@ -1,13 +1,23 @@
 package cn.OnlineTestSystem.web.servlet;
 
+import cn.OnlineTestSystem.domain.Qbank;
+import cn.OnlineTestSystem.domain.Wronganswerrecord;
+import cn.OnlineTestSystem.service.DownloadService;
+
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @ClassName DownloadServlet
@@ -20,30 +30,16 @@ import java.io.IOException;
 public class DownloadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        doGet(request, response);
+        DownloadService downloadService = new DownloadService();
+        List<Qbank> qbanks = new ArrayList<>();
+        qbanks = downloadService.getAllQbank();
+        HttpSession session = request.getSession();
+        session.setAttribute("DownQbank",qbanks);
+        response.sendRedirect(request.getContextPath() + "/client/download.jsp");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-        String filename = request.getParameter("filename");
-
-        String path = this.getServletContext().getRealPath("download/"+filename);
-
-        response.setHeader("Content-Disposition", "attachment;filename="+filename);
-        String mimeType = this.getServletContext().getMimeType(filename);
-        response.setContentType(mimeType);
-
-        System.out.println(path);
-        //response.reset();
-        ServletOutputStream out = response.getOutputStream();
-
-        FileInputStream in = new FileInputStream(path);
-        byte[] buffer = new byte[1024];
-        int len = 0;
-        while((len=in.read(buffer)) != -1) {
-            out.write(buffer,0,len);
-        }
-        in.close();
+        doPost(request,response);
     }
 }

@@ -32,7 +32,7 @@
             <a href="">关于我们</a>
         </li>
         <li class="layui-nav-item" style="margin: 0px 5%">
-            <a href="${pageContext.request.contextPath}/client/download.jsp">题库下载<span class="layui-badge-dot"></span></a>
+            <a href="${pageContext.request.contextPath}/DownloadServlet">题库下载<span class="layui-badge-dot"></span></a>
         </li>
         <li class="layui-nav-item" lay-unselect="" style="float: right">
             <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
@@ -92,8 +92,7 @@
             </div>
             <script>
 
-                layui.use('element', function(){
-.
+                layui.use('element', function(){ var element = layui.element;
 
                 });
             </script>
