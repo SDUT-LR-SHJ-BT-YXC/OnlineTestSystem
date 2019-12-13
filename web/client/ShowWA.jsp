@@ -44,34 +44,34 @@
     </ul>
 </div>
 <div class="layui-container" style="margin-top: 20px;">
-    <hr class="layui-bg-green">
+    <hr class="layui-bg-green" style="padding-top: 6px;">
     <h3 style="text-align:center;color:#B22222;">单选题</h3>
     <div class="layui-collapse" lay-accordion>
         <c:forEach var = "single" items="${ShowWAS}" >
             <div class="layui-colla-item">
                 <h2 class="layui-colla-title">${single.getQuestion_text()}</h2>
                 <div class="layui-colla-content layui-show">
-                ${single.getAnswer1()}<br>
-                ${single.getAnswer2()}<br>
-                ${single.getAnswer3()}<br>
-                ${single.getAnswer4()}<br>
+                A.${single.getAnswer1()}<br>
+                B.${single.getAnswer2()}<br>
+                C.${single.getAnswer3()}<br>
+                D.${single.getAnswer4()}<br>
                 您的答案为：&nbsp;&nbsp;&nbsp;&nbsp;${single.getWrong_answer()}<br>
                 答题时间：&nbsp;&nbsp;&nbsp;&nbsp;${single.getTime()}
                 </div>
             </div>
         </c:forEach>
     </div>
-    <hr class="layui-bg-green">
+    <hr class="layui-bg-green" style="padding-top: 6px;">
     <h3 style="text-align:center;color:#B22222;">多选题</h3>
     <div class="layui-collapse" lay-accordion>
         <c:forEach var = "single" items="${ShowWAM}" >
             <div class="layui-colla-item">
                 <h2 class="layui-colla-title">${single.getQuestion_text()}</h2>
                 <div class="layui-colla-content layui-show">
-                        ${single.getAnswer1()}<br>
-                        ${single.getAnswer2()}<br>
-                        ${single.getAnswer3()}<br>
-                        ${single.getAnswer4()}<br>
+                        A.${single.getAnswer1()}<br>
+                        B.${single.getAnswer2()}<br>
+                        C.${single.getAnswer3()}<br>
+                        D.${single.getAnswer4()}<br>
                     您的答案为：&nbsp;&nbsp;&nbsp;&nbsp;${single.getWrong_answer()}<br>
                     答题时间：&nbsp;&nbsp;&nbsp;&nbsp;${single.getTime()}
                 </div>
@@ -79,7 +79,7 @@
         </c:forEach>
     </div>
 
-    <hr class="layui-bg-green">
+    <hr class="layui-bg-green" style="padding-top: 6px;">
     <h3 style="text-align:center;color:#B22222;">填空题</h3>
     <div class="layui-collapse" lay-accordion>
         <c:forEach var = "single" items="${ShowWAB}" >
