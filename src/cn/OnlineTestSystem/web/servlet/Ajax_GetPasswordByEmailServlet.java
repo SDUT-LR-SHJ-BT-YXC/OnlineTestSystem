@@ -1,5 +1,6 @@
 package cn.OnlineTestSystem.web.servlet;
 
+import cn.OnlineTestSystem.domain.User;
 import cn.OnlineTestSystem.service.UserService;
 
 import javax.servlet.ServletException;
@@ -14,7 +15,13 @@ public class Ajax_GetPasswordByEmailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         UserService service = new UserService();
-        response.getWriter().write(service.getUser(email).getPassword());
+        User user = service.getUser(email);
+        if(user == null){
+            response.getWriter().write("");
+        }else
+        {
+            response.getWriter().write(user.getPassword());
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

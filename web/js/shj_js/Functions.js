@@ -79,7 +79,7 @@ function  checkLoginForm(path) {
                     flag = true;
                 }else{
                     flag = false;
-                    $("#password_tip").text("密码错误。");
+                    $("#password_tip").text("账号不存在或密码错误。");
                 }
             },
             error:function (XMLHttpRequest, textStatus, errorThrown) {
