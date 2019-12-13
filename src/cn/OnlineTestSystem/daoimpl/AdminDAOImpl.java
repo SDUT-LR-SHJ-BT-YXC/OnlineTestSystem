@@ -113,4 +113,15 @@ public class AdminDAOImpl extends BaseDAO<Admin> implements AdminDAO{
         }
         return  false;
     }
+
+    @Override
+    public List<Admin> getAll() {
+        String sql ="SELECT * FROM admins";
+        try {
+            return  this.getForList(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

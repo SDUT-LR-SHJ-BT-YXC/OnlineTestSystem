@@ -3,19 +3,26 @@ package cn.OnlineTestSystem.domain;
 import java.util.List;
 
 /**
- * @ClassName AllQbankToJSON
+ * @ClassName AllToJSON
  * @Desciption TODO
  * @Author shangjin
- * @Date 2019-12-04 20:14
+ * @Date 2019-12-13 14:20
  * @Version 1.0
  **/
-public class AllQbankToJSON {
+public class AllToJSON<T> {
     private Integer code;
     private String msg;
     private Integer count;
-    private List<Qbank> data;
+    private List<T> data;
 
-    public AllQbankToJSON() {
+    public AllToJSON() {
+    }
+
+    public AllToJSON(Integer code, String msg, Integer count, List<T> data) {
+        this.code = code;
+        this.msg = msg;
+        this.count = count;
+        this.data = data;
     }
 
     public Integer getCode() {
@@ -42,11 +49,11 @@ public class AllQbankToJSON {
         this.count = count;
     }
 
-    public List<Qbank> getData() {
+    public List<T> getData() {
         return data;
     }
 
-    public void setData(List<Qbank> data) {
+    public void setData(List<T> data) {
         this.data = data;
     }
 }

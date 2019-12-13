@@ -1,6 +1,6 @@
 package cn.OnlineTestSystem.web.servlet;
 
-import cn.OnlineTestSystem.domain.AllQbankToJSON;
+import cn.OnlineTestSystem.domain.AllToJSON;
 import cn.OnlineTestSystem.domain.Qbank;
 import cn.OnlineTestSystem.service.ExaminationService;
 import com.alibaba.fastjson.JSON;
@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -19,7 +18,8 @@ public class ShowQbankServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ExaminationService service = new ExaminationService();
         List<Qbank> list = service.getAllQbank();
-        AllQbankToJSON json = new AllQbankToJSON();
+//        AllQbankToJSON json = new AllQbankToJSON();
+        AllToJSON<Qbank> json = new AllToJSON<Qbank>();
         json.setCode(0);
         json.setMsg("");
         json.setCount(list.size());

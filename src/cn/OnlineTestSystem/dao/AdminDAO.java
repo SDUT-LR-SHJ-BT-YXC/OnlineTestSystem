@@ -17,4 +17,5 @@ public interface AdminDAO {
     public Boolean addAdmin(Admin admin);
     public Boolean delAdmin(Integer id);
     public Boolean modifyAdminInfo(Admin admin);
+    public List<Admin> getAll();
 }

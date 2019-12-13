@@ -48,8 +48,19 @@ public class AdminManagementService {
      * @Return:
      * @Date: 12:41 2019-12-03
      */
+
     public List<Admin> findAdminByName(String name){
         return adminDAO.findAdminsByName(name);
+    }
+    /**
+     * @Author: Shangjin
+     * @Description:获取所有的管理员
+     * @Param:
+     * @Return:
+     * @Date: 14:11 2019-12-13
+     */
+    public List<Admin> getAllAdmin(){
+        return adminDAO.getAll();
     }
 
     /**
