@@ -58,18 +58,18 @@
         var scores = [];
         var aver = [];
         var sum = 0;
-        for(let i = 0; i < ajax_data.length; i++){
-            dates[i] = ajax_data[i].date;
-            scores[i] = ajax_data[i].score;
-            sum += scores[i];
-            aver[i] = sum / (i + 1);
+        for(let i = ajax_data.length - 1, j = 0; i >=  0; i--, j++){
+            dates.push(ajax_data[i].date);
+            scores.push(ajax_data[i].score);
+            sum += scores[j];
+            aver.push(sum / (j + 1));
         }
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
         // 指定图表的配置项和数据
         var option = {
             title: {
-                text: '近期十次做题记录统计'
+                text: '近期做题记录统计'
             },
             tooltip: {
                 trigger: 'axis',
@@ -154,17 +154,5 @@
         });
     });
 
-    <!--  轮播  -->
-    layui.use('carousel', function(){
-        var carousel = layui.carousel;
-        //建造实例
-        carousel.render({
-            elem: '#test1'
-            ,width: '80%' //设置容器宽度
-            ,height: '460px'
-            ,arrow: 'always' //始终显示箭头
-            //,anim: 'updown' //切换动画方式
-        });
-    });
 </script>
 </html>

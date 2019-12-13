@@ -39,7 +39,7 @@
     <div class="layui-header" >
         <ul class="layui-nav">
             <li class="layui-nav-item"  >
-                <a href="#">在线测试</a>
+                <a href="">在线测试</a>
             </li>
         </ul>
     </div>
