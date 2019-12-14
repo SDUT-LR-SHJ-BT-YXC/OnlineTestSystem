@@ -8,19 +8,19 @@ package cn.OnlineTestSystem.domain;
  * @Version 1.0
  **/
 public class Admin {
-    private Integer adminId;
+    private Integer admin_id;
     private String password;
-    private String adminName;
+    private String admin_name;
 
     public Admin() {
     }
 
     public Integer getAdminId() {
-        return adminId;
+        return admin_id;
     }
 
     public void setAdminId(Integer adminId) {
-        this.adminId = adminId;
+        this.admin_id = adminId;
     }
 
     public String getPassword() {
@@ -32,10 +32,10 @@ public class Admin {
     }
 
     public String getAdminName() {
-        return adminName;
+        return admin_name;
     }
 
     public void setAdminName(String adminName) {
-        this.adminName = adminName;
+        this.admin_name = adminName;
     }
 }
