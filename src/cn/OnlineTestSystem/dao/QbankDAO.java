@@ -1,7 +1,6 @@
 package cn.OnlineTestSystem.dao;
 
 import cn.OnlineTestSystem.domain.Qbank;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.List;
 
