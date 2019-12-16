@@ -21,7 +21,7 @@ public class QbankService {
 
     /**
      * @Author: Shangjin
-     * @Description:获取所有题库信息
+     * @Description: 获取所有题库信息
      * @Param:
      * @Return:
      * @Date: 14:59 2019-12-13
@@ -32,7 +32,7 @@ public class QbankService {
 
     /**
      * @Author: Shangjin
-     * @Description:根据id获取相应题库
+     * @Description: 根据id获取相应题库
      * @Param:
      * @Return:
      * @Date: 15:00 2019-12-13
@@ -43,7 +43,7 @@ public class QbankService {
 
     /**
      * @Author: Shangjin
-     * @Description:根据名字获取相应题库
+     * @Description: 根据名字获取相应题库
      * @Param:
      * @Return:
      * @Date: 15:02 2019-12-13
@@ -54,7 +54,7 @@ public class QbankService {
 
     /**
      * @Author: Shangjin
-     * @Description:修改题库信息，被修改的题库ID为传入Qbank参数的ID属性
+     * @Description: 修改题库信息，被修改的题库ID为传入Qbank参数的ID属性
      * @Param:
      * @Return:
      * @Date: 15:03 2019-12-13
@@ -65,7 +65,7 @@ public class QbankService {
 
     /**
      * @Author: Shangjin
-     * @Description:根据题库ID删除某题库
+     * @Description: 根据题库ID删除某题库
      * @Param:
      * @Return:
      * @Date: 15:05 2019-12-13
@@ -76,7 +76,7 @@ public class QbankService {
 
     /**
      * @Author: Shangjin
-     * @Description:新建一个题库
+     * @Description: 新建一个题库
      * @Param:
      * @Return:
      * @Date: 15:06 2019-12-13

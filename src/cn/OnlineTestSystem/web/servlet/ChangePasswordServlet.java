@@ -29,6 +29,7 @@ public class ChangePasswordServlet extends HttpServlet {
             SendEmailUtils.sendEmail(user.getEmail(), content);
         } catch (MessagingException e) {
             e.printStackTrace();
+            System.out.println(e);
         }
         session.setAttribute("code", code);
         response.sendRedirect(request.getContextPath() + "/client/changepassword.jsp");

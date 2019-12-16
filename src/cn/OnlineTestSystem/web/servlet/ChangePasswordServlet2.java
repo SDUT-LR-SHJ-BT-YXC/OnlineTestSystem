@@ -2,7 +2,6 @@ package cn.OnlineTestSystem.web.servlet;
 
 import cn.OnlineTestSystem.domain.User;
 import cn.OnlineTestSystem.service.UserService;
-import com.sun.deploy.net.HttpResponse;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
