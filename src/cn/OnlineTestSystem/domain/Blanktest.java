@@ -1,6 +1,5 @@
 package cn.OnlineTestSystem.domain;
 
-import org.omg.PortableInterceptor.INACTIVE;
 
 /**
  * @ClassName Blanktest
