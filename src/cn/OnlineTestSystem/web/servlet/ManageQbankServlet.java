@@ -1,7 +1,7 @@
 package cn.OnlineTestSystem.web.servlet;
 
-import cn.OnlineTestSystem.daoimpl.QbankDAOImpl;
 import cn.OnlineTestSystem.domain.Qbank;
+import cn.OnlineTestSystem.service.QbankService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 
@@ -31,9 +31,9 @@ public class ManageQbankServlet extends HttpServlet {
 
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        QbankDAOImpl qbankDAO = new QbankDAOImpl();
+        QbankService qbankService = new QbankService();
         //获取所有课程信息，转化为json文件
-        List<Qbank> qbanks = qbankDAO.getAllQbank();
+        List<Qbank> qbanks = qbankService.getAllQbank();
         JSONArray json = JSONArray.parseArray(JSON.toJSONString(qbanks));
         request.getSession().setAttribute("Qbankjson", json);
         System.out.println(request.getSession().getAttribute("json"));
