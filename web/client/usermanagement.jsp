@@ -25,7 +25,7 @@
             <a href="${pageContext.request.contextPath}/client/usermanagement.jsp">用户管理</a>
         </li>
         <li class="layui-nav-item" style="margin: 0 5%">
-            <a href="#">题库管理</a>
+            <a href="${pageContext.request.contextPath}/ManageQbankServlet">题库管理</a>
         </li>
         <li class="layui-nav-item" style="margin: 0 5%">
             <a href="#">习题管理</a>

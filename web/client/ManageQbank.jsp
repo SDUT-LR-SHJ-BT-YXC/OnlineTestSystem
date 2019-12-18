@@ -14,7 +14,35 @@
     <link rel="stylesheet" href="../layui/css/layui.css">
     <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
 </head>
-<body>
+<body style="min-width: 1026px; min-height: 710px">
+<div class="layui-header" >
+    <ul class="layui-nav">
+        <li class="layui-nav-item" style="margin: 0 5%">
+            <a href="#">操作记录</a>
+        </li>
+        <li class="layui-nav-item" style="margin: 0 5%">
+            <a href="${pageContext.request.contextPath}/client/usermanagement.jsp">用户管理</a>
+        </li>
+        <li class="layui-nav-item layui-this" style="margin: 0 5%">
+            <a href="#">题库管理</a>
+        </li>
+        <li class="layui-nav-item" style="margin: 0 5%">
+            <a href="#">习题管理</a>
+        </li>
+        <li class="layui-nav-item" style="margin: 0 5%">
+            <a href="#">导入习题</a>
+        </li>
+        <li class="layui-nav-item" lay-unselect="" style="float: right">
+            <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
+            <dl class="layui-nav-child">
+                <dd><a href="${pageContext.request.contextPath}/ChangePasswordServlet">修改密码</a></dd>
+                <dd><a href="${pageContext.request.contextPath}/LogoutServlet">退了</a></dd>
+            </dl>
+        </li>
+    </ul>
+</div>
+
+
 <table class="layui-hide" id="test" lay-filter="test"></table>
 
 <script type="text/html" id="barDemo">
@@ -29,12 +57,7 @@
         table.render({
             elem: '#test'
             ,data:<%=request.getSession().getAttribute("Qbankjson") %>
-            ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-            ,defaultToolbar: ['', '', '', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
-                title: '提示'
-                ,layEvent: 'LAYTABLE_TIPS'
-                ,icon: ''
-            }]
+
             ,title: '用户数据表'
             ,cols: [[ //标题栏
                 {field:'qbankId', title:'题库ID', width:140, sort: true}
@@ -54,14 +77,14 @@
             if(obj.event === 'del'){
                 layer.confirm('确认要删除此题库？', function(index){
                     var value = data.qbankId;
-                    document.location.href="/${pageContext.request.contextPath}/DelQankServlet?qbankId="+value;
+                    document.location.href="${pageContext.request.contextPath}/DelQankServlet?qbankId="+value;
 
-                    //layer.close(index);yinggai
+                    //layer.close(index);
                 })
             }
             else if(obj.event === 'edit'){
                 var value = data.qbankId;
-                document.location.href="/${pageContext.request.contextPath}/EditQankServlet?qbankId="+value;
+                document.location.href="${pageContext.request.contextPath}/EditQankServlet?qbankId="+value;
                 /*
                 layer.prompt({
                   formType: 2
