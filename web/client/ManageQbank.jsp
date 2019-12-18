@@ -41,9 +41,18 @@
         </li>
     </ul>
 </div>
+<div>
+</div>
+<div style="width: 100%;text-align: center">
+    <div class="layui-inline">
+        <a href="${pageContext.request.contextPath}/client/AddQbank.jsp"><button type="button" class="layui-btn" style="width: 115px;margin-right: -990px;margin-top: 10px;">
+            <i class="layui-icon layui-icon-add-1">&#xe654;新增题库</i>
+        </button>
+        </a>
+    <table class="layui-hide" id="test" lay-filter="test" style="margin: 0 auto"></table>
+    </div>
+</div>
 
-
-<table class="layui-hide" id="test" lay-filter="test"></table>
 
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -60,14 +69,15 @@
 
             ,title: '用户数据表'
             ,cols: [[ //标题栏
-                {field:'qbankId', title:'题库ID', width:140, sort: true}
-                ,{field:'name', title:'题库名称', width:250}
-                ,{field:'singleChoiceNum', title:'单选题总数', width:140, sort: true}
-                ,{field:'multipleChoiceNum', title:'多选题总数', width:140, sort: true}
-                ,{field:'blanksNum', title:'填空题总数', width:328, sort: true}
-                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:140}
+                {field:'qbankId', title:'题库ID', width:200, sort: true}
+                ,{field:'name', title:'题库名称', width:200}
+                ,{field:'singleChoiceNum', title:'单选题总数', width:200, sort: true}
+                ,{field:'multipleChoiceNum', title:'多选题总数', width:200, sort: true}
+                ,{field:'blanksNum', title:'填空题总数', width:200, sort: true}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:120}
             ]]
             ,page: true
+
         });
 
         //监听行工具事件

@@ -1,6 +1,7 @@
 package cn.OnlineTestSystem.service;
 
 import cn.OnlineTestSystem.daoimpl.QbankDAOImpl;
+import cn.OnlineTestSystem.domain.Qbank;
 
 /**
  * @ClassName ManageQbankService
@@ -21,5 +22,21 @@ public class ManageQbankService {
      */
     public boolean DelQbank(int qbank_id){
         return qbankdaoImpl.delQbankById(qbank_id);
+    }
+
+    /*
+     * 增加题库
+     * @Param: [qname]
+     * @Return: boolean
+     * @Author: liurong
+     * @Date: 2019/12/18 20:51
+     */
+    public boolean AddQbank(String qname){
+        Qbank qbank = new Qbank();
+        qbank.setName(qname);
+        qbank.setSingleChoiceNum(0);
+        qbank.setMultipleChoiceNum(0);
+        qbank.setBlanksNum(0);
+        return qbankdaoImpl.addQbank(qbank);
     }
 }
