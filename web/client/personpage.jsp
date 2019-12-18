@@ -48,7 +48,7 @@
 <script type="text/javascript">
     /****     绘制柱状图    *******/
     function drawGraph(ajax_data) {
-        console.log("开始绘图");
+        console.log("处理数据");
         ajax_data.map(function (record) {
             var date = new Date(record.time);
             record.date = date.getMonth() + "-" + date.getDate();
@@ -64,6 +64,15 @@
             sum += scores[j];
             aver.push(sum / (j + 1));
         }
+        if(ajax_data.length < 10){
+            for(let i = ajax_data.length; i <= 10; i++){
+                dates.push(undefined);
+                scores.push(undefined);
+                aver.push(undefined);
+            }
+        }
+
+        console.log("开始绘图");
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
         // 指定图表的配置项和数据

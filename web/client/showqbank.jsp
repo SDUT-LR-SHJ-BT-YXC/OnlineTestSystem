@@ -15,7 +15,7 @@
     <script src="../js/echarts.min.js"></script>
     <script src="../js/shj_js/Functions.js"></script>
 </head>
-<body style="min-width: 1024px; min-height: 790px">
+<body style="min-width: 1024px; min-height: 710px">
 <div class="layui-header" >
     <ul class="layui-nav">
         <li class="layui-nav-item " style="margin: 0px 5%">
