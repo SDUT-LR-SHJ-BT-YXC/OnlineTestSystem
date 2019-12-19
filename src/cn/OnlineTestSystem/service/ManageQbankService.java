@@ -39,4 +39,25 @@ public class ManageQbankService {
         qbank.setBlanksNum(0);
         return qbankdaoImpl.addQbank(qbank);
     }
+
+    /*
+     * 根据id查找题库信息
+     * @Param: [qbank_id]
+     * @Return: cn.OnlineTestSystem.domain.Qbank
+     * @Author: liurong
+     * @Date: 2019/12/19 16:17
+     */
+    public Qbank getQbankById(int qbank_id){
+        Qbank qbank = new Qbank();
+        qbank = qbankdaoImpl.findQbankById(qbank_id);
+        return qbank;
+    }
+
+    public boolean UpdateQname(int qbank_id,String name){
+        Qbank qbank = new Qbank();
+        qbank = qbankdaoImpl.findQbankById(qbank_id);
+        qbank.setName(name);
+
+        return qbankdaoImpl.modifyQbank(qbank);
+    }
 }
