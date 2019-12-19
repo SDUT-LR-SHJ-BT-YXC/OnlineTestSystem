@@ -2,6 +2,7 @@ package cn.OnlineTestSystem.daoimpl;
 
 import cn.OnlineTestSystem.dao.BaseDAO;
 import cn.OnlineTestSystem.dao.UserDAO;
+import cn.OnlineTestSystem.domain.Qbank;
 import cn.OnlineTestSystem.domain.User;
 
 import java.sql.SQLException;
@@ -119,4 +120,21 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
         return null;
     }
 
+    @Override
+    /**
+     * @Author: yinxiaochen
+     * @Description: 获取所有用户信息
+     * @Param:
+     * @Return:
+     * @Date: 20:19 2019-12-19
+     */
+    public List<User> getAllUser() {
+        String sql = "SELECT * FROM  user";
+        try {
+            return this.getForList(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
 }

@@ -49,7 +49,7 @@
 
 
 <!-- footer ---->
-<div style="height: auto; padding-top: 20px; padding-bottom: 20px; width:100%;position: fixed; bottom: 0px" class="layui-bg-gray">
+<div style="height: auto; padding-top: 20px; padding-bottom: 20px; width:100%;position: fixed; bottom: 0" class="layui-bg-gray">
 
     <div style="margin: 0 auto; width:100%; text-align: center">
         All Rights Reserved.
@@ -73,15 +73,15 @@
         table.render({
             elem: '#OperationLog_table' //指定原始表格元素选择器（推荐id选择器）
             ,height: 450 //容器高度
-            ,url: '${pageContext.request.contextPath}/usermanagementServlet'
+            ,url: '${pageContext.request.contextPath}/UsermanagementServlet'
             ,page:true
             ,even:true
             ,cols: [
                 [ //表头
-                    {field: 'qbankId', title: 'ID', width:100, sort: true, fixed: 'left'}
-                    ,{field: 'name', title: '权限', width:100, sort: true}
-                    ,{field: 'blanksNum', title: '昵称', width: 200}
-                    ,{field: 'blanksNum', title: '邮箱', width: 600}
+                    {field: 'userId', title: 'ID', width:150, sort: true, fixed: 'left'}
+                    ,{field: 'role', title: '权限', width:150, sort: true}
+                    ,{field: 'nickName', title: '昵称', width: 200}
+                    ,{field: 'email', title: '邮箱', width: 600}
                     ,{field: '', title: '操作', width: 200, templet: '#titleTpl'}
                 ]
             ] //设置表头
@@ -91,8 +91,8 @@
 
 <!-- 数据表格操作列引用模板  -->
 <script type="text/html" id="titleTpl">
-    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmExamination('${pageContext.request.contextPath}/ExaminationServlet?id={{d.qbankId}}')" >
-        提升权限
+    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmExamination('${pageContext.request.contextPath}/?id={{d.userId}}')" >
+        变更权限
     </button>
 </script>
 

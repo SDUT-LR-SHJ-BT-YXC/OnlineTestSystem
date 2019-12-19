@@ -1,87 +1,34 @@
 package cn.OnlineTestSystem.service;
 
-import cn.OnlineTestSystem.dao.AdminDAO;
-import cn.OnlineTestSystem.daoimpl.AdminDAOImpl;
-import cn.OnlineTestSystem.domain.Admin;
-
+import cn.OnlineTestSystem.dao.UserDAO;
+import cn.OnlineTestSystem.daoimpl.QbankDAOImpl;
+import cn.OnlineTestSystem.daoimpl.UserDAOImpl;
+import cn.OnlineTestSystem.domain.*;
 import java.util.List;
 
 /**
  * @ClassName AdminManagementService
- * @Desciption TODO
- * @Author shangjin
- * @Date 2019-12-03 12:35
+ * @Desciption 管理员管理用户操作
+ * @Author yinxiaochen
+ * @Date 2019-12-19 19:59
  * @Version 1.0
  **/
 public class AdminManagementService {
-    private AdminDAO adminDAO = new AdminDAOImpl();
+    private UserDAOImpl dao;
 
-    public AdminManagementService() {
-        this.adminDAO = new AdminDAOImpl();
+    public AdminManagementService(){
+        dao = new UserDAOImpl();
     }
     /**
-     * @Author: Shangjin
-     * @Description:添加一个新的管理员
+     * @Author: yinxiaochen
+     * @Description: 获取全部用户信息
      * @Param:
      * @Return:
-     * @Date: 12:41 2019-12-03
+     * @Date: 20:21 2019-12-19
      */
-    public boolean addAdmin(Admin admin){
-        return  adminDAO.addAdmin(admin);
+    public List<User> getAllUser(){
+        List<User> user = dao.getAllUser();
+        return user;
     }
 
-    /**
-     * @Author: Shangjin
-     * @Description:通过id查找一个管理员
-     * @Param:
-     * @Return:
-     * @Date: 12:41 2019-12-03
-     */
-    public Admin findAdminById(Integer id){
-        return  adminDAO.findAdminById(id);
-    }
-
-    /**
-     * @Author: Shangjin
-     * @Description:通过名字查找管理员
-     * @Param:
-     * @Return:
-     * @Date: 12:41 2019-12-03
-     */
-
-    public List<Admin> findAdminByName(String name){
-        return adminDAO.findAdminsByName(name);
-    }
-    /**
-     * @Author: Shangjin
-     * @Description:获取所有的管理员
-     * @Param:
-     * @Return:
-     * @Date: 14:11 2019-12-13
-     */
-    public List<Admin> getAllAdmin(){
-        return adminDAO.getAll();
-    }
-
-    /**
-     * @Author: Shangjin
-     * @Description:t通过管理员id删除一个管理员
-     * @Param:
-     * @Return:
-     * @Date: 12:43 2019-12-03
-     */
-    public boolean delAdmin(Integer id){
-        return  adminDAO.delAdmin(id);
-    }
-
-    /**
-     * @Author: Shangjin
-     * @Description:更新管理员信息，以Admin类的adminId为依据
-     * @Param:
-     * @Return:
-     * @Date: 12:45 2019-12-03
-     */
-    public boolean updateAdminInf(Admin admin){
-        return adminDAO.modifyAdminInfo(admin);
-    }
 }

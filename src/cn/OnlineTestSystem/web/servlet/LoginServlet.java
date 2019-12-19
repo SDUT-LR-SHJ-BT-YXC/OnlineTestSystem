@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user",user);
             //System.out.println(user.getUserId());
             //request.getRequestDispatcher("/client/personpage.jsp").forward(request, response);
-            response.sendRedirect(request.getContextPath() + "/client/personpage.jsp");
+            response.sendRedirect(request.getContextPath() + "/client/adminpage.jsp");
         } else {
             //ajax显示用户名不存在或密码错误
             System.out.println("密码错误！");
