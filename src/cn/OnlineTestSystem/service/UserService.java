@@ -2,8 +2,7 @@ package cn.OnlineTestSystem.service;
 
 import cn.OnlineTestSystem.daoimpl.UserDAOImpl;
 import cn.OnlineTestSystem.domain.User;
-import cn.OnlineTestSystem.dao.BaseDAO;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,4 +105,17 @@ public class UserService{
     public boolean modifyUser(User user){
         return userdimpl.modifyUser(user);
     }
+
+    /*
+     * 返回用户角色
+     * @Param: [email]
+     * @Return: int
+     * @Author: liurong
+     * @Date: 2019/12/20 23:18
+     */
+    public int getRole(String email){
+        User user = (User) userdimpl.findUsersByEmail(email);
+        return user.getRole();
+    }
+
 }

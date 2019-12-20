@@ -1,6 +1,5 @@
 package cn.OnlineTestSystem.web.servlet;
 
-import cn.OnlineTestSystem.daoimpl.UserDAOImpl;
 import cn.OnlineTestSystem.domain.User;
 import cn.OnlineTestSystem.service.UserService;
 
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * @ClassName LoginServlet
@@ -37,9 +35,12 @@ public class LoginServlet extends HttpServlet {
             User user = userService.getUser(email);
             HttpSession session = request.getSession();
             session.setAttribute("user",user);
-            //System.out.println(user.getUserId());
-            //request.getRequestDispatcher("/client/personpage.jsp").forward(request, response);
-            response.sendRedirect(request.getContextPath() + "/client/adminpage.jsp");
+            if(userService.getRole(email) == 0){
+                response.sendRedirect(request.getContextPath() + "/client/personpage.jsp");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/client/adminpage.jsp");
+            }
+
         } else {
             //ajax显示用户名不存在或密码错误
             System.out.println("密码错误！");
