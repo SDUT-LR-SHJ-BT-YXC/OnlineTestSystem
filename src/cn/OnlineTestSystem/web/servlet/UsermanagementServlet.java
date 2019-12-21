@@ -30,8 +30,10 @@ public class UsermanagementServlet extends HttpServlet {
             int pw = list.get(i).getRole();
             if(pw == 0)
                 list.get(i).setPower("用户");
-            else
+            else if(pw == 1)
                 list.get(i).setPower("管理员");
+            else
+                list.get(i).setPower("超级管理员");
         }
         AllToJSON<User> json = new AllToJSON<User>();
         json.setCode(0);

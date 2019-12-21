@@ -129,7 +129,7 @@ public class UserService{
         User usr = userdimpl.findUserById(userid);
         if(usr.getRole() == 0)
             usr.setRole(1);
-        else
+        else if(usr.getRole() == 1)
             usr.setRole(0);
         userdimpl.modifyUser(usr);
         return;
