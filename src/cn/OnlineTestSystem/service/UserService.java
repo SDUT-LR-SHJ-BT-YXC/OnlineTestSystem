@@ -114,8 +114,8 @@ public class UserService{
      * @Date: 2019/12/20 23:18
      */
     public int getRole(String email){
-        User user = (User) userdimpl.findUsersByEmail(email);
-        return user.getRole();
+        List<User> users =  userdimpl.findUsersByEmail(email);
+        return users.get(0).getRole();
     }
 
 }
