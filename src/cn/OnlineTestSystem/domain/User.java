@@ -13,6 +13,7 @@ public class User {
     private Integer userId;
     private String password;
     private Integer role;
+    private String power;
 
     public User() {
     }
@@ -63,5 +64,13 @@ public class User {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public String getPower() {
+        return power;
+    }
+
+    public void setPower(String power) {
+        this.power = power;
     }
 }

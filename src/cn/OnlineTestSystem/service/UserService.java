@@ -118,4 +118,20 @@ public class UserService{
         return users.get(0).getRole();
     }
 
+    /*
+     * 更改用户权限
+     * @Param: [userId]
+     * @Return: null
+     * @Author: yinxiaochen
+     * @Date: 2019/12/21 20:21
+     */
+    public void changeRole(int userid){
+        User usr = userdimpl.findUserById(userid);
+        if(usr.getRole() == 0)
+            usr.setRole(1);
+        else
+            usr.setRole(0);
+        userdimpl.modifyUser(usr);
+        return;
+    }
 }

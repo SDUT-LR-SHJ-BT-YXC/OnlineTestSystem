@@ -24,11 +24,15 @@ import java.util.List;
 @WebServlet("/UsermanagementServlet")
 public class UsermanagementServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("1111");
         AdminManagementService service = new AdminManagementService();
-        System.out.println("2222");
         List<User> list = service.getAllUser();
-        System.out.println("3333");
+        for(int i = 0; i < list.size(); i++){
+            int pw = list.get(i).getRole();
+            if(pw == 0)
+                list.get(i).setPower("用户");
+            else
+                list.get(i).setPower("管理员");
+        }
         AllToJSON<User> json = new AllToJSON<User>();
         json.setCode(0);
         json.setMsg("");

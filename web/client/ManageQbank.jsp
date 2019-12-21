@@ -18,10 +18,7 @@
 <div class="layui-header" >
     <ul class="layui-nav">
         <li class="layui-nav-item" style="margin: 0 5%">
-            <a href="#">操作记录</a>
-        </li>
-        <li class="layui-nav-item" style="margin: 0 5%">
-            <a href="${pageContext.request.contextPath}/client/usermanagement.jsp">用户管理</a>
+            <a href="${pageContext.request.contextPath}/client/adminpage.jsp">用户管理</a>
         </li>
         <li class="layui-nav-item layui-this" style="margin: 0 5%">
             <a href="#">题库管理</a>
