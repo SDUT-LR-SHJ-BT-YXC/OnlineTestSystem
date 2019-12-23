@@ -24,7 +24,6 @@
         .TypeChoice input:checked + span {
             font-weight: bold;
             font-size: 18px;
-
         }
     </style>
     <script>
