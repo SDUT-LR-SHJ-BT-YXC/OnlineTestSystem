@@ -17,7 +17,7 @@ import java.util.Random;
 /**
  * @program: OnlineTestSystem
  * @description: ${description}
- * @author: liu yan
+ * @author: Shangjin
  * @create: 2019-12-23 14:06
  */
 @WebServlet("/ForgetPasswordServlet")

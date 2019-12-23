@@ -66,7 +66,7 @@
         }
         if(ajax_data.length < 10){
             for(let i = ajax_data.length; i <= 10; i++){
-                dates.push(undefined);
+                dates.push("");
                 scores.push(undefined);
                 aver.push(undefined);
             }
