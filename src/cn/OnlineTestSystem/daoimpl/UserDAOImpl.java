@@ -147,7 +147,7 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
      * @Date: 21:40 2019-12-23
      */
     public List<User> getLimitedUser(int start, int limit) {
-        String sql = "SELECT * FROM  user LIMIT " + start + "," + limit;
+        String sql = "SELECT * FROM user ORDER BY role DESC, user_id LIMIT " + start + "," + limit;
         try {
             return this.getForList(sql);
         } catch (SQLException e) {
