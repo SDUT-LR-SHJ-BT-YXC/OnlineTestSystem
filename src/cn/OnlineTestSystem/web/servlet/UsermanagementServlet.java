@@ -25,7 +25,9 @@ import java.util.List;
 public class UsermanagementServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AdminManagementService service = new AdminManagementService();
-        List<User> list = service.getAllUser();
+        int page = Integer.parseInt(request.getParameter("page"));
+        int limit = Integer.parseInt(request.getParameter("limit"));
+        List<User> list = service.getLimitedUser(page, limit);
         for(int i = 0; i < list.size(); i++){
             int pw = list.get(i).getRole();
             if(pw == 0)
@@ -38,7 +40,7 @@ public class UsermanagementServlet extends HttpServlet {
         AllToJSON<User> json = new AllToJSON<User>();
         json.setCode(0);
         json.setMsg("");
-        json.setCount(list.size());
+        json.setCount(service.getUserSize());
         json.setData(list);
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().write(JSON.toJSONString(json));

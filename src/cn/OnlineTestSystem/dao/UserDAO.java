@@ -19,4 +19,6 @@ public interface UserDAO {
     public List<User> findUsersByNickname(String name);
     public List<User> findUsersByEmail(String email);
     public List<User> getAllUser();
+    public List<User> getLimitedUser(int start, int limit);
+    public int getUserCount();
 }
