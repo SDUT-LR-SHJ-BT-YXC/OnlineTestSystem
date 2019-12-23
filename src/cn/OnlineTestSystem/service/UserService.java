@@ -2,6 +2,7 @@ package cn.OnlineTestSystem.service;
 
 import cn.OnlineTestSystem.daoimpl.UserDAOImpl;
 import cn.OnlineTestSystem.domain.User;
+import org.apache.commons.beanutils.BaseDynaBeanMapDecorator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,27 +78,21 @@ public class UserService{
         }
     }
 
-    /*
-     * 登录成功，返回用户类
-     * @Param: [email]
-     * @Return: cn.OnlineTestSystem.domain.User
-     * @Author: liurong
-     * @Date: 2019/12/6 23:45
-     */
-    public User getUser(String email){
-        List<User> users = new ArrayList<>();
-        users = userdimpl.findUsersByEmail(email);
-        if(users.size() == 0){
-            return null;
-        } else {
-            int id =  users.get(0).getUserId();
-            User user = userdimpl.findUserById(id);
-            return user;
-        }
-    }
     /**
      * @Author: Shangjin
-     * @Description:更新账户信息
+     * @Description: 根据用户邮箱查询用户
+     * @Param:
+     * @Return:
+     * @Date: 19:31 2019-12-23
+     */
+    public User getUser(String email){
+        List<User> users = userdimpl.findUsersByEmail(email);
+        return  users.size() > 0 ? users.get(0) : null;
+    }
+
+    /**
+     * @Author: Shangjin
+     * @Description: 更新账户信息
      * @Param:
      * @Return:
      * @Date: 19:31 2019-12-08
@@ -134,4 +129,5 @@ public class UserService{
         userdimpl.modifyUser(usr);
         return;
     }
+
 }

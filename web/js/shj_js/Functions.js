@@ -234,3 +234,15 @@ function msg(type,t, text) {
         )
     })
 }
+
+/*** login.jsp  ***/
+function forgetPasswordOnClick(context){
+    layui.use("layer", function () {
+        var layer = layui.layer;
+        layer.prompt({title: '请输入您的注册邮箱', formType: 0}, function(pass, index){
+            layer.close(index);
+            var index = onload();
+            window.location.href = context + '/ForgetPasswordServlet?email=' + pass;
+        });
+    })
+}

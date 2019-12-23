@@ -34,6 +34,9 @@
             <input id="password" name="password" lay-verify="required" placeholder="请输入密码"  type="password" class="layui-input">
             <span id="password_tip" style="font-size: small; color: #FF5722"></span>
             <hr class="hr15">
+            <div style="margin-bottom: 30px">
+                <a onclick="forgetPasswordOnClick('${pageContext.request.contextPath}')" style="float: right; color: #007DDB">忘记密码？</a>
+            </div>
             <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >
             <a href = "${pageContext.request.contextPath}/client/register.jsp"><input type = "button" value = "注册"  class = "layui-btn layui-btn-fluid"></a>
