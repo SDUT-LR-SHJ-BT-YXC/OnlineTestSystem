@@ -59,15 +59,11 @@
 <!-- 表格上方选项 -->
 <div style="margin: 20px auto; width: 1300px; margin-bottom: 10px;" class="TypeChoice">
     <label class="layui-btn layui-btn-sm"><input type="radio" hidden name="QuestionType" value="单选题" checked="checked"><span>单选题</span></label>
-    <label class="layui-btn layui-btn-sm"><input type="radio" hidden  name="QuestionType" value="多选题"><span>多选题</span></label>
-    <label class="layui-btn layui-btn-sm"><input type="radio" hidden  name="QuestionType" value="填空题"><span>填空题</span></label>
+    <label class="layui-btn layui-btn-sm"><input type="radio" hidden name="QuestionType" value="多选题"><span>多选题</span></label>
+    <label class="layui-btn layui-btn-sm"><input type="radio" hidden name="QuestionType" value="填空题"><span>填空题</span></label>
     <div style="float: right; margin-right: 100px;">
-        <div class="layui-inline" style="margin-left: 50px;margin-right: 10px;">
-            <input class="layui-input" name="id" id="demoReload" autocomplete="off" placeholder="输入题库">
-        </div>
-        <button class="layui-btn" data-type="reload" style="margin-right: 50px;">搜索</button>
-        <div class="layui-inline" style="margin-right: 10px;">
-            <input class="layui-input" name="id" id="demoReload" autocomplete="off" placeholder="输入题干">
+        <div class="layui-inline">
+            <input class="layui-input" name="id" id="QuestionReload" autocomplete="off" placeholder="输入题干">
         </div>
         <button class="layui-btn" data-type="reload">搜索</button>
     </div>
@@ -105,9 +101,10 @@
         table.render({
             elem: '#OperationLog_table' //指定原始表格元素选择器（推荐id选择器）
             ,height: 500 //容器高度
-            ,url: '${pageContext.request.contextPath}/UsermanagementServlet'
+            ,url: '${pageContext.request.contextPath}/QuestionControlServlet'
             ,page:true
             ,even:true
+            ,id:'OperationLog_table'
             ,cols: [
                 [ //表头
                     {field: 'userId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
@@ -117,6 +114,27 @@
                     ,{field: '', title: '操作', width: 200, templet: '#titleTpl'}
                 ]
             ] //设置表头
+        });
+        //搜索框
+        var $ = layui.$, active = {
+            reload: function(){
+                var question = $('#QuestionReload');
+                var qtype = $('input[name="QuestionType"]:checked');
+                //执行重载
+                table.reload('OperationLog_table', {
+                    page: {
+                        curr: 2 //重新从第 1 页开始
+                    }
+                    ,where: {
+                        qtext: question.val()
+                        ,qtype:qtype.val()
+                    }
+                }, 'data');
+            }
+        };
+        $('.TypeChoice .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
         });
     })
 </script>
