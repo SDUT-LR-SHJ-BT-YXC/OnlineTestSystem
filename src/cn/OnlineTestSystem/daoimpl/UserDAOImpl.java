@@ -137,4 +137,41 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
         }
         return  null;
     }
+
+    @Override
+    /**
+     * @Author: yinxiaochen
+     * @Description: 获取有限用户信息
+     * @Param: int start, int limit
+     * @Return: List<User>
+     * @Date: 21:40 2019-12-23
+     */
+    public List<User> getLimitedUser(int start, int limit) {
+        String sql = "SELECT * FROM user ORDER BY role DESC, user_id LIMIT " + start + "," + limit;
+        try {
+            return this.getForList(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
+
+    @Override
+    /**
+     * @Author: yinxiaochen
+     * @Description: 获取用户表行数
+     * @Param:
+     * @Return:
+     * @Date: 21:41 2019-12-23
+     */
+    public int getUserCount() {
+        String sql = "SELECT COUNT(*) FROM user";
+        try {
+            Long c =  this.getForValue(sql);
+            return c.intValue();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

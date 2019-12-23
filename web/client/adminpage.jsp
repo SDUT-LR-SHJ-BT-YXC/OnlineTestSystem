@@ -87,8 +87,8 @@
             ,even:true
             ,cols: [
                 [ //表头
-                    {field: 'userId', title: 'ID', width:140, sort: true, fixed: 'left'}
-                    ,{field: 'power', title: '权限', width:150, sort: true}
+                    {field: 'userId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
+                    ,{field: 'power', title: '权限', width:200, fixed: 'left'}
                     ,{field: 'nickName', title: '昵称', width: 200}
                     ,{field: 'email', title: '邮箱', width: 600}
                     ,{field: '', title: '操作', width: 200, templet: '#titleTpl'}
