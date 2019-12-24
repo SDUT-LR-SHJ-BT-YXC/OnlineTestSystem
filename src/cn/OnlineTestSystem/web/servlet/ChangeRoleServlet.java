@@ -12,7 +12,6 @@ public class ChangeRoleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         int userid = Integer.parseInt(request.getParameter("id"));
-        System.out.println(userid);
         UserService usr = new UserService();
         usr.changeRole(userid);
         response.sendRedirect(request.getContextPath() + "/client/adminpage.jsp");

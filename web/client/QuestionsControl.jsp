@@ -21,7 +21,16 @@
         }
     </style>
     <script>
-
+        function confirmDelete(context) {
+            layer.open({
+                title: '警告'
+                ,content: '确定要删除此试题？'
+                ,btn: ['确定', '取消']
+                ,btn1: function(index, layero){
+                    location.href = context;
+                }
+            })
+        }
     </script>
 </head>
 <body style="min-width: 1026px; min-height: 650px">
@@ -59,18 +68,17 @@
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">
             <!-- 表格上方选项 -->
-            <div style="margin:  auto; width: 1300px; margin-bottom: 10px;padding-left: 1000px;">
+            <div style="margin-left: 1000px; width: 300px; margin-bottom: 10px;">
                 <div class="layui-inline">
                     <input class="layui-input" name="id" id="singleReload" autocomplete="off" placeholder="输入题干">
                 </div>
-                <button class="layui-btn" data-type="reload">搜索</button>
+                <button class="layui-btn" data-type="reload" id="searchsingle">搜索</button>
             </div>
 
             <!-- 展示操作记录的表格 -->
-            <div style="width: 1300px; height: 500px; margin: auto">
+            <div style="width: 1300px; height: 450px; margin: auto">
                 <table id="single_table" lay-filter="test"></table>
             </div>
-
         </div>
         <div class="layui-tab-item">内容2</div>
         <div class="layui-tab-item">内容3</div>
@@ -95,55 +103,49 @@
             layer.msg(elem.text());
         });
     });
-    /***   填充所有科目表格 ***/
+    /***   填充全部表格 ***/
     layui.use("table", function () {
         var table = layui.table;
         //执行渲染
+        //单选表格
         table.render({
             elem: '#single_table' //指定原始表格元素选择器（推荐id选择器）
-            ,height: 500 //容器高度
+            ,height: 450 //容器高度
             ,url: '${pageContext.request.contextPath}/SingleControlServlet'
             ,page:true
             ,even:true
-            ,id:'OperationLog_table'
+            ,id:'single_table'
             ,cols: [
                 [ //表头
-                    {field: 'userId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
-                    ,{field: 'nickName', title: '题干', width: 200}
-                    ,{field: 'email', title: '选项A', width: 200}
-                    ,{field: 'email', title: '选项B', width: 200}
-                    ,{field: 'email', title: '选项C', width: 200}
-                    ,{field: 'email', title: '选项D', width: 200}
-                    ,{field: 'email', title: '正确答案', width: 200}
-                    ,{field: '', title: '删除', width: 100, templet: '#titleTpl'}
+                    {field: 'squestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
+                    ,{field: 'questionText', title: '题干', width: 400}
+                    ,{field: 'answer1', title: '选项A', width: 150}
+                    ,{field: 'answer2', title: '选项B', width: 150}
+                    ,{field: 'answer3', title: '选项C', width: 150}
+                    ,{field: 'answer4', title: '选项D', width: 150}
+                    ,{field: 'stdAnswer', title: '正确答案', width: 150}
+                    ,{field: '', title: '删除', width: 100, templet: '#singleTpl'}
                 ]
             ] //设置表头
         });
-        //单选搜索框
-        var $ = layui.$, active = {
-            reload: function(){
-                var question = $('#singleReload');
-                //执行重载
-                table.reload('OperationLog_table', {
-                    page: {
-                        curr: 1 //重新从第 1 页开始
-                    }
-                    ,where: {
-                        qtext: question.val()
-                    }
-                }, 'data');
-            }
-        };
-        $('.TypeChoice .layui-btn').on('click', function(){
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
+        //单选搜索
+        $("#searchsingle").click(function () {
+            table.reload('single_table', {
+                where: { //设定异步数据接口的额外参数，任意设
+                    qtext: $('#singleReload').val()
+                }
+                ,page: {
+                    curr: 2 //重新从第 1 页开始
+                }
+            });
         });
     })
 </script>
 
 <!-- 数据表格操作列引用模板  -->
-<script type="text/html" id="titleTpl">
-    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmChangeRole('${pageContext.request.contextPath}/ChangeRoleServlet?id={{d.userId}}')">删除</button>
+//删除单选
+<script type="text/html" id="singleTpl">
+    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmChangeRole('${pageContext.request.contextPath}/?id={{d.squestionId}}&type=single')">删除</button>
 </script>
 
 </body>
