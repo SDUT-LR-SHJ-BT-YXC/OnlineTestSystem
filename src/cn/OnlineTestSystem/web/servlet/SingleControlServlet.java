@@ -29,7 +29,6 @@ public class SingleControlServlet extends HttpServlet {
             QuestionText = request.getParameter("qtext");
         int page = Integer.parseInt(request.getParameter("page"));
         int limit = Integer.parseInt(request.getParameter("limit"));
-        System.out.println(QuestionText+page+limit);
         List<Singlechoice> list = service.getLimitedSingle(page, limit, QuestionText);
         AllToJSON<Singlechoice> json = new AllToJSON<Singlechoice>();
         json.setCode(0);

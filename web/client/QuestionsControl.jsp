@@ -77,7 +77,7 @@
 
             <!-- 展示操作记录的表格 -->
             <div style="width: 1300px; height: 450px; margin: auto">
-                <table id="single_table" lay-filter="test"></table>
+                <table id="single_table" lay-filter="single_table"></table>
             </div>
         </div>
         <div class="layui-tab-item">内容2</div>
@@ -126,7 +126,7 @@
                     ,{field: 'answer3', title: '选项C', width: 150}
                     ,{field: 'answer4', title: '选项D', width: 150}
                     ,{field: 'stdAnswer', title: '正确答案', width: 150}
-                    ,{field: '', title: '删除', width: 100, templet: '#singleTpl'}
+                    ,{field: '', title: '操作', width: 100, templet: '#singleTpl'}
                 ]
             ] //设置表头
         });
@@ -141,11 +141,22 @@
                 }
             });
         });
-    })
+    });
+    layui.use('table', function(){
+        var table = layui.table;
+
+        //监听单元格编辑
+        table.on('edit(single_table)', function(obj){
+            var value = obj.value //得到修改后的值
+                ,data = obj.data //得到所在行所有键值
+                ,field = obj.field; //得到字段
+            editQuestion('${pageContext.request.contextPath}', 'single', '1', '1', '1');
+            layer.msg('[题目ID: '+ data.squestionId +'] ' + field + ' 字段更改为：'+ value);
+        });
+    });
 </script>
 
 <!-- 数据表格操作列引用模板  -->
-//删除单选
 <script type="text/html" id="singleTpl">
     <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmDelete('${pageContext.request.contextPath}/DeleteQuestionServlet?id={{d.squestionId}}&type=single&qbankid={{d.qbankId}}')">删除</button>
 </script>
