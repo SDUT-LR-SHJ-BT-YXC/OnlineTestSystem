@@ -119,4 +119,23 @@ public class QbankDAOImpl extends BaseDAO<Qbank> implements QbankDAO {
         }
         return  null;
     }
+
+    @Override
+    /**
+     * @Author: yinxiaochen
+     * @Description:修改某科目的题目数量信息，以本科目的ID为依据
+     * @Param:
+     * @Return:{
+     * @Date: 11:00 2019-12-24
+     */
+    public Boolean changeNum(Qbank qbank) {
+        String sql = "UPDATE qbank SET single_choice_num=?, multiple_choice_num=?, blanks_num=? WHERE qbank_id=?";
+        try {
+            this.update(sql, qbank.getSingleChoiceNum(), qbank.getMultipleChoiceNum(), qbank.getBlanksNum(), qbank.getQbankId());
+            return  true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

@@ -18,4 +18,5 @@ public interface QbankDAO {
     public Qbank findQbankByName(String name);
     public Qbank findQbankById(Integer id);
     public List<Qbank> getAllQbank();
+    public Boolean changeNum(Qbank qbank);
 }

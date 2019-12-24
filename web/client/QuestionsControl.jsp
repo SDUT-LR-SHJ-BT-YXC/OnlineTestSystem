@@ -118,8 +118,9 @@
             ,cols: [
                 [ //表头
                     {field: 'squestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
+                    ,{field: 'qbankId', title: '题库ID', width: 100}
                     ,{field: 'name', title: '题库', width: 100}
-                    ,{field: 'questionText', title: '题干', width: 300}
+                    ,{field: 'questionText', title: '题干', width: 200}
                     ,{field: 'answer1', title: '选项A', width: 150}
                     ,{field: 'answer2', title: '选项B', width: 150}
                     ,{field: 'answer3', title: '选项C', width: 150}
@@ -146,7 +147,7 @@
 <!-- 数据表格操作列引用模板  -->
 //删除单选
 <script type="text/html" id="singleTpl">
-    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmChangeRole('${pageContext.request.contextPath}/?id={{d.squestionId}}&type=single')">删除</button>
+    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmDelete('${pageContext.request.contextPath}/DeleteQuestionServlet?id={{d.squestionId}}&type=single&qbankid={{d.qbankId}}')">删除</button>
 </script>
 
 </body>

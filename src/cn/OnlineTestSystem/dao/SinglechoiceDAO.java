@@ -22,4 +22,5 @@ public interface SinglechoiceDAO {
     public List<Singlechoice> findRandomSinglechoices(Integer qbankId, Integer n);
     public List<Singlechoice> getLimitedSingle(int start, int limit, String search);
     public int getSingleCount();
+    public void delSingle(int id);
 }

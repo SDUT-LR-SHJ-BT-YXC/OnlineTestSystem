@@ -204,4 +204,20 @@ public class SinglechoiceDAOImpl extends BaseDAO<Singlechoice> implements Single
         }
         return 0;
     }
+
+    @Override
+    /**
+     * create by: yinxiaochen
+     * description: 按id删除单选题
+     * create time: 2019/12/24 10:41
+     *
+     */
+    public void delSingle(int id) {
+        String sql = "DELETE FROM singlechoice WHERE squestion_id=?";
+        try {
+            this.update(sql, id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
