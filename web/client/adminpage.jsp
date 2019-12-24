@@ -34,13 +34,13 @@
             <a href="${pageContext.request.contextPath}/client/adminpage.jsp">用户管理</a>
         </li>
         <li class="layui-nav-item" style="margin: 0 5%">
-            <a href="${pageContext.request.contextPath}/client/ManageQbank.jsp">题库管理</a>
+            <a href="${pageContext.request.contextPath}/ManageQbankServlet">题库管理</a>
         </li>
         <li class="layui-nav-item" style="margin: 0 5%">
             <a href="${pageContext.request.contextPath}/client/QuestionsControl.jsp">习题管理</a>
         </li>
         <li class="layui-nav-item" style="margin: 0 5%">
-            <a href="#">导入习题</a>
+            <a href="${pageContext.request.contextPath}/client/Upload.jsp">导入习题</a>
         </li>
         <li class="layui-nav-item" lay-unselect="" style="float: right">
             <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
