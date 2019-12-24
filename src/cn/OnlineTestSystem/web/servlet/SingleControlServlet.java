@@ -18,23 +18,23 @@ import java.util.List;
  * description: TODO
  * create time: 2019/12/24 6:51
  */
-@WebServlet("/QuestionControlServlet")
-public class QuestionControlServlet extends HttpServlet {
+@WebServlet("/SingleControlServlet")
+public class SingleControlServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AdminManagementService service = new AdminManagementService();
-
-        System.out.println("返回：");
         String QuestionType = request.getParameter("qtype");
-        if(QuestionType.equals("") || QuestionType.equals("单选题")){
+        String QuestionText = request.getParameter("qtext");
+        System.out.println(QuestionType);
+        System.out.println(QuestionText);
+     /*   if(QuestionType.equals("") || QuestionType.equals("单选题")){
 
         }else if(QuestionType.equals("多选题")){
 
         }else {
 
-        }
-        System.out.println(request.getParameter("qtext"));
-        System.out.println();
-        /*int page = Integer.parseInt(request.getParameter("page"));
+        }*/
+        int page = Integer.parseInt(request.getParameter("page"));
+        System.out.println(page);
         int limit = Integer.parseInt(request.getParameter("limit"));
         List<User> list = service.getLimitedUser(page, limit);
         for(int i = 0; i < list.size(); i++){
@@ -52,7 +52,7 @@ public class QuestionControlServlet extends HttpServlet {
         json.setCount(service.getUserSize());
         json.setData(list);
         response.setContentType("text/html;charset=utf-8");
-        response.getWriter().write(JSON.toJSONString(json));*/
+        response.getWriter().write(JSON.toJSONString(json));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

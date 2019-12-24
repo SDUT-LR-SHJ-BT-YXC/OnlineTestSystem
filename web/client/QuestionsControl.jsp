@@ -15,15 +15,9 @@
     <script src="../js/echarts.min.js"></script>
     <script src="../js/shj_js/Functions.js"></script>
     <style>
-        .TypeChoice label{
-            width: 120px;
-            height: 30px;
-            line-height: 30px;
-            font-size: 14px;
-        }
-        .TypeChoice input:checked + span {
-            font-weight: bold;
-            font-size: 18px;
+        .layui-tab{
+            width: 1300px;
+            margin: 20px auto;
         }
     </style>
     <script>
@@ -56,23 +50,31 @@
     </ul>
 </div>
 
-<!-- 表格上方选项 -->
-<div style="margin: 20px auto; width: 1300px; margin-bottom: 10px;" class="TypeChoice">
-    <label class="layui-btn layui-btn-sm"><input type="radio" hidden name="QuestionType" value="单选题" checked="checked"><span>单选题</span></label>
-    <label class="layui-btn layui-btn-sm"><input type="radio" hidden name="QuestionType" value="多选题"><span>多选题</span></label>
-    <label class="layui-btn layui-btn-sm"><input type="radio" hidden name="QuestionType" value="填空题"><span>填空题</span></label>
-    <div style="float: right; margin-right: 100px;">
-        <div class="layui-inline">
-            <input class="layui-input" name="id" id="QuestionReload" autocomplete="off" placeholder="输入题干">
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        <li class="layui-this">单选题</li>
+        <li>多选题</li>
+        <li>填空题</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <!-- 表格上方选项 -->
+            <div style="margin:  auto; width: 1300px; margin-bottom: 10px;padding-left: 1000px;">
+                <div class="layui-inline">
+                    <input class="layui-input" name="id" id="singleReload" autocomplete="off" placeholder="输入题干">
+                </div>
+                <button class="layui-btn" data-type="reload">搜索</button>
+            </div>
+
+            <!-- 展示操作记录的表格 -->
+            <div style="width: 1300px; height: 500px; margin: auto">
+                <table id="single_table" lay-filter="test"></table>
+            </div>
+
         </div>
-        <button class="layui-btn" data-type="reload">搜索</button>
+        <div class="layui-tab-item">内容2</div>
+        <div class="layui-tab-item">内容3</div>
     </div>
-
-</div>
-
-<!-- 展示操作记录的表格 -->
-<div style="width: 1300px; height: 500px; margin: auto">
-    <table id="OperationLog_table" lay-filter="test"></table>
 </div>
 
 
@@ -93,41 +95,41 @@
             layer.msg(elem.text());
         });
     });
-
     /***   填充所有科目表格 ***/
     layui.use("table", function () {
         var table = layui.table;
         //执行渲染
         table.render({
-            elem: '#OperationLog_table' //指定原始表格元素选择器（推荐id选择器）
+            elem: '#single_table' //指定原始表格元素选择器（推荐id选择器）
             ,height: 500 //容器高度
-            ,url: '${pageContext.request.contextPath}/QuestionControlServlet'
+            ,url: '${pageContext.request.contextPath}/SingleControlServlet'
             ,page:true
             ,even:true
             ,id:'OperationLog_table'
             ,cols: [
                 [ //表头
                     {field: 'userId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
-                    ,{field: 'power', title: '题库', width:200, fixed: 'left'}
-                    ,{field: 'nickName', title: '昵称', width: 200}
-                    ,{field: 'email', title: '邮箱', width: 600}
-                    ,{field: '', title: '操作', width: 200, templet: '#titleTpl'}
+                    ,{field: 'nickName', title: '题干', width: 200}
+                    ,{field: 'email', title: '选项A', width: 200}
+                    ,{field: 'email', title: '选项B', width: 200}
+                    ,{field: 'email', title: '选项C', width: 200}
+                    ,{field: 'email', title: '选项D', width: 200}
+                    ,{field: 'email', title: '正确答案', width: 200}
+                    ,{field: '', title: '删除', width: 100, templet: '#titleTpl'}
                 ]
             ] //设置表头
         });
-        //搜索框
+        //单选搜索框
         var $ = layui.$, active = {
             reload: function(){
-                var question = $('#QuestionReload');
-                var qtype = $('input[name="QuestionType"]:checked');
+                var question = $('#singleReload');
                 //执行重载
                 table.reload('OperationLog_table', {
                     page: {
-                        curr: 2 //重新从第 1 页开始
+                        curr: 1 //重新从第 1 页开始
                     }
                     ,where: {
                         qtext: question.val()
-                        ,qtype:qtype.val()
                     }
                 }, 'data');
             }
@@ -141,7 +143,7 @@
 
 <!-- 数据表格操作列引用模板  -->
 <script type="text/html" id="titleTpl">
-    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmChangeRole('${pageContext.request.contextPath}/ChangeRoleServlet?id={{d.userId}}', '{{d.nickName}}', '{{d.power}}')">变更权限</button>
+    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmChangeRole('${pageContext.request.contextPath}/ChangeRoleServlet?id={{d.userId}}')">删除</button>
 </script>
 
 </body>
