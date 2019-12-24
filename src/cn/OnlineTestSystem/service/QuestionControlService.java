@@ -1,17 +1,15 @@
 package cn.OnlineTestSystem.service;
 
+import cn.OnlineTestSystem.dao.SinglechoiceDAO;
+import cn.OnlineTestSystem.daoimpl.SinglechoiceDAOImpl;
+import cn.OnlineTestSystem.daoimpl.UserDAOImpl;
 import cn.OnlineTestSystem.domain.Singlechoice;
-import cn.OnlineTestSystem.domain.User;
 
 import java.util.List;
 
 public class QuestionControlService {
 
-    private Singlechoice dao;
-
-    public QuestionControlService(){
-        dao = new Singlechoice();
-    }
+    public SinglechoiceDAOImpl singledimpl = new SinglechoiceDAOImpl();
 
     /**
      * create by: yinxiaochen
@@ -22,7 +20,7 @@ public class QuestionControlService {
      */
     public List<Singlechoice> getLimitedSingle(int page, int limit, String search){
         int start = limit * (page - 1);
-        List<Singlechoice> list = dao.getLimitedUser(start, limit);
+        List<Singlechoice> list = singledimpl.getLimitedSingle(start, limit, search);
         return list;
     }
     /**
@@ -34,6 +32,6 @@ public class QuestionControlService {
      * @return
      */
     public int getSingleSize(){
-        return 0;
+        return singledimpl.getSingleCount();
     }
 }

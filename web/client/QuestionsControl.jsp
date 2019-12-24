@@ -118,7 +118,8 @@
             ,cols: [
                 [ //表头
                     {field: 'squestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
-                    ,{field: 'questionText', title: '题干', width: 400}
+                    ,{field: 'name', title: '题库', width: 100}
+                    ,{field: 'questionText', title: '题干', width: 300}
                     ,{field: 'answer1', title: '选项A', width: 150}
                     ,{field: 'answer2', title: '选项B', width: 150}
                     ,{field: 'answer3', title: '选项C', width: 150}
@@ -135,7 +136,7 @@
                     qtext: $('#singleReload').val()
                 }
                 ,page: {
-                    curr: 2 //重新从第 1 页开始
+                    curr: 1 //重新从第 1 页开始
                 }
             });
         });

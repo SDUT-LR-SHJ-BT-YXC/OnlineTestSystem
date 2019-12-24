@@ -16,11 +16,12 @@ public class Singlechoice {
     private String answer4;
     private String stdAnswer;
     private Integer qbankId;//1-29999
+    private String name;
 
     public Singlechoice() {
     }
 
-    public Singlechoice(Integer squestionId, String questionText, String answer1, String answer2, String answer3, String answer4, String stdAnswer, Integer qbankId) {
+    public Singlechoice(Integer squestionId, String questionText, String answer1, String answer2, String answer3, String answer4, String stdAnswer, Integer qbankId, String name) {
         this.squestionId = squestionId;
         this.questionText = questionText;
         this.answer1 = answer1;
@@ -29,6 +30,7 @@ public class Singlechoice {
         this.answer4 = answer4;
         this.stdAnswer = stdAnswer;
         this.qbankId = qbankId;
+        this.name = name;
     }
 
     public Integer getSquestionId() {
@@ -93,5 +95,13 @@ public class Singlechoice {
 
     public void setQbankId(Integer qbankId) {
         this.qbankId = qbankId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

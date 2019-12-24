@@ -3,6 +3,7 @@ package cn.OnlineTestSystem.daoimpl;
 import cn.OnlineTestSystem.dao.BaseDAO;
 import cn.OnlineTestSystem.dao.SinglechoiceDAO;
 import cn.OnlineTestSystem.domain.Singlechoice;
+import cn.OnlineTestSystem.domain.User;
 
 import java.sql.SQLException;
 import java.util.Iterator;
@@ -165,5 +166,42 @@ public class SinglechoiceDAOImpl extends BaseDAO<Singlechoice> implements Single
             e.printStackTrace();
         }
         return  null;
+    }
+
+    @Override
+    /**
+     * @Author: yinxiaochen
+     * @Description: 搜索获取有限单选信息
+     * @Param: int start, int limit
+     * @Return: List<Singlechoice>
+     * @Date: 09:34 2019-12-24
+     */
+    public List<Singlechoice> getLimitedSingle(int start, int limit, String search) {
+        String sql = "SELECT * FROM singlechoice INNER JOIN qbank ON qbank.qbank_id=singlechoice.qbank_id WHERE question_text LIKE '%" + search + "%' ORDER BY qbank.qbank_id LIMIT " + start + "," + limit;
+        try {
+            return this.getForList(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
+
+    @Override
+    /**
+     * @Author: yinxiaochen
+     * @Description: 获取单选表行数
+     * @Param:
+     * @Return:
+     * @Date: 21:41 2019-12-23
+     */
+    public int getSingleCount() {
+        String sql = "SELECT COUNT(*) FROM singlechoice";
+        try {
+            Long c =  this.getForValue(sql);
+            return c.intValue();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

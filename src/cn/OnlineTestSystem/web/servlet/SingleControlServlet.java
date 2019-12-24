@@ -24,9 +24,12 @@ import java.util.List;
 public class SingleControlServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         QuestionControlService service = new QuestionControlService();
-        String QuestionText = request.getParameter("qtext");
+        String QuestionText = "";
+        if(request.getParameter("qtext") != null)
+            QuestionText = request.getParameter("qtext");
         int page = Integer.parseInt(request.getParameter("page"));
         int limit = Integer.parseInt(request.getParameter("limit"));
+        System.out.println(QuestionText+page+limit);
         List<Singlechoice> list = service.getLimitedSingle(page, limit, QuestionText);
         AllToJSON<Singlechoice> json = new AllToJSON<Singlechoice>();
         json.setCode(0);

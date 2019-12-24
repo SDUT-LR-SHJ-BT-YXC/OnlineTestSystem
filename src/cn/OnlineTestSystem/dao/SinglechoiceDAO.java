@@ -1,5 +1,6 @@
 package cn.OnlineTestSystem.dao;
 import cn.OnlineTestSystem.domain.Singlechoice;
+import cn.OnlineTestSystem.domain.User;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface SinglechoiceDAO {
     public Singlechoice findSinglechoiceById(Integer id);
     public List<Singlechoice> findSinglechoiceByQbankId(Integer id);
     public List<Singlechoice> findRandomSinglechoices(Integer qbankId, Integer n);
+    public List<Singlechoice> getLimitedSingle(int start, int limit, String search);
+    public int getSingleCount();
 }
