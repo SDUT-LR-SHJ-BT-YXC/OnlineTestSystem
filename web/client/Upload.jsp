@@ -21,13 +21,13 @@
             <a href="${pageContext.request.contextPath}/client/adminpage.jsp">用户管理</a>
         </li>
         <li class="layui-nav-item layui-this" style="margin: 0 5%">
-            <a href="#">题库管理</a>
+            <a href="${pageContext.request.contextPath}/ManageQbankServlet">题库管理</a>
         </li>
         <li class="layui-nav-item" style="margin: 0 5%">
-            <a href="#">习题管理</a>
+            <a href="${pageContext.request.contextPath}/client/QuestionsControl.jsp">习题管理</a>
         </li>
         <li class="layui-nav-item" style="margin: 0 5%">
-            <a href="#">导入习题</a>
+            <a href="${pageContext.request.contextPath}/client/Upload.jsp">导入习题</a>
         </li>
         <li class="layui-nav-item" lay-unselect="" style="float: right">
             <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
@@ -40,7 +40,7 @@
 </div>
 <div>
 </div>
-<div class="layui-upload">
+<div class="layui-upload" style="margin-top: 30px;margin-left: 30px;">
     <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
     <div class="layui-upload-list">
         <table class="layui-table">
@@ -98,6 +98,7 @@
                 });
             }
             ,done: function(res, index, upload){
+                console.log("成功");
                 if(res.code == 0){ //上传成功
                     var tr = demoListView.find('tr#upload-'+ index)
                         ,tds = tr.children();
@@ -108,6 +109,7 @@
                 this.error(index, upload);
             }
             ,error: function(index, upload){
+                console.log("失败");
                 var tr = demoListView.find('tr#upload-'+ index)
                     ,tds = tr.children();
                 tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
