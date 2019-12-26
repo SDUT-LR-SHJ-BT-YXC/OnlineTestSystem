@@ -3,7 +3,6 @@ package cn.OnlineTestSystem.web.servlet;
 import cn.OnlineTestSystem.domain.*;
 import cn.OnlineTestSystem.service.UpLoadService;
 import com.alibaba.fastjson.JSON;
-import jdk.internal.util.xml.impl.Input;
 import org.apache.commons.fileupload.*;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;

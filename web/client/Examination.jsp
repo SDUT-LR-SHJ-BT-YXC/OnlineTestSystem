@@ -66,7 +66,7 @@
             <div style="width: 70%; margin: 0 auto;">
                 <!---   填空题 ---->
                 <c:forEach items="${sessionScope.paper.blanktests}" var="test" varStatus="status">
-                    <blockquote class="layui-elem-quote">${status.count}.${test.questionText}</blockquote>
+                    <blockquote class="layui-elem-quote">${status.count}.${test.questionText} [2分]</blockquote>
                     <blockquote class="layui-elem-quote layui-quote-nm" style="height: 30px;">
                         <span>答：</span>
                         <input type="text" name="b${status.index}"  placeholder="请输入答案" autocomplete="off" class="layui-input" style="width:95%;display: inline; ">
@@ -75,7 +75,7 @@
 
                 <!-- 单选题 ---->
                 <c:forEach items="${sessionScope.paper.singlechoices}" var="test" varStatus="status">
-                    <blockquote class="layui-elem-quote">${bnum + status.count}.${test.questionText}</blockquote>
+                    <blockquote class="layui-elem-quote">${bnum + status.count}.（单选）${test.questionText} [3分]</blockquote>
                     <blockquote class="layui-elem-quote layui-quote-nm">
                         <div class="layui-form-item" style="height: 15px">
                             <div class="layui-input-block" style="margin-left: 0px">
@@ -90,7 +90,7 @@
 
                 <!-- 多选题 -->
                 <c:forEach items="${sessionScope.paper.multiplechoices}" var="test" varStatus="status">
-                    <blockquote class="layui-elem-quote">${bnum + snum + status.count}.${test.questionText}</blockquote>
+                    <blockquote class="layui-elem-quote">${bnum + snum + status.count}.（多选）${test.questionText}[5分]</blockquote>
                     <blockquote class="layui-elem-quote layui-quote-nm">
                         <div class="layui-form-item" style="height: 15px">
                             <div class="layui-input-block" style="margin-left: 0px">

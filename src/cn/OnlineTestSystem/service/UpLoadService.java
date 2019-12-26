@@ -6,7 +6,6 @@ import cn.OnlineTestSystem.daoimpl.SinglechoiceDAOImpl;
 import cn.OnlineTestSystem.domain.Blanktest;
 import cn.OnlineTestSystem.domain.Multiplechoice;
 import cn.OnlineTestSystem.domain.Singlechoice;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.List;
 /**

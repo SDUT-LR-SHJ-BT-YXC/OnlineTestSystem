@@ -148,12 +148,13 @@ function confirmSubmit(id) {
     layui.use("layer", function () {
         layer = layui.layer;
         layer.confirm('请检查试题都已完成，确定要交卷吗？', {
-            btn: ['确定','取消'] //按钮
+            btn: ['确定','取消'] , //按钮
+            fixed:true,
+            offset:'auto',
         }, function(){
             window.localStorage.setItem("flag", true);
             form.submit();
         }, function(){
-
         });
     });
 }
