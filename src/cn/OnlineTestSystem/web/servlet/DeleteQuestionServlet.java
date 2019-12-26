@@ -18,6 +18,10 @@ public class DeleteQuestionServlet extends HttpServlet {
         QuestionControlService service = new QuestionControlService();
         if(type.equals("single")){
             service.delSingle(id);
+        }else if(type.equals("multiple")){
+            service.delmultiple(id);
+        }else {
+            service.delblank(id);
         }
         response.sendRedirect(request.getContextPath() + "/client/QuestionsControl.jsp");
     }
