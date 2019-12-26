@@ -73,10 +73,9 @@ public class UpLoadServlet extends HttpServlet {
                             multiplechoice = new Multiplechoice();
                             int mquestion_id = (int)row.getCell(1).getNumericCellValue();
                             multiplechoice.setMquestionId(mquestion_id);
-                            System.out.println("__________________"+mquestion_id);
 
                             row.getCell(2).setCellType(CellType.STRING);
-                            String question_text = row.getCell(2).getStringCellValue().toString();
+                            String question_text = row.getCell(2).getStringCellValue();
                             multiplechoice.setQuestionText(question_text);
 
                             row.getCell(3).setCellType(CellType.STRING);
@@ -103,7 +102,6 @@ public class UpLoadServlet extends HttpServlet {
                             multiplechoice.setQbankId(qbank_id);
 
                             MuList.add(multiplechoice);
-                            System.out.println("又怎么了" +MuList.size());
                         }
                         //上传文件为单选题
                         else if(flag == 2){

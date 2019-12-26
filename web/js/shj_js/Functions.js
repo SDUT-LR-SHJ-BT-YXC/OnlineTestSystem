@@ -150,7 +150,7 @@ function confirmSubmit(id) {
         layer.confirm('请检查试题都已完成，确定要交卷吗？', {
             btn: ['确定','取消'] , //按钮
             fixed:true,
-            offset:'auto',
+            offset:'150px',
         }, function(){
             window.localStorage.setItem("flag", true);
             form.submit();
