@@ -58,12 +58,29 @@
         </li>
     </ul>
 </div>
-
+<script type="text/javascript">
+    $(function(){
+        var type = '<%= session.getAttribute("QCmark")%>';
+        if(type == '2')
+            $('#tab2').click();
+        else if(type == '3')
+            $('#tab3').click();
+    })
+    $("#tab1").click(function () {
+        sessionStorage.setItem('QCmark', '1');
+    });
+    $("#tab2").click(function () {
+        sessionStorage.setItem('QCmark', '2');
+    });
+    $("#tab3").click(function () {
+        sessionStorage.setItem('QCmark', '3');
+    });
+</script>
 <div class="layui-tab">
     <ul class="layui-tab-title">
-        <li class="layui-this">单选题</li>
-        <li>多选题</li>
-        <li>填空题</li>
+        <li id="tab1" class="layui-this">单选题</li>
+        <li id="tab2">多选题</li>
+        <li id="tab3">填空题</li>
     </ul>
     <div class="layui-tab-content">
         <!-- 单选 -->
@@ -167,13 +184,13 @@
         table.render({
             elem: '#multiple_table' //指定原始表格元素选择器（推荐id选择器）
             ,height: 450 //容器高度
-            ,url: '${pageContext.request.contextPath}/SingleControlServlet'
+            ,url: '${pageContext.request.contextPath}/MultipleControlServlet'
             ,page:true
             ,even:true
             ,id:'multiple_table'
             ,cols: [
                 [ //表头
-                    {field: 'squestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
+                    {field: 'mquestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
                     ,{field: 'qbankId', title: '题库ID', width: 100}
                     ,{field: 'name', title: '题库', width: 100}
                     ,{field: 'questionText', title: '题干', width: 200}
@@ -247,7 +264,7 @@
 </script>
 <!-- 多选表格操作列引用模板  -->
 <script type="text/html" id="multipleTpl">
-    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmDelete('${pageContext.request.contextPath}/DeleteQuestionServlet?id={{d.squestionId}}&type=multiple')">删除</button>
+    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmDelete('${pageContext.request.contextPath}/DeleteQuestionServlet?id={{d.mquestionId}}&type=multiple')">删除</button>
 </script>
 <!-- 填空表格操作列引用模板  -->
 <script type="text/html" id="blankTpl">

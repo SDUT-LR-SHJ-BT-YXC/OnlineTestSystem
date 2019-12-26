@@ -4,6 +4,7 @@ import cn.OnlineTestSystem.dao.BaseDAO;
 import cn.OnlineTestSystem.dao.MultiplechoiceDAO;
 import cn.OnlineTestSystem.domain.Blanktest;
 import cn.OnlineTestSystem.domain.Multiplechoice;
+import cn.OnlineTestSystem.domain.Singlechoice;
 
 import java.sql.SQLException;
 import java.util.Iterator;
@@ -166,5 +167,58 @@ public class MultiplechoiceDAOImpl extends BaseDAO<Multiplechoice> implements Mu
             e.printStackTrace();
         }
         return  null;
+    }
+
+    @Override
+    /**
+     * @Author: yinxiaochen
+     * @Description: 搜索获取有限单选信息
+     * @Param: int start, int limit
+     * @Return: List<Singlechoice>
+     * @Date: 06:15 2019-12-27
+     */
+    public List<Multiplechoice> getLimitedMultiple(int start, int limit, String search) {
+        String sql = "SELECT * FROM multiplechoice INNER JOIN qbank ON qbank.qbank_id=multiplechoice.qbank_id WHERE question_text LIKE '%" + search + "%' ORDER BY qbank.qbank_id LIMIT " + start + "," + limit;
+        try {
+            return this.getForList(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
+
+    @Override
+    /**
+     * @Author: yinxiaochen
+     * @Description: 获取多选表行数
+     * @Param:
+     * @Return:
+     * @Date: 06:15 2019-12-27
+     */
+    public int getMultipleCount() {
+        String sql = "SELECT COUNT(*) FROM multiplechoice";
+        try {
+            Long c =  this.getForValue(sql);
+            return c.intValue();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Override
+    /**
+     * create by: yinxiaochen
+     * description: 按id删除多选题
+     * create time: 06:15 2019-12-27
+     *
+     */
+    public void delMultiple(int id) {
+        String sql = "DELETE FROM multiplechoice WHERE mquestion_id=?";
+        try {
+            this.update(sql, id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

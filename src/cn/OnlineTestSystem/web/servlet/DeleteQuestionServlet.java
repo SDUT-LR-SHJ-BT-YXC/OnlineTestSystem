@@ -16,12 +16,15 @@ public class DeleteQuestionServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String type = request.getParameter("type");
         QuestionControlService service = new QuestionControlService();
+        request.getSession().setAttribute("QCmark", '1');
         if(type.equals("single")){
             service.delSingle(id);
         }else if(type.equals("multiple")){
-            service.delmultiple(id);
+            service.delMultiple(id);
+            request.getSession().setAttribute("QCmark", '2');
         }else {
-            service.delblank(id);
+            service.delBlank(id);
+            request.getSession().setAttribute("QCmark", '3');
         }
         response.sendRedirect(request.getContextPath() + "/client/QuestionsControl.jsp");
     }
