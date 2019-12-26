@@ -14,11 +14,10 @@ public class DeleteQuestionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         int id = Integer.parseInt(request.getParameter("id"));
-        int qbankid = Integer.parseInt(request.getParameter("qbankid"));
         String type = request.getParameter("type");
         QuestionControlService service = new QuestionControlService();
         if(type.equals("single")){
-            service.delSingle(id, qbankid);
+            service.delSingle(id);
         }
         response.sendRedirect(request.getContextPath() + "/client/QuestionsControl.jsp");
     }

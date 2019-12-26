@@ -44,7 +44,7 @@ public class QuestionControlService {
       * @Param: null
      * @return
      */
-    public void delSingle(int id, int qbankid){
+    public void delSingle(int id){
         singledimpl.delSingle(id);
     }
 }

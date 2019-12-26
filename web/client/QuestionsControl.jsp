@@ -66,6 +66,7 @@
         <li>填空题</li>
     </ul>
     <div class="layui-tab-content">
+        <!-- 单选 -->
         <div class="layui-tab-item layui-show">
             <!-- 表格上方选项 -->
             <div style="margin-left: 1000px; width: 300px; margin-bottom: 10px;">
@@ -80,8 +81,40 @@
                 <table id="single_table" lay-filter="single_table"></table>
             </div>
         </div>
-        <div class="layui-tab-item">内容2</div>
-        <div class="layui-tab-item">内容3</div>
+        <!-- 多选 -->
+        <div class="layui-tab-item">
+            <div class="layui-tab-item layui-show">
+                <!-- 表格上方选项 -->
+                <div style="margin-left: 1000px; width: 300px; margin-bottom: 10px;">
+                    <div class="layui-inline">
+                        <input class="layui-input" name="id" id="multipleReload" autocomplete="off" placeholder="输入题干">
+                    </div>
+                    <button class="layui-btn" data-type="reload" id="searchmultiple">搜索</button>
+                </div>
+
+                <!-- 展示操作记录的表格 -->
+                <div style="width: 1300px; height: 450px; margin: auto">
+                    <table id="multiple_table" lay-filter="multiple_table"></table>
+                </div>
+            </div>
+        </div>
+        <!-- 填空 -->
+        <div class="layui-tab-item">
+            <div class="layui-tab-item layui-show">
+                <!-- 表格上方选项 -->
+                <div style="margin-left: 1000px; width: 300px; margin-bottom: 10px;">
+                    <div class="layui-inline">
+                        <input class="layui-input" name="id" id="blankReload" autocomplete="off" placeholder="输入题干">
+                    </div>
+                    <button class="layui-btn" data-type="reload" id="searchblank">搜索</button>
+                </div>
+
+                <!-- 展示操作记录的表格 -->
+                <div style="width: 1300px; height: 450px; margin: auto">
+                    <table id="blank_table" lay-filter="blank_table"></table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -130,6 +163,48 @@
                 ]
             ] //设置表头
         });
+        //多选表格
+        table.render({
+            elem: '#multiple_table' //指定原始表格元素选择器（推荐id选择器）
+            ,height: 450 //容器高度
+            ,url: '${pageContext.request.contextPath}/SingleControlServlet'
+            ,page:true
+            ,even:true
+            ,id:'multiple_table'
+            ,cols: [
+                [ //表头
+                    {field: 'squestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
+                    ,{field: 'qbankId', title: '题库ID', width: 100}
+                    ,{field: 'name', title: '题库', width: 100}
+                    ,{field: 'questionText', title: '题干', width: 200}
+                    ,{field: 'answer1', title: '选项A', width: 150}
+                    ,{field: 'answer2', title: '选项B', width: 150}
+                    ,{field: 'answer3', title: '选项C', width: 150}
+                    ,{field: 'answer4', title: '选项D', width: 150}
+                    ,{field: 'stdAnswer', title: '正确答案', width: 150}
+                    ,{field: '', title: '操作', width: 100, templet: '#multipleTpl'}
+                ]
+            ] //设置表头
+        });
+        //填空表格
+        table.render({
+            elem: '#blank_table' //指定原始表格元素选择器（推荐id选择器）
+            ,height: 450 //容器高度
+            ,url: '${pageContext.request.contextPath}/SingleControlServlet'
+            ,page:true
+            ,even:true
+            ,id:'blank_table'
+            ,cols: [
+                [ //表头
+                    {field: 'squestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
+                    ,{field: 'qbankId', title: '题库ID', width: 100}
+                    ,{field: 'name', title: '题库', width: 100}
+                    ,{field: 'questionText', title: '题干', width: 200}
+                    ,{field: 'stdAnswer', title: '正确答案', width: 600}
+                    ,{field: '', title: '操作', width: 100, templet: '#blankTpl'}
+                ]
+            ] //设置表头
+        });
         //单选搜索
         $("#searchsingle").click(function () {
             table.reload('single_table', {
@@ -141,24 +216,42 @@
                 }
             });
         });
-    });
-    layui.use('table', function(){
-        var table = layui.table;
-
-        //监听单元格编辑
-        table.on('edit(single_table)', function(obj){
-            var value = obj.value //得到修改后的值
-                ,data = obj.data //得到所在行所有键值
-                ,field = obj.field; //得到字段
-            editQuestion('${pageContext.request.contextPath}', 'single', '1', '1', '1');
-            layer.msg('[题目ID: '+ data.squestionId +'] ' + field + ' 字段更改为：'+ value);
+        //多选搜索
+        $("#searchmultiple").click(function () {
+            table.reload('multiple_table', {
+                where: { //设定异步数据接口的额外参数，任意设
+                    qtext: $('#multipleReload').val()
+                }
+                ,page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        });
+        //填空搜索
+        $("#searchblank").click(function () {
+            table.reload('blank_table', {
+                where: { //设定异步数据接口的额外参数，任意设
+                    qtext: $('#blankReload').val()
+                }
+                ,page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
         });
     });
 </script>
 
-<!-- 数据表格操作列引用模板  -->
+<!-- 单选表格操作列引用模板  -->
 <script type="text/html" id="singleTpl">
-    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmDelete('${pageContext.request.contextPath}/DeleteQuestionServlet?id={{d.squestionId}}&type=single&qbankid={{d.qbankId}}')">删除</button>
+    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmDelete('${pageContext.request.contextPath}/DeleteQuestionServlet?id={{d.squestionId}}&type=single')">删除</button>
+</script>
+<!-- 多选表格操作列引用模板  -->
+<script type="text/html" id="multipleTpl">
+    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmDelete('${pageContext.request.contextPath}/DeleteQuestionServlet?id={{d.squestionId}}&type=multiple')">删除</button>
+</script>
+<!-- 填空表格操作列引用模板  -->
+<script type="text/html" id="blankTpl">
+    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmDelete('${pageContext.request.contextPath}/DeleteQuestionServlet?id={{d.squestionId}}&type=blank')">删除</button>
 </script>
 
 </body>
