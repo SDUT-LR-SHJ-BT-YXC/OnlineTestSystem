@@ -103,7 +103,11 @@ public class ExaminationService {
             if(test.getStdAnswer().equals(rb.get(i))){
                 score += 2;
             }else{
-                Wronganswerrecord record = new Wronganswerrecord(test.getBquestionId(), rb.get(i),time, paper.getUserid());
+                String rawAnswer = rb.get(i);
+                if(rawAnswer == null){
+                    rawAnswer = "";
+                }
+                Wronganswerrecord record = new Wronganswerrecord(test.getBquestionId(), rawAnswer,time, paper.getUserid());
                 recordDAO.addWronganswerrecord(record);
             }
         }
@@ -114,7 +118,11 @@ public class ExaminationService {
             if(test.getStdAnswer().equals(rs.get(i))){
                 score += 3;
             }else{
-                Wronganswerrecord record = new Wronganswerrecord(test.getSquestionId(), rs.get(i), time, paper.getUserid());
+                String rawAnswer = rs.get(i);
+                if(rawAnswer == null){
+                    rawAnswer = "";
+                }
+                Wronganswerrecord record = new Wronganswerrecord(test.getSquestionId(), rawAnswer, time, paper.getUserid());
                 recordDAO.addWronganswerrecord(record);
             }
         }
@@ -125,7 +133,11 @@ public class ExaminationService {
             if(test.getStdAnswer().equals(rm.get(i))){
                 score += 5;
             }else{
-                Wronganswerrecord record = new Wronganswerrecord(test.getMquestionId(), rm.get(i), time, paper.getUserid());
+                String rawAnswer = rm.get(i);
+                if(rawAnswer == null){
+                    rawAnswer = "";
+                }
+                Wronganswerrecord record = new Wronganswerrecord(test.getMquestionId(), rawAnswer, time, paper.getUserid());
                 recordDAO.addWronganswerrecord(record);
             }
         }
