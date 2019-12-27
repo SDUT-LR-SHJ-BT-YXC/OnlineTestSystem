@@ -49,7 +49,6 @@ public class ForgetPasswordServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("useremail",email);
         session.setAttribute("code", code);
-        System.out.println((Integer) session.getAttribute("code") + "_____________________________");
         response.sendRedirect(request.getContextPath() + "/client/changepassword.jsp");
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

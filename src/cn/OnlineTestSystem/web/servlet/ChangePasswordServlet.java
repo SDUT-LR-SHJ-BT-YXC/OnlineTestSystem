@@ -34,7 +34,6 @@ public class ChangePasswordServlet extends HttpServlet {
             e.printStackTrace();
         }
         session.setAttribute("code", code);
-        System.out.println(code);
         response.sendRedirect(request.getContextPath() + "/client/changepassword.jsp");
     }
 
