@@ -29,10 +29,10 @@
             <a href="#">错题记录</a>
         </li>
         <li class="layui-nav-item" style="margin: 0px 5%">
-            <a href="">关于我们</a>
+            <a href="${pageContext.request.contextPath}/client/aboutus.jsp">关于我们</a>
         </li>
         <li class="layui-nav-item" style="margin: 0px 5%">
-            <a href="${pageContext.request.contextPath}/DownloadServlet">题库下载<span class="layui-badge-dot"></span></a>
+            <a href="${pageContext.request.contextPath}/DownloadServlet">题库下载</a>
         </li>
         <li class="layui-nav-item" lay-unselect="" style="float: right">
             <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
@@ -68,12 +68,12 @@
                 <div class="layui-tab-item">
                     <div class="layui-container " style="margin-top:60px;height:100%;">
 
-                        <table class="layui-table" lay-even lay-skin="row" lay-size="lg">
+                        <table class="layui-table" lay-size="lg">
                             <tr>
-                                <th style="background-color:#f6cec1;text-align:center;"><font size=4px;>题库ID</font></th>
-                                <th style="background-color:#f6cec1;text-align:center;"><font size=4px;>题库名称</font></th>
-                                <th style="background-color:#f6cec1;text-align:center;"><font size=4px;>题库总数</font></th>
-                                <th style="background-color:#f6cec1;"></th>
+                                <th style="background-color:#F5F5F5;text-align:center;"><font size=4px;>题库ID</font></th>
+                                <th style="background-color:#F5F5F5;text-align:center;"><font size=4px;>题库名称</font></th>
+                                <th style="background-color:#F5F5F5;text-align:center;"><font size=4px;>题库总数</font></th>
+                                <th style="background-color:#F5F5F5;"></th>
                             </tr>
 
                             <c:forEach var = "WAqbank" items="${WAqbanks}" >
