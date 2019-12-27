@@ -84,4 +84,27 @@ public class QbankService {
     public boolean addQbank(Qbank qbank){
         return  dao.addQbank(qbank);
     }
+
+    /**
+     * @Author: Shangjin
+     * @Description: 获取题库数目
+     * @Param:
+     * @Return:
+     * @Date: 15:06 2019-12-27
+     */
+    public Integer getQbankNum(){
+        return  dao.getQbankNum();
+    }
+
+    /**
+     * @Author: Shangjin
+     * @Description: 获取限定区间的题库信息
+     * @Param:
+     * @Return:
+     * @Date: 15:06 2019-12-27
+     */
+    public List<Qbank> getLimitedQbank(int page, int limit){
+        int start = limit * (page - 1);
+        return dao.getLimitedQband(start, limit);
+    }
 }

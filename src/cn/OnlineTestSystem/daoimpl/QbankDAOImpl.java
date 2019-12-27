@@ -3,6 +3,7 @@ package cn.OnlineTestSystem.daoimpl;
 import cn.OnlineTestSystem.dao.BaseDAO;
 import cn.OnlineTestSystem.dao.QbankDAO;
 import cn.OnlineTestSystem.domain.Qbank;
+import org.apache.commons.beanutils.BaseDynaBeanMapDecorator;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -137,5 +138,27 @@ public class QbankDAOImpl extends BaseDAO<Qbank> implements QbankDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public Integer getQbankNum() {
+        String sql = "SELECT COUNT(*) FROM qbank";
+        try {
+            return Integer.parseInt(this.getForValue(sql).toString());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Qbank> getLimitedQband(int start, int limit) {
+        String sql = "SELECT * FROM qbank limit ?, ?";
+        try {
+            return this.getForList(sql, start, limit);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

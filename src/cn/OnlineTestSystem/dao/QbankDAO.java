@@ -19,4 +19,6 @@ public interface QbankDAO {
     public Qbank findQbankById(Integer id);
     public List<Qbank> getAllQbank();
     public Boolean changeNum(Qbank qbank);
+    public Integer getQbankNum();
+    public List<Qbank> getLimitedQband(int page, int limit);
 }
