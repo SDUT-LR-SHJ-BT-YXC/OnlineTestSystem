@@ -21,4 +21,7 @@ public interface MultiplechoiceDAO {
     public Boolean delMultiplechoicesByQbankId(Integer id);
     public Boolean modifyMultiplechoice(Multiplechoice test);
     public List<Multiplechoice> findRandomChoices(Integer qbankId, Integer n);
+    public List<Multiplechoice> getLimitedMultiple(int start, int limit, String search);
+    public int getMultipleCount();
+    public void delMultiple(int id);
 }

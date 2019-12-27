@@ -16,8 +16,9 @@ public class Multiplechoice {
     private String answer4;
     private String stdAnswer;
     private Integer qbankId;//30000—59999
+    private String name;
 
-    public Multiplechoice(Integer mquestionId, String questionText, String answer1, String answer2, String answer3, String answer4, String stdAnswer, Integer qbankId) {
+    public Multiplechoice(Integer mquestionId, String questionText, String answer1, String answer2, String answer3, String answer4, String stdAnswer, Integer qbankId, String name) {
         this.mquestionId = mquestionId;
         this.questionText = questionText;
         this.answer1 = answer1;
@@ -26,6 +27,7 @@ public class Multiplechoice {
         this.answer4 = answer4;
         this.stdAnswer = stdAnswer;
         this.qbankId = qbankId;
+        this.name = name;
     }
 
     public Multiplechoice() {
@@ -93,5 +95,13 @@ public class Multiplechoice {
 
     public void setQbankId(Integer qbankId) {
         this.qbankId = qbankId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

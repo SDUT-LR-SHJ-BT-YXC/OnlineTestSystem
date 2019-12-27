@@ -30,7 +30,7 @@
 </script>
 <div class="layui-header" >
     <ul class="layui-nav">
-        <li class="layui-nav-item" style="margin: 0 5%">
+        <li class="layui-nav-item layui-this" style="margin: 0 5%">
             <a href="${pageContext.request.contextPath}/client/adminpage.jsp">用户管理</a>
         </li>
         <li class="layui-nav-item" style="margin: 0 5%">
@@ -52,7 +52,7 @@
     </ul>
 </div>
 <!-- 展示操作记录的表格 --->
-<div style="width: 1300px; height: 500px; margin: 50px auto">
+<div style="width: 1300px; height: 650px; margin: 50px auto">
     <table id="OperationLog_table" lay-filter="test"></table>
 </div>
 
@@ -87,10 +87,10 @@
             ,even:true
             ,cols: [
                 [ //表头
-                    {field: 'userId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
+                    {field: 'userId', title: 'ID', width:100, fixed: 'left', align:"center", unresize:"false"}
                     ,{field: 'power', title: '权限', width:200, fixed: 'left'}
                     ,{field: 'nickName', title: '昵称', width: 200}
-                    ,{field: 'email', title: '邮箱', width: 600}
+                    ,{field: 'email', title: '邮箱', width: 570}
                     ,{field: '', title: '操作', width: 200, templet: '#titleTpl'}
                 ]
             ] //设置表头
