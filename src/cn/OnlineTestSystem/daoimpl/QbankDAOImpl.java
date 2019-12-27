@@ -25,9 +25,9 @@ public class QbankDAOImpl extends BaseDAO<Qbank> implements QbankDAO {
      * @Date: 21:49 2019-11-29
      */
     public Boolean addQbank(Qbank qbank) {
-        String sql = "INSERT INTO qbank(name, single_choice_num, multiple_choice_num, blanks_num) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO qbank(qbank_id, name, single_choice_num, multiple_choice_num, blanks_num) VALUES(?,?,?,?,?)";
         try {
-            this.update(sql,qbank.getName(), qbank.getSingleChoiceNum(), qbank.getMultipleChoiceNum(), qbank.getBlanksNum());
+            this.update(sql,qbank.getQbankId(),qbank.getName(), qbank.getSingleChoiceNum(), qbank.getMultipleChoiceNum(), qbank.getBlanksNum());
             return  true;
         } catch (SQLException e) {
             e.printStackTrace();

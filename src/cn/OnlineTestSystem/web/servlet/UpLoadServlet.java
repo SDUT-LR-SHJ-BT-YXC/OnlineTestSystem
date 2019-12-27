@@ -43,10 +43,10 @@ public class UpLoadServlet extends HttpServlet {
         }
         try {
             int flag=0;
+            String FileName = null;
+            String filename = null;
             List<FileItem> list = upload.parseRequest(request);
             for (FileItem item :list){
-                    String filename = item.getName();
-                    System.out.println("文件名"+filename);
                     //获取文件输入流
                     InputStream in = item.getInputStream();
                     //获取工作簿
@@ -57,20 +57,33 @@ public class UpLoadServlet extends HttpServlet {
                     for(Row row: sheetAt) {
                         if (row.getRowNum() == 0&&row.getCell(0).toString().equals("multiplechoice")) {
                             flag = 1;
+                            FileName = item.getName();
+                            String namesplit[] = FileName.split("\\.");
+                            filename = namesplit[0];
+                            System.out.println("切割后文件名"+filename);
                             continue;
                         }
                         else if(row.getRowNum() == 0&&row.getCell(0).toString().equals("singlechoice")){
                             flag = 2;
+                            FileName = item.getName();
+                            String namesplit[] = FileName.split("\\.");
+                            filename = namesplit[0];
+                            System.out.println("切割后文件名"+filename);
                             continue;
                         }
                         else if (row.getRowNum() ==0&&row.getCell(0).toString().equals("blanktest")){
                             flag = 3;
+                            FileName = item.getName();
+                            String namesplit[] = FileName.split("\\.");
+                            filename = namesplit[0];
+                            System.out.println("切割后文件名"+filename);
                             continue;
                         }
 
                         //上传文件为多选题
                         if(flag == 1){
                             multiplechoice = new Multiplechoice();
+                            row.getCell(1).setCellType(CellType.NUMERIC);
                             int mquestion_id = (int)row.getCell(1).getNumericCellValue();
                             multiplechoice.setMquestionId(mquestion_id);
 
@@ -107,6 +120,7 @@ public class UpLoadServlet extends HttpServlet {
                         else if(flag == 2){
                             System.out.println("上传单选题！！！！");
                             singlechoice = new Singlechoice();
+                            row.getCell(1).setCellType(CellType.NUMERIC);
                             int mquestion_id = (int)row.getCell(1).getNumericCellValue();
                             System.out.println(mquestion_id);
                             singlechoice.setSquestionId(mquestion_id);
@@ -114,6 +128,7 @@ public class UpLoadServlet extends HttpServlet {
                             row.getCell(2).setCellType(CellType.STRING);
                             String squestion_text = row.getCell(2).getStringCellValue();
                             singlechoice.setQuestionText(squestion_text);
+                            System.out.println(squestion_text);
 
                             row.getCell(3).setCellType(CellType.STRING);
                             String answer1 = row.getCell(3).getStringCellValue();
@@ -144,6 +159,7 @@ public class UpLoadServlet extends HttpServlet {
                         //上传文件为填空
                         else if(flag == 3){
                             blanktest = new Blanktest();
+                            row.getCell(1).setCellType(CellType.NUMERIC);
                             int bquestion_id = (int)row.getCell(1).getNumericCellValue();
                             blanktest.setBquestionId(bquestion_id);
                             row.getCell(2).setCellType(CellType.STRING);
@@ -164,7 +180,7 @@ public class UpLoadServlet extends HttpServlet {
             UploadRes res = new UploadRes();
             if(flag ==1){
                 System.out.println("添加多选题！！！");
-                boolean mul = upLoadService.addMultiplechoices(MuList);
+                boolean mul = upLoadService.addMultiplechoices(MuList,filename);
                 if(mul==true){
                     res.setCode(0);
                 }
@@ -176,7 +192,7 @@ public class UpLoadServlet extends HttpServlet {
             }
             else if(flag ==2){
                 System.out.println("添加单选题！！！");
-                boolean sig = upLoadService.addSinglechoices(SinList);
+                boolean sig = upLoadService.addSinglechoices(SinList,filename);
                 if(sig==true){
                     res.setCode(0);
                 }
@@ -188,7 +204,7 @@ public class UpLoadServlet extends HttpServlet {
             }
             else if(flag ==3){
                 System.out.println("添加填空题！！！");
-                boolean ban = upLoadService.addBlankTests(BlanList);
+                boolean ban = upLoadService.addBlankTests(BlanList,filename);
                 if(ban==true){
                     res.setCode(0);
                 }

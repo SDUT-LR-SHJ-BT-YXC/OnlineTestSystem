@@ -41,7 +41,7 @@
 <div>
 </div>
 <div class="layui-upload" style="margin-top: 30px;margin-left: 30px;">
-    <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
+    <button type="button" class="layui-btn layui-btn-normal" id="testList">选择文件</button>
     <div class="layui-upload-list">
         <table class="layui-table">
             <thead>
@@ -65,7 +65,8 @@
             elem: '#testList'
             ,url: '${pageContext.request.contextPath}/UpLoadServlet'
             ,accept: 'file'
-            ,multiple: true
+            ,multiple: false
+            ,number:1
             ,auto: false
             ,bindAction: '#testListAction'
             ,choose: function(obj){
