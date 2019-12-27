@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "CheckLoginFilter", urlPatterns = {"/Ajax_RecentScoreRecord","Ajax_IsExitEmailServlet" ,"/CheckAnswerServlet", "/ExaminationServlet", "/ShowQbankServlet", "/client/Examination.jsp"
+@WebFilter(filterName = "CheckLoginFilter", urlPatterns = {"/Ajax_RecentScoreRecord","/Ajax_IsExitEmailServlet" ,"/CheckAnswerServlet", "/ExaminationServlet", "/ShowQbankServlet", "/client/Examination.jsp"
 , "/client/personpage.jsp", "/client/showqbank.jsp", "/client/WrongAnswerRecord.jsp", "/ChangePasswrodServlet", "/client/download.jsp",
         "/client/examinationresult.jsp", "/client/ShowWA.jsp", "/client/WrongAnswerRecord.jsp"})
 public class CheckLoginFilter implements Filter {
