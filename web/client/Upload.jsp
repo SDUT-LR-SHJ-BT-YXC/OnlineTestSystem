@@ -52,7 +52,7 @@
 </div>
 <div class="layui-upload" style="margin-top: 30px;margin-left: 30px;">
     <div><button type="button" class="layui-btn layui-btn-normal" id="testList" style="display: inline;">选择文件</button>
-        <p style="display: inline;">最多能上传2个excel文件</p>
+        <p style="display: inline;">每次最多能上传1个excel文件</p>
     </div>
     <div class="layui-upload-list">
         <table class="layui-table">
@@ -77,8 +77,8 @@
             elem: '#testList'
             ,url: '${pageContext.request.contextPath}/UpLoadServlet'
             ,accept: 'file'
-            ,multiple: false
-            ,number:2
+            ,multiple: true
+            ,number:1
             ,auto: false
             ,bindAction: '#testListAction'
             ,choose: function(obj){
