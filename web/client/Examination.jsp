@@ -79,10 +79,10 @@
                     <blockquote class="layui-elem-quote layui-quote-nm"  style="padding: 5px 15px">
                         <div class="layui-form-item" style="margin-bottom: 0px">
                             <div class="layui-input-block" style="margin-left: 0px">
-                                <input type="radio" name="s${status.index}" value="A" title="${test.answer1}">
-                                <input type="radio" name="s${status.index}" value="B" title="${test.answer2}" >
-                                <input type="radio" name="s${status.index}" value="C" title="${test.answer3}">
-                                <input type="radio" name="s${status.index}" value="D" title="${test.answer4}">
+                                <input type="radio" name="s${status.index}" value="A" title="A.${test.answer1}">
+                                <input type="radio" name="s${status.index}" value="B" title="B.${test.answer2}" >
+                                <input type="radio" name="s${status.index}" value="C" title="C.${test.answer3}">
+                                <input type="radio" name="s${status.index}" value="D" title="D.${test.answer4}">
                             </div>
                         </div>
                     </blockquote>

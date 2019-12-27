@@ -80,8 +80,8 @@
                         <span style="position: relative; color: #FF5722">${sessionScope.rawsanswer[i] == test.stdAnswer ? "(√)": "(×)"}</span>
                     </blockquote>
                     <blockquote class="layui-elem-quote layui-quote-nm"  style="padding: 5px 15px">
-                        <div class="layui-form-item" style="height: 15px; margin-bottom: 20px">
-                            <div class="layui-input-block" style="margin-left: 0px">
+                        <div class="layui-form-item" style=" margin-bottom: 20px">
+                            <div class="layui-input-block clearfix" style="margin-left: 0px">
                                 <input type="radio" name="s${status.index}" value="A" title="${test.answer1}">
                                 <input type="radio" name="s${status.index}" value="B" title="${test.answer2}" >
                                 <input type="radio" name="s${status.index}" value="C" title="${test.answer3}">
@@ -104,7 +104,7 @@
                         <span style="position: relative; left: 20px; color: #FF5722">${sessionScope.rawmanswer[i] == test.stdAnswer ? "(√)": "(×)"}</span>
                     </blockquote>
                     <blockquote class="layui-elem-quote layui-quote-nm"  style="padding: 5px 15px">
-                        <div class="layui-form-item" style="height: 15px; margin-bottom: 20px">
+                        <div class="layui-form-item" style="margin-bottom: 20px">
                             <div class="layui-input-block" style="margin-left: 0px">
                                 <input type="checkbox" name="b${status.index}" value="A" title="A.${test.answer1}" lay-skin="primary" >
                                 <input type="checkbox" name="b${status.index}" value="B" title="B.${test.answer2}" lay-skin="primary">

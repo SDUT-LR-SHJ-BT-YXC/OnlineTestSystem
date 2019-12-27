@@ -13,10 +13,11 @@ function judgeEmail(path) {
             console.log("请求成功：" + status);
             if(data=== 'true'){
                 $("#email_tip").text("该邮箱已被占用啦");
-                $("#submit").prop("disabled","true");
+                $("#submit").prop("disabled",true);
             }
             else {
-                $("#submit").prop("disabled ", "false");
+                $("#email_tip").text("");
+                $("#submit").prop("disabled", false);
             }
         },
         error:function(XMLHttpRequest,textStatus,errorThrown){
