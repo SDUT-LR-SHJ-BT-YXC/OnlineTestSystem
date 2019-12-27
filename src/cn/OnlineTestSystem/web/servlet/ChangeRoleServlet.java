@@ -1,7 +1,7 @@
 package cn.OnlineTestSystem.web.servlet;
 
 import cn.OnlineTestSystem.service.UserService;
-
+import cn.OnlineTestSystem.domain.User;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -13,7 +13,15 @@ public class ChangeRoleServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         int userid = Integer.parseInt(request.getParameter("id"));
         UserService usr = new UserService();
-        usr.changeRole(userid);
+        HttpSession session = request.getSession();
+        if(session.getAttribute("user") != null)
+        {
+            User user = (User) session.getAttribute("user");
+            String em = user.getEmail();
+            System.out.println(usr.findUserId(em));
+            if(usr.findUserId(em) != userid)
+                usr.changeRole(userid);
+        }
         response.sendRedirect(request.getContextPath() + "/client/adminpage.jsp");
     }
 
