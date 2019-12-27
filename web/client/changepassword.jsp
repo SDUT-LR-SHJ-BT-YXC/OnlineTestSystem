@@ -33,7 +33,7 @@
     })
 </script>
 <body class="login-bg">
-<span id="code" style="display: none">${sessionScope.code}</span>
+<span id="code">${sessionScope.code}</span>
 <div class="login layui-anim layui-anim-up" style="margin-top:25px;">
     <div class="message">修改密码</div>
     <div id="darkbannerwrap"></div>

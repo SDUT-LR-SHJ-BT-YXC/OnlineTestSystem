@@ -56,7 +56,7 @@ public class SendEmailUtils {
                 return new PasswordAuthentication(fromEmail,authorization );
             }
         });
-        session.setDebug(true);// 设置为debug模式, 可以查看详细的发送 log
+        session.setDebug(false);// 设置为debug模式, 可以查看详细的发送 log
 
         // 3. 创建一封邮件
         MimeMessage message = createMimeMessage(session, fromEmail, toEmail, content);
