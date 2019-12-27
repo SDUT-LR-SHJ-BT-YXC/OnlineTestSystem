@@ -63,10 +63,10 @@ public class QuestionControlService {
      * description: 获取blank表
      * create time: 2019/12/27 6:09
      *
-     *
+     **/
     public List<Blanktest> getLimitedBlank(int page, int limit, String search){
         int start = limit * (page - 1);
-        List<Blanktest> list = blankdimpl.getLimitedSigle(start, limit, search);
+        List<Blanktest> list = blankdimpl.getLimitedBlank(start, limit, search);
         return list;
     }
     /**
@@ -74,11 +74,11 @@ public class QuestionControlService {
      * description: 获取blank表大小
      * create time: 2019/12/27 6:09
      *
-     *
+     **/
     public int getBlankSize(){
-        return blankdimpl.getSingleCount();
+        return blankdimpl.getBlankCount();
     }
-*/
+
 
     /**
      * create by: yinxiaochen
@@ -104,6 +104,6 @@ public class QuestionControlService {
      * create time: 2019/12/27 05:54
      */
     public void delBlank(int id){
-        blankdimpl.delBlanktestById(id);
+        blankdimpl.delBlank(id);
     }
 }

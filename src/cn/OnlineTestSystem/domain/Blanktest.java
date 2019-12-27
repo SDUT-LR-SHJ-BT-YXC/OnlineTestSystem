@@ -13,12 +13,14 @@ public class Blanktest {
     private String questionText;
     private String stdAnswer;
     private Integer qbankId;// >= 60000
+    private String name;
 
-    public Blanktest(Integer bquestionId, String questionText, String stdAnswer, Integer qbankId) {
+    public Blanktest(Integer bquestionId, String questionText, String stdAnswer, Integer qbankId, String name) {
         this.bquestionId = bquestionId;
         this.questionText = questionText;
         this.stdAnswer = stdAnswer;
         this.qbankId = qbankId;
+        this.name = name;
     }
 
     public Blanktest() {
@@ -54,5 +56,13 @@ public class Blanktest {
 
     public void setQbankId(Integer qbankId) {
         this.qbankId = qbankId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

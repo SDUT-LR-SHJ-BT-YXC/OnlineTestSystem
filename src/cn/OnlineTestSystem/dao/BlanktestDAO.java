@@ -20,4 +20,7 @@ public interface BlanktestDAO {
     public Boolean delBlanktestsByQbankId(Integer id);
     public Boolean modifyBlanktest(Blanktest test);
     public List<Blanktest> findRandomBlanks(Integer qbankId, Integer n);
+    public int getBlankCount();
+    public void delBlank(int id);
+    public List<Blanktest> getLimitedBlank(int start, int limit, String search);
 }
