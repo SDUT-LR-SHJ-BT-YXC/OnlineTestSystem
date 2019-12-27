@@ -56,7 +56,7 @@
         <li class="layui-nav-item" style="margin: 0 5%">
             <a href="${pageContext.request.contextPath}/client/ManageQbank.jsp">题库管理</a>
         </li>
-        <li class="layui-nav-item" style="margin: 0 5%">
+        <li class="layui-nav-item layui-this" style="margin: 0 5%">
             <a href="${pageContext.request.contextPath}/client/QuestionsControl.jsp">习题管理</a>
         </li>
         <li class="layui-nav-item" style="margin: 0 5%">
@@ -162,7 +162,7 @@
             ,id:'single_table'
             ,cols: [
                 [ //表头
-                    {field: 'squestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
+                    {field: 'squestionId', title: 'ID', width:100, fixed: 'left', align:"center", unresize:"false"}
                     ,{field: 'qbankId', title: '题库ID', width: 100}
                     ,{field: 'name', title: '题库', width: 100}
                     ,{field: 'questionText', title: '题干', width: 200}
@@ -170,7 +170,7 @@
                     ,{field: 'answer2', title: '选项B', width: 150}
                     ,{field: 'answer3', title: '选项C', width: 150}
                     ,{field: 'answer4', title: '选项D', width: 150}
-                    ,{field: 'stdAnswer', title: '正确答案', width: 150}
+                    ,{field: 'stdAnswer', title: '正确答案', width: 100}
                     ,{field: '', title: '操作', width: 100, templet: '#singleTpl'}
                 ]
             ] //设置表头
@@ -185,7 +185,7 @@
             ,id:'multiple_table'
             ,cols: [
                 [ //表头
-                    {field: 'mquestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
+                    {field: 'mquestionId', title: 'ID', width:100, fixed: 'left', align:"center", unresize:"false"}
                     ,{field: 'qbankId', title: '题库ID', width: 100}
                     ,{field: 'name', title: '题库', width: 100}
                     ,{field: 'questionText', title: '题干', width: 200}
@@ -193,7 +193,7 @@
                     ,{field: 'answer2', title: '选项B', width: 150}
                     ,{field: 'answer3', title: '选项C', width: 150}
                     ,{field: 'answer4', title: '选项D', width: 150}
-                    ,{field: 'stdAnswer', title: '正确答案', width: 150}
+                    ,{field: 'stdAnswer', title: '正确答案', width: 100}
                     ,{field: '', title: '操作', width: 100, templet: '#multipleTpl'}
                 ]
             ] //设置表头
@@ -208,11 +208,11 @@
             ,id:'blank_table'
             ,cols: [
                 [ //表头
-                    {field: 'bquestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
+                    {field: 'bquestionId', title: 'ID', width:100, fixed: 'left', align:"center", unresize:"false"}
                     ,{field: 'qbankId', title: '题库ID', width: 100}
                     ,{field: 'name', title: '题库', width: 100}
-                    ,{field: 'questionText', title: '题干', width: 200}
-                    ,{field: 'stdAnswer', title: '正确答案', width: 600}
+                    ,{field: 'questionText', title: '题干', width: 550}
+                    ,{field: 'stdAnswer', title: '正确答案', width: 320}
                     ,{field: '', title: '操作', width: 100, templet: '#blankTpl'}
                 ]
             ] //设置表头
