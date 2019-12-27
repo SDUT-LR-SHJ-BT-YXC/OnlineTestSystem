@@ -21,13 +21,26 @@
         }
     </style>
     <script>
-        function confirmDelete(context) {
-            layer.open({
-                title: '警告'
-                ,content: '确定要删除此试题？'
-                ,btn: ['确定', '取消']
-                ,btn1: function(index, layero){
-                    location.href = context;
+        function DelQuestion(path, id, type) {
+            console.log("begin");
+            $.ajax({
+                url:path + "/Ajax_DeleteQuestionServlet",
+                dataType:'text',//数据类型
+                type:'GET',//类型
+                timeout:2000,//超时
+                data:{"id": id, "type": type},//后台可获取参数
+                success:function (data, status) {
+                    console.log("删除：" + status);
+                },
+                error:function(XMLHttpRequest,textStatus,errorThrown){
+                    console.log(textStatus);
+                    if(textStatus==='timeout'){
+                        alert('請求超時');
+                        setTimeout(function(){
+                            alert('重新请求');
+                        },2000);
+                    }
+                    //alert(errorThrown);
                 }
             })
         }
@@ -58,24 +71,6 @@
         </li>
     </ul>
 </div>
-<script type="text/javascript">
-    $(function(){
-        var type = '<%= session.getAttribute("QCmark")%>';
-        if(type == '2')
-            $('#tab2').click();
-        else if(type == '3')
-            $('#tab3').click();
-    })
-    $("#tab1").click(function () {
-        sessionStorage.setItem('QCmark', '1');
-    });
-    $("#tab2").click(function () {
-        sessionStorage.setItem('QCmark', '2');
-    });
-    $("#tab3").click(function () {
-        sessionStorage.setItem('QCmark', '3');
-    });
-</script>
 <div class="layui-tab">
     <ul class="layui-tab-title">
         <li id="tab1" class="layui-this">单选题</li>
@@ -94,7 +89,7 @@
             </div>
 
             <!-- 展示操作记录的表格 -->
-            <div style="width: 1300px; height: 450px; margin: auto">
+            <div style="width: 1300px; height: 650px; margin: auto">
                 <table id="single_table" lay-filter="single_table"></table>
             </div>
         </div>
@@ -110,7 +105,7 @@
                 </div>
 
                 <!-- 展示操作记录的表格 -->
-                <div style="width: 1300px; height: 450px; margin: auto">
+                <div style="width: 1300px; height: 650px; margin: auto">
                     <table id="multiple_table" lay-filter="multiple_table"></table>
                 </div>
             </div>
@@ -127,7 +122,7 @@
                 </div>
 
                 <!-- 展示操作记录的表格 -->
-                <div style="width: 1300px; height: 450px; margin: auto">
+                <div style="width: 1300px; height: 650px; margin: auto">
                     <table id="blank_table" lay-filter="blank_table"></table>
                 </div>
             </div>
@@ -207,13 +202,13 @@
         table.render({
             elem: '#blank_table' //指定原始表格元素选择器（推荐id选择器）
             ,height: 450 //容器高度
-            ,url: '${pageContext.request.contextPath}/SingleControlServlet'
+            ,url: '${pageContext.request.contextPath}/BlankControlServlet'
             ,page:true
             ,even:true
             ,id:'blank_table'
             ,cols: [
                 [ //表头
-                    {field: 'squestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
+                    {field: 'bquestionId', title: 'ID', width:50, fixed: 'left', align:"center", unresize:"false"}
                     ,{field: 'qbankId', title: '题库ID', width: 100}
                     ,{field: 'name', title: '题库', width: 100}
                     ,{field: 'questionText', title: '题干', width: 200}
@@ -255,20 +250,60 @@
                 }
             });
         });
+
+        //删除单选
+        table.on('tool(single_table)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'del'){
+                layer.confirm('真的删除么', function(index){
+                    var id = data.squestionId;
+                    var type = 'single';
+                    obj.del();
+                    DelQuestion('${pageContext.request.contextPath}', id, type);
+                    layer.close(index);
+                });
+            }
+        });
+        //删除多选
+        table.on('tool(multiple_table)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'del'){
+                layer.confirm('真的删除么', function(index){
+                    var id = data.mquestionId;
+                    var type = 'multiple';
+                    obj.del();
+                    DelQuestion('${pageContext.request.contextPath}', id, type);
+                    layer.close(index);
+                });
+            }
+        });
+        //删除填空
+        table.on('tool(blank_table)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'del'){
+                layer.confirm('真的删除么', function(index){
+                    var id = data.bquestionId;
+                    var type = 'blank';
+                    obj.del();
+                    DelQuestion('${pageContext.request.contextPath}', id, type);
+                    layer.close(index);
+                });
+            }
+        })
     });
 </script>
 
 <!-- 单选表格操作列引用模板  -->
 <script type="text/html" id="singleTpl">
-    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmDelete('${pageContext.request.contextPath}/DeleteQuestionServlet?id={{d.squestionId}}&type=single')">删除</button>
+    <button lay-event="del" class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="">删除</button>
 </script>
 <!-- 多选表格操作列引用模板  -->
 <script type="text/html" id="multipleTpl">
-    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmDelete('${pageContext.request.contextPath}/DeleteQuestionServlet?id={{d.mquestionId}}&type=multiple')">删除</button>
+    <button lay-event="del" class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="">删除</button>
 </script>
 <!-- 填空表格操作列引用模板  -->
 <script type="text/html" id="blankTpl">
-    <button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="confirmDelete('${pageContext.request.contextPath}/DeleteQuestionServlet?id={{d.squestionId}}&type=blank')">删除</button>
+    <button lay-event="del" class="layui-btn layui-btn-normal layui-btn-radius layui-btn-sm" onclick="">删除</button>
 </script>
 
 </body>

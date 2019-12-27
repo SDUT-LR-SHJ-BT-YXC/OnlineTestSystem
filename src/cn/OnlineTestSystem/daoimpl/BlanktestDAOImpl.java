@@ -3,6 +3,7 @@ package cn.OnlineTestSystem.daoimpl;
 import cn.OnlineTestSystem.dao.BaseDAO;
 import cn.OnlineTestSystem.dao.BlanktestDAO;
 import cn.OnlineTestSystem.domain.Blanktest;
+import cn.OnlineTestSystem.domain.Multiplechoice;
 
 import java.sql.SQLException;
 import java.util.Iterator;
@@ -162,5 +163,58 @@ public class BlanktestDAOImpl extends BaseDAO<Blanktest> implements BlanktestDAO
             e.printStackTrace();
         }
         return  null;
+    }
+
+    @Override
+    /**
+     * @Author: yinxiaochen
+     * @Description: 获取填空表行数
+     * @Param:
+     * @Return:
+     * @Date: 07:29 2019-12-27
+     */
+    public int getBlankCount() {
+        String sql = "SELECT COUNT(*) FROM blanktest";
+        try {
+            Long c =  this.getForValue(sql);
+            return c.intValue();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Override
+    /**
+     * @Author: yinxiaochen
+     * @Description: 搜索获取有限填空信息
+     * @Param: int start, int limit
+     * @Return: List<Blanktest>
+     * @Date: 7:32 2019-12-27
+     */
+    public List<Blanktest> getLimitedBlank(int start, int limit, String search) {
+        String sql = "SELECT * FROM blanktest INNER JOIN qbank ON qbank.qbank_id=blanktest.qbank_id WHERE question_text LIKE '%" + search + "%' ORDER BY qbank.qbank_id LIMIT " + start + "," + limit;
+        try {
+            return this.getForList(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
+
+    @Override
+    /**
+     * create by: yinxiaochen
+     * description: 按id删除填空题
+     * create time: 06:15 2019-12-27
+     *
+     */
+    public void delBlank(int id) {
+        String sql = "DELETE FROM blanktest WHERE bquestion_id=?";
+        try {
+            this.update(sql, id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

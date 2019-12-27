@@ -9,24 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/DeleteQuestionServlet")
-public class DeleteQuestionServlet extends HttpServlet {
+@WebServlet("/Ajax_DeleteQuestionServlet")
+public class Ajax_DeleteQuestionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=utf-8");
+        //response.setContentType("text/html;charset=utf-8");
         int id = Integer.parseInt(request.getParameter("id"));
         String type = request.getParameter("type");
         QuestionControlService service = new QuestionControlService();
-        request.getSession().setAttribute("QCmark", '1');
         if(type.equals("single")){
             service.delSingle(id);
         }else if(type.equals("multiple")){
             service.delMultiple(id);
-            request.getSession().setAttribute("QCmark", '2');
         }else {
             service.delBlank(id);
-            request.getSession().setAttribute("QCmark", '3');
         }
-        response.sendRedirect(request.getContextPath() + "/client/QuestionsControl.jsp");
+       // response.sendRedirect(request.getContextPath() + "/client/QuestionsControl.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

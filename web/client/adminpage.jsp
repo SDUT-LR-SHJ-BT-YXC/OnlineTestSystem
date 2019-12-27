@@ -52,7 +52,7 @@
     </ul>
 </div>
 <!-- 展示操作记录的表格 --->
-<div style="width: 1300px; height: 500px; margin: 50px auto">
+<div style="width: 1300px; height: 650px; margin: 50px auto">
     <table id="OperationLog_table" lay-filter="test"></table>
 </div>
 
