@@ -36,7 +36,7 @@
         });
     </script>
 </head>
-<body style="min-width: 1400px; min-height: 710px">
+<body style="min-width: 1400px;">
 
 <!-- 导航栏  -->
 <div class="layui-header" >
@@ -52,7 +52,7 @@
     <div>
         <!--  倒计时 -->
         <div style="height: 30px;margin-bottom: 15px" >
-            <div style="width: 150px;margin: 10px auto; font-size: 23px"><b>${sessionScope.paper.qbankname}</b>在线测试</div>
+            <div style="width: 300px;margin: 10px auto; font-size: 23px"><b>${sessionScope.paper.qbankname}</b>在线测试</div>
         </div>
         <div class="clearfix" style=" height:50px;  padding-right: 350px">
             <span id="time" style="float: right"></span>
@@ -66,7 +66,7 @@
             <div style="width: 70%; margin: 0 auto;">
                 <!---   填空题 ---->
                 <c:forEach items="${sessionScope.paper.blanktests}" var="test" varStatus="status">
-                    <blockquote class="layui-elem-quote">${status.count}.${test.questionText} [2分]</blockquote>
+                    <blockquote class="layui-elem-quote">${status.count}.${test.questionText} <span style="font-style: oblique; color: #d2d2d2">&nbsp;&nbsp;&nbsp;[2分]</span></blockquote>
                     <blockquote class="layui-elem-quote layui-quote-nm" style="height: 30px;">
                         <span>答：</span>
                         <input type="text" name="b${status.index}"  placeholder="请输入答案" autocomplete="off" class="layui-input" style="width:95%;display: inline; ">
@@ -75,9 +75,9 @@
 
                 <!-- 单选题 ---->
                 <c:forEach items="${sessionScope.paper.singlechoices}" var="test" varStatus="status">
-                    <blockquote class="layui-elem-quote">${bnum + status.count}.（单选）${test.questionText} [3分]</blockquote>
-                    <blockquote class="layui-elem-quote layui-quote-nm">
-                        <div class="layui-form-item" style="height: 15px">
+                    <blockquote class="layui-elem-quote">${bnum + status.count}.（单选）${test.questionText} <span style="font-style: oblique; color: #d2d2d2">&nbsp;&nbsp;&nbsp;[3分]</span></blockquote>
+                    <blockquote class="layui-elem-quote layui-quote-nm"  style="padding: 5px 15px">
+                        <div class="layui-form-item" style="margin-bottom: 0px">
                             <div class="layui-input-block" style="margin-left: 0px">
                                 <input type="radio" name="s${status.index}" value="A" title="${test.answer1}">
                                 <input type="radio" name="s${status.index}" value="B" title="${test.answer2}" >
@@ -90,19 +90,21 @@
 
                 <!-- 多选题 -->
                 <c:forEach items="${sessionScope.paper.multiplechoices}" var="test" varStatus="status">
-                    <blockquote class="layui-elem-quote">${bnum + snum + status.count}.（多选）${test.questionText}[5分]</blockquote>
-                    <blockquote class="layui-elem-quote layui-quote-nm">
-                        <div class="layui-form-item" style="height: 15px">
-                            <div class="layui-input-block" style="margin-left: 0px">
-                                <input type="checkbox" name="m${status.index}" value="A" title="A.${test.answer1}" lay-skin="primary">
-                                <input type="checkbox" name="m${status.index}" value="B" title="B.${test.answer2}" lay-skin="primary">
-                                <input type="checkbox" name="m${status.index}" value="C" title="C.${test.answer3}" lay-skin="primary">
-                                <input type="checkbox" name="m${status.index}" value="D" title="D.${test.answer4}" lay-skin="primary">
+                    <blockquote class="layui-elem-quote">${bnum + snum + status.count}.（多选）${test.questionText} <span style="font-style: oblique; color: #d2d2d2">&nbsp;&nbsp;&nbsp;[5分]</span></blockquote>
+                    <blockquote class="layui-elem-quote layui-quote-nm"  style="padding: 5px 15px">
+                        <div class="layui-form-item" style="margin-bottom: 0px;">
+                            <div class="layui-input-block" style="margin-left: 0px;">
+                                <input type="checkbox" style="line-height: 30px" name="m${status.index}" value="A" title="A.${test.answer1}" lay-skin="primary">
+                                <input type="checkbox" style="line-height: 30px" name="m${status.index}" value="B" title="B.${test.answer2}" lay-skin="primary">
+                                <input type="checkbox" style="line-height: 30px" name="m${status.index}" value="C" title="C.${test.answer3}" lay-skin="primary">
+                                <input type="checkbox" style="line-height: 30px" name="m${status.index}" value="D" title="D.${test.answer4}" lay-skin="primary">
                             </div>
                         </div>
                     </blockquote>
                 </c:forEach>
+                
             </div>
+
             <div style="margin: 50px auto">
                 <div class="layui-input-block" style="width: 15%; margin: 0 auto" >
                     <button id="submitbtn" type="button" class="layui-btn" onclick="confirmSubmit('#form')">提交试卷</button>

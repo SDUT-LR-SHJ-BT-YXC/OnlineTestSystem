@@ -62,7 +62,7 @@
                 <!---   填空题 ---->
                 <c:forEach items="${sessionScope.paper.blanktests}" var="test" varStatus="status">
                     <c:set var="i" value="${status.index}"></c:set>
-                    <blockquote class="layui-elem-quote">${status.count}.${test.questionText}
+                    <blockquote class="layui-elem-quote">${status.count}.${test.questionText} <span style="font-style: oblique; color: #d2d2d2"> &nbsp;&nbsp;&nbsp;[2分]</span>
                         <span style="position: relative; left: 20px; color: #FF5722">${sessionScope.rawbanswer[i] == test.stdAnswer ? "(√)": "(×)"}</span>
                     </blockquote>
                     <blockquote class="layui-elem-quote layui-quote-nm" style="height: 30px;">
@@ -76,10 +76,10 @@
                 <!-- 单选题 ---->
                 <c:forEach items="${sessionScope.paper.singlechoices}" var="test" varStatus="status">
                     <c:set var="i" value="${status.index}"></c:set>
-                    <blockquote class="layui-elem-quote">${bnum + status.count}.${test.questionText}
+                    <blockquote class="layui-elem-quote">${bnum + status.count}.（单选）${test.questionText} <span style="font-style: oblique; color: #d2d2d2">&nbsp;&nbsp;&nbsp;[3分]</span>
                         <span style="position: relative; color: #FF5722">${sessionScope.rawsanswer[i] == test.stdAnswer ? "(√)": "(×)"}</span>
                     </blockquote>
-                    <blockquote class="layui-elem-quote layui-quote-nm" style="padding: 7px 15px">
+                    <blockquote class="layui-elem-quote layui-quote-nm"  style="padding: 5px 15px">
                         <div class="layui-form-item" style="height: 15px; margin-bottom: 20px">
                             <div class="layui-input-block" style="margin-left: 0px">
                                 <input type="radio" name="s${status.index}" value="A" title="${test.answer1}">
@@ -100,10 +100,10 @@
                 <!-- 多选题 -->
                 <c:forEach items="${sessionScope.paper.multiplechoices}" var="test" varStatus="status">
                     <c:set var="i" value="${status.index}"></c:set>
-                    <blockquote class="layui-elem-quote">${bnum + snum + status.count}.${test.questionText}
+                    <blockquote class="layui-elem-quote">${bnum + snum + status.count}.（多选）${test.questionText} <span style="font-style: oblique; color: #d2d2d2">&nbsp;&nbsp;&nbsp;[5分]</span>
                         <span style="position: relative; left: 20px; color: #FF5722">${sessionScope.rawmanswer[i] == test.stdAnswer ? "(√)": "(×)"}</span>
                     </blockquote>
-                    <blockquote class="layui-elem-quote layui-quote-nm">
+                    <blockquote class="layui-elem-quote layui-quote-nm"  style="padding: 5px 15px">
                         <div class="layui-form-item" style="height: 15px; margin-bottom: 20px">
                             <div class="layui-input-block" style="margin-left: 0px">
                                 <input type="checkbox" name="b${status.index}" value="A" title="A.${test.answer1}" lay-skin="primary" >
