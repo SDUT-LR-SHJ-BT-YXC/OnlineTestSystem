@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +33,9 @@ public class DownloadServlet2 extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("jinlaile");
-        System.out.println("*****"+request.getContextPath());
+        //System.out.println("jinlaile");
+       // System.out.println("*****"+request.getContextPath());
+        request.setCharacterEncoding("UTF-8");
         String qbankid = request.getParameter("qbank_id");
         int qbank_id = Integer.parseInt(qbankid);
         DownloadService downloadService = new DownloadService();
@@ -44,11 +46,14 @@ public class DownloadServlet2 extends HttpServlet {
         singlechoices = downloadService.getALLSingleByQid(qbank_id);
         multiplechoices = downloadService.getALLMultipleByQid(qbank_id);
         blanktests = downloadService.getALLBlankByQid(qbank_id);
-        String path = this.getServletContext().getRealPath("/download/"+qbank_id+".txt");
+        String path = this.getServletContext().getRealPath("/download/"+downloadService.getQbankName(qbank_id)+".txt");
         //System.out.println("jinlaiele2");
+        //System.out.println("--------------"+downloadService.getQbankName(qbank_id));
         DownLoad.download(path,singlechoices,multiplechoices,blanktests);
-        response.setHeader("Content-Disposition", "attachment;filename="+qbank_id+".txt");
-        String mimeType = this.getServletContext().getMimeType(qbank_id+".txt");
+        String filename = URLEncoder.encode(downloadService.getQbankName(qbank_id)+".txt","UTF-8");
+        response.setHeader("Content-Disposition", "attachment;filename="+filename);
+        response.setHeader("content-type", "text/html;charset=UTF-8");
+        String mimeType = this.getServletContext().getMimeType(filename);
         response.setContentType(mimeType);
 
         //System.out.println(path);

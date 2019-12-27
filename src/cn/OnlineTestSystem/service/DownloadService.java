@@ -75,4 +75,16 @@ public class DownloadService {
         blanktests = blanktestDAO.findBlanksByQbankId(qbank_id);
         return blanktests;
     }
+
+    /*
+     * 根据id查找题库名称
+     * @Param: [qbank_id]
+     * @Return: java.lang.String
+     * @Author: liurong
+     * @Date: 2019/12/27 10:01
+     */
+    public String getQbankName(int qbank_id){
+        Qbank qbank = qbankimpl.findQbankById(qbank_id);
+        return qbank.getName();
+    }
 }
