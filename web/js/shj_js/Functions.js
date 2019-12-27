@@ -231,6 +231,7 @@ function msg(type,t, text) {
         var layer = layui.layer;
         layer.open({
             title:t,
+            offset:"150",
             content:text,
             }
         )
