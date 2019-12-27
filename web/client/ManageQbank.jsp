@@ -38,6 +38,16 @@
         </li>
     </ul>
 </div>
+<script>
+    <!-- 加载element模块 -->
+    layui.use('element', function(){
+        var element = layui.element;
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+</script>
 <div>
 </div>
 <div style="width: 100%;text-align: center">

@@ -43,6 +43,16 @@
         </li>
     </ul>
 </div>
+<script>
+    <!-- 加载element模块 -->
+    layui.use('element', function(){
+        var element = layui.element;
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+</script>
 <div class="layui-container " style="margin-top:40px;height:100%;">
     <table class="layui-table" lay-even lay-skin="row" lay-size="lg">
         <tr>

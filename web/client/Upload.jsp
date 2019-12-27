@@ -20,13 +20,13 @@
         <li class="layui-nav-item" style="margin: 0 5%">
             <a href="${pageContext.request.contextPath}/client/adminpage.jsp">用户管理</a>
         </li>
-        <li class="layui-nav-item layui-this" style="margin: 0 5%">
+        <li class="layui-nav-item" style="margin: 0 5%">
             <a href="${pageContext.request.contextPath}/ManageQbankServlet">题库管理</a>
         </li>
         <li class="layui-nav-item" style="margin: 0 5%">
             <a href="${pageContext.request.contextPath}/client/QuestionsControl.jsp">习题管理</a>
         </li>
-        <li class="layui-nav-item" style="margin: 0 5%">
+        <li class="layui-nav-item layui-this" style="margin: 0 5%">
             <a href="${pageContext.request.contextPath}/client/Upload.jsp">导入习题</a>
         </li>
         <li class="layui-nav-item" lay-unselect="" style="float: right">
@@ -38,6 +38,16 @@
         </li>
     </ul>
 </div>
+<script>
+    <!-- 加载element模块 -->
+    layui.use('element', function(){
+        var element = layui.element;
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+</script>
 <div>
 </div>
 <div class="layui-upload" style="margin-top: 30px;margin-left: 30px;">
