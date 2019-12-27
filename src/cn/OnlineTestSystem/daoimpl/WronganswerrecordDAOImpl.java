@@ -184,4 +184,15 @@ public class WronganswerrecordDAOImpl extends BaseDAO<Wronganswerrecord> impleme
         }
         return null;
     }
+
+    @Override
+    public Wronganswerrecord findWronganswerrecordsByQuestionIdAndUserId(Integer questionid, Integer userId) {
+        String sql = "SELECT * FROM wronganswerrecord WHERE question_id=? and user_id=?";
+        try {
+            return this.get(sql, questionid, userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

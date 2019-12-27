@@ -21,4 +21,5 @@ public interface WronganswerrecordDAO {
     public Wronganswerrecord findWronganswerrecordById(Integer id);
     public List<Wronganswerrecord> findWronganswerrecordsByUserId(Integer id);
     public List<Wronganswerrecord> findWronganswerrecordsByQuestionId(Integer id);
+    public Wronganswerrecord findWronganswerrecordsByQuestionIdAndUserId(Integer questionid, Integer userId);
 }

@@ -107,8 +107,16 @@ public class ExaminationService {
                 if(rawAnswer == null){
                     rawAnswer = "";
                 }
-                Wronganswerrecord record = new Wronganswerrecord(test.getBquestionId(), rawAnswer,time, paper.getUserid());
-                recordDAO.addWronganswerrecord(record);
+                Wronganswerrecord record = recordDAO.findWronganswerrecordsByQuestionIdAndUserId(test.getBquestionId(), paper.getUserid());
+                if(record == null){
+                    record = new Wronganswerrecord(test.getBquestionId(), rawAnswer,time, paper.getUserid());
+                    recordDAO.addWronganswerrecord(record);
+                }
+                else{
+                    record.setTime(time);
+                    recordDAO.modifyWronganswerrecord(record);
+                }
+
             }
         }
 
@@ -122,8 +130,15 @@ public class ExaminationService {
                 if(rawAnswer == null){
                     rawAnswer = "";
                 }
-                Wronganswerrecord record = new Wronganswerrecord(test.getSquestionId(), rawAnswer, time, paper.getUserid());
-                recordDAO.addWronganswerrecord(record);
+                Wronganswerrecord record = recordDAO.findWronganswerrecordsByQuestionIdAndUserId(test.getSquestionId(), paper.getUserid());
+                if(record == null){
+                    record = new Wronganswerrecord(test.getSquestionId(), rawAnswer,time, paper.getUserid());
+                    recordDAO.addWronganswerrecord(record);
+                }
+                else{
+                    record.setTime(time);
+                    recordDAO.modifyWronganswerrecord(record);
+                }
             }
         }
 
@@ -137,8 +152,15 @@ public class ExaminationService {
                 if(rawAnswer == null){
                     rawAnswer = "";
                 }
-                Wronganswerrecord record = new Wronganswerrecord(test.getMquestionId(), rawAnswer, time, paper.getUserid());
-                recordDAO.addWronganswerrecord(record);
+                Wronganswerrecord record = recordDAO.findWronganswerrecordsByQuestionIdAndUserId(test.getMquestionId(), paper.getUserid());
+                if(record == null){
+                    record = new Wronganswerrecord(test.getMquestionId(), rawAnswer,time, paper.getUserid());
+                    recordDAO.addWronganswerrecord(record);
+                }
+                else{
+                    record.setTime(time);
+                    recordDAO.modifyWronganswerrecord(record);
+                }
             }
         }
 

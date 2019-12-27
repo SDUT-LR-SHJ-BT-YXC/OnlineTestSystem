@@ -214,6 +214,7 @@ function endExamimationMsg(path) {
         layer.open({
             title:'考试已关闭',
             content:"本考试已经关闭！",
+            offset:"150px",
             yes: function(index, layero){
                 window.location.href= path + '/client/personpage.jsp';
              },
