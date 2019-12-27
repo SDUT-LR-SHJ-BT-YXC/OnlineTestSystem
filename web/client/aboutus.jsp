@@ -46,7 +46,7 @@
 <div style="background-color: #393D49; height: 290px">
     <div style="padding: 30px 0">
         <p style="font-size: 30px; color: white" align="center">在线答题系统</p>
-        <P style="position:relative; top: 30px; color: white;" align="center">简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介</P>
+        <P style="position:relative; top: 30px; color: white;" align="center">本系统可实现在线测试、成绩分析、错题记录、题库管理。</P>
     </div>
     <div class="layui-card" style="width: 240px; float: left; position: relative; top: 60px; left: 400px">
         <div class="layui-card-header" style="margin: 0 auto">
@@ -54,7 +54,7 @@
             <span>我们的邮箱</span>
         </div>
         <div class="layui-card-body">
-            <p align="center">lalalalal@163.com</p>
+            <p align="center">zaixianceshi@163.com</p>
         </div>
     </div>
     <div class="layui-card" style="width: 240px; float: right; position: relative; top: 60px; right: 400px" >
@@ -63,7 +63,7 @@
             <span>QQ联系</span>
         </div>
         <div class="layui-card-body">
-            <p align="center">123456789</p>
+            <p align="center">20191227</p>
         </div>
     </div>
 </div>
@@ -88,8 +88,8 @@
         <div class="layui-card" style="width: 200px; float: left; margin-left: 100px;  background-color:#eeeeee">
             <div class="layui-card-header">直观明了</div>
             <div class="layui-card-body">
-                在线答题系统使用各种图标显示用户数据，<br>
-                表现直观明了
+                在线考试系统综合分析考试成绩，错题全部记录<br>
+                便于复习查漏补缺
             </div>
         </div>
     </div>
